@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Générateur de Mot de Passe</title>
+    <link rel="stylesheet" href="mdp.css">
+</head>
+<body>
+
+    <div class="retour">
+
+        <a href="../index.html">retour au menu principal</a>
+
+    </div>
+    <div class="form">
+        <input placeholder="Password" id="password" readonly>
+        <table>
+          <th><div id="button" onclick="create()">Créer</div></th>
+          <th><a  id="button" class="copy" onclick="copyPass()">Copier</a></th>
+        </table>
+      </div>
+
+
+      <!-- Code JAVASCRIPT-->
+
+      <script>
+        var password = document.getElementById("password");
+            function create() {
+            var use = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*";
+            var lengthx = 10;
+            var password = "";
+            for (var i = 0; i <= lengthx; i++) {
+                var random = Math.floor(Math.random() * use.length);
+                password += use.substring(random, random +1);
+            }
+            document.getElementById("password").value = password;
+
+            }
+            function copyPass() {
+            var c = document.getElementById("password");
+            c.select();
+            document.execCommand("copy");
+            }
+
+      </script>
+      
+      
+</body>
+</html>

@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/26accdcdfc.js" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../Portfolio/images/logo.png" type="image/x-icon">
+</head>
+<body>
+
+    <div id="header">
+        <div class="container">
+            <nav>
+                <img src="images/logo.png" alt="Mon logo" class="logo">
+                <ul id="sidemenu">
+                    <li><a href="#header">Accueil</a></li>
+                    <li><a href="#about">A propos</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <i class="fas fa-times" onclick="closemenu()"></i>
+                </ul>
+                <i class="fas fa-bars" onclick="openmenu()"></i>
+            </nav>
+            <div class="header-text">
+                <p>Développeur Web et Mobile</p>
+                <h1>Bienvenu dans mon Portfolio, <br>je suis <span>Papa Mamadou Gueye </span></h1>
+            </div>
+
+        </div>
+    </div>
+
+    <!--  DEBUT DE LA  PARTIE " A PROPOS "-->
+
+    <div id="about">
+
+        <div class="container">
+            <div class="row">
+                <div class="about-col-1"> 
+                    <img src="images/c.JPG" alt="Mon images ">
+                 </div>
+                <div class="about-col-2">
+                    <h1 class="sub-title">A propos  de moi </h1>
+                    <p>
+                        Diplômé en informatique avec une spécialisation en développement web et mobile, je
+                        possède de solide compétence dans la conception, le développement et la
+                        maintenance d'applications web et mobile. Ayant aussi une base en sécurité informatique,
+                        je dispose d'une politique allant de la sensibilisation aux méthodes d'analyse des risques 
+                        sans pour autant oublier l'évaluation des risques qui me permettra aussi de protéger les ménaces 
+                        intentionnelles.
+                        Ma maîtrise des langages tels que HTML, CSS, JavaScript, ainsi que mon expertise
+                        dans l'utilisation des langages de programmations backend comme PHP et les
+                        Frameworks comme Symfony, Angular sans aussi oublier le langage SQL m'ont
+                        permis de concevoir des solutions techniques innovantes et performantes.
+                        Lors de la création de site web ou application, je suis équipé des bons outils et je
+                         peux absolument fonctionner 
+                        indépendamment d'eux pour fournir des solutions rapides et résilientes optimisées pour 
+                        l'évolutivité et les performances du site ou de l'application
+                    </p>
+                    <div class="tab-titles">
+                        <p class="tab-links active-link" onclick="opentab('Compétences')">Compétences</p>
+                        <p class="tab-links" onclick="opentab('Expériences')">Expériences</p>
+                        <p class="tab-links" onclick="opentab('Formations')">Formations</p>
+                    </div>
+                    <div class="tab-contents active-tab" id="Compétences">
+                        <ul>
+                            <li><span>Développement informatique</span><br>Création site web dynamique et statique</li>
+                            <li><span>Sécurité Informatique</span><br>Management système d'information</li>
+                            <li><span>Développement d'application</span><br>Création application Android/iOS</li>
+                        </ul>
+                    </div>
+                    <div class="tab-contents" id="Expériences">
+                        <ul>
+                            <li><span>Mai 2022 - Octobre 2022</span><br>Stagiaire en développement informatique chez Lycom à Rabat</li>
+                            <li><span>Novembre 2022 - Décembre 2023</span><br>Chargé d'assistant chez AxaService</li>
+                            
+                        </ul>
+                    </div>
+                    <div class="tab-contents " id="Formations">
+                        <ul>
+                            <li><span>2021-2022</span><br>(Brevet de Technicien Spécialisé en développement Informatique) à ITAG Rabat.</li>
+                            <li><span>2022-2023</span><br> Licence en Dévéloppement Web et Mobile à l'Université Ibn Tofail de Kénitra au Maroc</li>
+                            <li><span>2023-2024</span><br> Bachelor Développement Fullstack & DevOps à l'Ecole IPSSI de Paris en France</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <!--  FIN DE LA   PARTIE " A PROPOS "-->
+
+
+
+     <!--  DEBUT  DU  PARTIE " SERVICES "-->
+
+     <div id="services">
+        <div class="container">
+            <h1 class="sub-title">Mes Services</h1>
+            <div class="services-list">
+
+                <div>
+                    <i class="fas fa-code"></i>
+                    <h2>Développement Web</h2>
+                    <p>Création de Site Web  dynamique ou statique </p>
+                    <a href="#">Lire plus</a>
+                </div>
+
+                <div>
+                    <i class="fas fa-user-secret"></i>
+                    <h2>Sécurité Informatique</h2>
+                    <p>La sécurité des systèmes d'information ou plus simplement sécurité informatique </p>
+                    <a href="#">Lire plus</a>
+                </div>
+
+                <div>
+                    <i class="fab fa-app-store"></i>
+                    <h2>Développement d'application</h2>
+                    <p>Création Appliaction Mobile Adroid/iOS</p>
+                    <a href="#">Lire plus</a>
+                </div>
+
+
+            </div>
+        </div>
+     </div>
+    <!--  FIN DE LA   PARTIE " SERVICES  "-->
+
+
+
+    
+    <!--  DEBUT DE LA   PARTIE " PORTFOLIO  "-->
+
+    <div id="portfolio">
+        <div class="container">
+            <h1 class="sub-title">Mes travaux</h1>
+            <div class="list-travaux">
+                <div class="travaux">
+                    <img src="images/travaux-1.jpg" alt="Images Travaux 1">
+                    <div class="infos">
+                        <h3>Calculatrice</h3>
+                        <p>
+                           Conception d'une calculatrice grâce à HTML et CSS
+                           pas besoin de vous casser la tête , je met à votre disposition un appareil électronique conçu pour 
+                           effectuer des opérations mathématiques telles que l'addition, la soustraction, la multiplication, la division, 
+                           ainsi que des fonctions plus avancées telles que les trigonométriques, les logarithmes, etc.
+                        </p>
+                        <a href="projets/calculatrice.html"> <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                <div class="travaux">
+                    <img src="images/travaux-2.jpg" alt="Images Travaux 2">
+                    <div class="infos">
+                        <h3>Menu Radial</h3>
+                        <p>
+                            J'aimerais  partager avec vous le code final pour créer un menu radial en HTML et CSS.
+                            Un menu radial en HTML et CSS est une interface utilisateur circulaire où les éléments de menu sont disposés autour d'un point central, généralement de manière équidistante.
+                             Ce type de menu est souvent utilisé pour des applications web ou des sites web afin de présenter des options de manière visuellement attrayante et intuitive.
+                        </p>
+                        <a href="projets/menu-radial.html"> <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                <div class="travaux">
+                    <img src="images/travaux-3.jpg" alt="Images Travaux 3">
+                    <div class="infos">
+                        <h3>Générateur de mot de passe</h3>
+                        <p>
+                            Nous vous laissons ci-dessous le code qui vous aidera à créer un générateur de mots de passe 
+                            élégant en utilisant HTML, CSS et JavaScript.
+                        </p>
+                        <a href="projets/mdp.html"> <i class="fas fa-external-link-alt"></i></a>
+        
+                    </div>
+                </div>
+            </div>
+
+            <a href="#"class="btn">Voir plus</a>
+
+
+        </div>
+    </div> 
+    <!--  FIN DE LA   PARTIE " SERVICES  "-->
+
+
+
+        <!--  FIN DE LA   PARTIE " CONTACT  "-->
+
+
+        <div id="contact">
+            <div class="container">
+                <div class="row">
+
+                    <div class="contact-left">
+                        <h1 class="sub-title">Me Contacter</h1>
+                        <p><i class="fas fa-paper-plane"></i>mamadoupmg@gmail.com</p>
+                        <p><i class="fas fa-phone-square-alt"></i>+33753167787</p>
+                        <div class="social-icon">
+                            
+                            <a href="https://github.com/MamadouPapa" target="_blank"><i class="fab fa-github"></i></a>
+                            <a href="https://www.instagram.com/papa_mamadou_gueye_?igsh=bm9nYzNtbHJ1dmF4&utm_source=qr" target="_blank"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.linkedin.com/in/papa-mamadou-gueye-4852211a9" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        </div>
+                        <a href="images/formations.pdf" download class="btn btn2">Télécharger Mon CV</a>
+                    </div>
+
+                    <div class="contact-right">
+                        <form  name="submit-to-google-sheet">
+
+                            
+                            <input type="text" name="Name" placeholder="Votre nom" required>
+                            <input type="email" name="Email" placeholder="Votre Email" required>
+                            <textarea name="Message" rows="6" placeholder="Votre Message" ></textarea>
+                            <button type="submit" class="btn btn2">Envoyer</button>
+                        </form> 
+                        <span id="msg"></span>                                                    
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="copyright">
+                <p>copyright © Papa Mamadou Gueye. Portfolio <i class="fas fa-heart"></i>2024</p>
+            </div>
+        </div>
+
+
+
+
+
+        <!--  FIN DE LA   PARTIE " CONTACT  "-->
+
+
+
+
+    
+
+
+
+       <!-- DEBUT  CODE JAVASCRIPT-->
+
+        <script>
+
+            var tablinks = document.getElementsByClassName("tab-links");
+            var tabcontents = document.getElementsByClassName("tab-contents");
+
+
+            function opentab(tabname){
+
+                for(tablink of tablinks){
+                tablink.classList.remove("active-link")
+                }
+                for(tabcontent of tabcontents){
+                tabcontent.classList.remove("active-tab")
+                }
+                event.currentTarget.classList.add("active-link");
+                document.getElementById(tabname).classList.add("active-tab");
+
+            }
+
+
+            
+        </script>
+ 
+        <script>
+            var sidemenu = document.getElementById("sidemenu");
+            function openmenu(){
+                sidemenu.style.right = 0;
+
+            }
+            function closemenu(){
+                sidemenu.style.right="-200px";
+            }
+        </script>
+
+<script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbx-ueESFL9xfyoCufmqU1KCCJLacCYrYew2aapZv8yZrkpkavcivdUphLUksKJNGIdM/exec'
+    const form = document.forms['submit-to-google-sheet']
+    const msg = document.getElementById("msg")
+  
+            form.addEventListener('submit', e => {
+            e.preventDefault()
+            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => {
+                    msg.innerHTML = "Message Envoyé"
+                    setTimeout(function(){
+                        msg.innerHTML = ""
+
+                    },5000)
+                    form.reset()
+                })
+                .catch(error => console.error('Error!', error.message))
+            })
+ 
+</script>
+<script src="https://wzrd.in/standalone/formdata-polyfill"></script>
+<script src="https://wzrd.in/standalone/promise-polyfill@latest"></script>
+<script src="https://wzrd.in/standalone/whatwg-fetch@latest"></script>
+
+
+
+     <!-- FIN  CODE JAVASCRIPT-->
+    
+</body>
+</html>
