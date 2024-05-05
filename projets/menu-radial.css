@@ -9,8 +9,8 @@ input {position: absolute; display: none}
   user-select: none;
 }
 .retour{
-  width: 18%;
-  height: 20px;
+  width: 25%;
+  height: 25px;
   border: solid 1px white;
   background: white;
   padding: 10px;
