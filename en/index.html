@@ -273,6 +273,16 @@ section { padding-block: clamp(56px, 7vw, 96px); scroll-margin-top: 64px; }
 .check em.h { background: var(--warn-soft); color: var(--warn); }
 .check em.m { background: var(--accent-soft); color: var(--accent); }
 
+/* Plan mock (EntraLifecycle) */
+.plan-lines { padding: 12px 16px; display: grid; gap: 1px; font: .74rem/1.6 var(--font-mono); }
+.plan-lines div { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.plan-lines .grp { color: var(--muted); margin-top: 6px; }
+.plan-lines .grp:first-child { margin-top: 0; }
+.plan-lines b { display: inline-block; width: 1.5em; font-weight: 700; }
+.plan-lines .add { color: var(--ok); } .plan-lines .chg { color: var(--accent); } .plan-lines .del { color: var(--crit); }
+.plan-lines span { color: var(--muted); }
+.plan-lines em { font-style: normal; color: var(--warn); }
+
 /* Missions */
 .cases { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
 .case { background: color-mix(in srgb, var(--surface) 94%, transparent); padding: clamp(22px, 3vw, 32px); display: grid; gap: 12px; align-content: start; min-width: 0; transition: background .2s; }
@@ -457,7 +467,7 @@ footer a:hover { color: var(--ink); }
     <div class="facts">
       <div class="fact"><b>2 years</b><span>Head of IT, Hautier IP</span></div>
       <div class="fact"><b>Master's</b><span>Cybersecurity &amp; Cloud (5-year degree)</span></div>
-      <div class="fact"><b>4 projects</b><span>Production, offence, detection, audit</span></div>
+      <div class="fact"><b>5 projects</b><span>Production, offence, detection, audit, IAM</span></div>
       <div class="fact"><b>6 / 6</b><span>NIST CSF 2.0 functions covered</span></div>
     </div>
   </div>
@@ -494,7 +504,7 @@ footer a:hover { color: var(--ink); }
       <p class="idx">02 · Projects</p>
       <div>
         <h2>I write the attack, then I detect it</h2>
-        <p>Four projects: an attack / defence pair built on the same scenario, a Microsoft identity audit tool, and an application I shipped to production.</p>
+        <p>Five projects: an attack / defence pair built on the same scenario, two Microsoft identity tools (audit and lifecycle), and an application I shipped to production.</p>
       </div>
     </div>
 
@@ -564,6 +574,49 @@ footer a:hover { color: var(--ink); }
             </div>
           </div>
           <span class="caption">Excerpt from the real report generated in CI · fictitious demo-mode data</span>
+        </div>
+      </article>
+
+      <article class="project reveal">
+        <div class="project-body">
+          <div class="project-meta"><span class="badge lab">Lab · 2026</span><span class="badge">Plan before apply</span><span class="badge">Open source</span></div>
+          <h3>EntraLifecycle</h3>
+          <p class="lede">A PowerShell module that automates the Entra ID identity lifecycle (joiners, movers, leavers) from an HR CSV export. It builds a plan first, like <code>terraform plan</code>: nothing changes until the plan is applied.</p>
+          <h4>What it does</h4>
+          <ul>
+            <li><strong>Joiner:</strong> UPN without accents, homonym handling, groups and licence by role, manager, one-time Temporary Access Pass</li>
+            <li><strong>Mover:</strong> removes groups that are no longer needed, to stay at least privilege</li>
+            <li><strong>Leaver:</strong> disable, revoke sessions, remove groups, licence removed later, never delete</li>
+            <li>Audit log that never contains the TAP, HTML plan report, mapping to ISO 27001:2022 and the ANSSI hygiene guide</li>
+          </ul>
+          <div class="stack"><span>PowerShell</span><span>Microsoft Graph</span><span>Entra ID</span><span>Pester</span><span>GitHub Actions</span></div>
+          <p class="note">125 Pester tests, validated in CI on Linux, Windows and Windows PowerShell 5.1. Demo mode on a fictitious tenant.</p>
+          <div class="project-links" style="display:flex;flex-wrap:wrap;gap:18px"><a class="link-arrow" href="../demo/entralifecycle-report.html" target="_blank" rel="noopener">Open the demo report ↗</a><a class="link-arrow" href="https://github.com/MamadouPapa/EntraLifecycle" target="_blank" rel="noopener">View the code ↗</a></div>
+        </div>
+        <div class="project-visual">
+          <div class="report" role="img" aria-label="Preview of an EntraLifecycle plan in demo mode">
+            <div class="report-top"><b>EntraLifecycle · demo plan</b><span class="label">12 HR changes · nothing applied</span></div>
+            <div class="sev-row">
+              <div class="sev l"><span>To add</span><i>46</i></div>
+              <div class="sev m"><span>To change</span><i>10</i></div>
+              <div class="sev c"><span>To remove</span><i>15</i></div>
+              <div class="sev h"><span>High risk</span><i>4</i></div>
+            </div>
+            <div class="plan-lines">
+              <div class="grp"># E2001 · Joiner · camille.dubois2</div>
+              <div><b class="add">+</b>CreateUser <span>camille.dubois2@contoso.example</span></div>
+              <div><b class="add">+</b>AddGroup <span>GRP-Finance-Comptabilite</span></div>
+              <div><b class="add">+</b>IssueTemporaryAccessPass <span>one-time, 8 h</span></div>
+              <div class="grp"># E1004 · Mover · karim.haddad</div>
+              <div><b class="del">-</b>RemoveGroup <span>GRP-Intune-Admins</span> <em>(!)</em></div>
+              <div><b class="add">+</b>AddGroup <span>GRP-Ventes</span></div>
+              <div class="grp"># E1006 · Leaver · lucas.girard</div>
+              <div><b class="del">-</b>DisableAccount <span>lucas.girard@contoso.example</span></div>
+              <div><b class="del">-</b>RevokeSessions <span>lucas.girard@contoso.example</span></div>
+              <div><b class="chg">.</b>ScheduleLicenseRemoval <span>SPE_F1 · on 2026-12-13</span></div>
+            </div>
+          </div>
+          <span class="caption">Excerpt from the real plan generated in demo mode · fictitious tenant contoso.example</span>
         </div>
       </article>
 
@@ -644,6 +697,7 @@ footer a:hover { color: var(--ink); }
         <button type="button" data-cmd="Get-Skills -Level Production">Get-Skills</button>
         <button type="button" data-cmd="Get-Projects">Get-Projects</button>
         <button type="button" data-cmd="Invoke-IdentityGuard -DemoMode">Invoke-IdentityGuard</button>
+        <button type="button" data-cmd="Invoke-EntraLifecycle -DemoMode">Invoke-EntraLifecycle</button>
         <button type="button" data-cmd="Test-Availability">Test-Availability</button>
         <button type="button" data-cmd="Get-CV">Get-CV</button>
         <button type="button" data-cmd="Clear-Host">Clear-Host</button>
@@ -964,7 +1018,7 @@ footer a:hover { color: var(--ink); }
   var out = document.getElementById('out');
   var input = document.getElementById('cmd');
   var history = [], historyIndex = 0;
-  var COMMAND_NAMES = ['Get-Help', 'Get-Profile', 'Get-Experience', 'Get-Skills', 'Get-Projects', 'Invoke-IdentityGuard', 'Test-Availability', 'Get-CV', 'Clear-Host'];
+  var COMMAND_NAMES = ['Get-Help', 'Get-Profile', 'Get-Experience', 'Get-Skills', 'Get-Projects', 'Invoke-IdentityGuard', 'Invoke-EntraLifecycle', 'Test-Availability', 'Get-CV', 'Clear-Host'];
 
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
   function kv(key, value) { return '<span class="k">' + esc(key.padEnd(12)) + '</span>: <span class="v">' + esc(value) + '</span>'; }
@@ -978,6 +1032,7 @@ footer a:hover { color: var(--ink); }
         '  <span class="k">Get-Skills</span>             My skills (-Level Production | Knowledge)',
         '  <span class="k">Get-Projects</span>           My projects',
         '  <span class="k">Invoke-IdentityGuard</span>   Run a simulated identity audit (-DemoMode)',
+        '  <span class="k">Invoke-EntraLifecycle</span>  Run a simulated joiner / mover / leaver plan (-DemoMode)',
         '  <span class="k">Test-Availability</span>      Am I available?',
         '  <span class="k">Get-CV</span>                 Link to my CV (PDF, French)',
         '  <span class="k">Clear-Host</span>             Clear the console'
@@ -1025,6 +1080,7 @@ footer a:hover { color: var(--ink); }
         'ProManager     Red team · lab ransomware C, OpenSSL, TCP, GTK',
         'RansomWatch    Blue team · detection     Python, Sigma, auditd, Suricata',
         'IdentityGuard  Audit AD / Entra ID       PowerShell, Microsoft Graph',
+        'EntraLifecycle Entra ID lifecycle (JML)  PowerShell, Microsoft Graph',
         'Hermes         Business tool (prod)      PHP, MySQL, PDO, DOMPDF',
         '',
         '<span class="m">Details: <a href="#projects">Projects section</a></span>'
@@ -1042,6 +1098,19 @@ footer a:hover { color: var(--ink); }
         '<span class="m">[=] Score: 54 / 100 · grade D · 14 findings to fix</span>',
         '<span class="m">[+] Report written to .\\IdentityGuard-report.html</span>',
         '<span class="m">Code: <a href="https://github.com/MamadouPapa/IdentityGuard" target="_blank" rel="noopener">github.com/MamadouPapa/IdentityGuard</a></span>'
+      ].join('\n');
+    },
+    'invoke-entralifecycle': function () {
+      return [
+        '<span class="m">[*] Demo mode · fictitious tenant contoso.example · export rh-export-demo.csv</span>',
+        '<span class="m">[*] Reading the tenant (Get-Mg* only) ...</span> <span class="v">OK</span>',
+        '<span class="v">+</span> E2001  Joiner  camille.dubois2   account, groups, SPE_E3 licence, TAP',
+        '<span class="k">~</span> E1004  Mover   karim.haddad      <span class="e">- GRP-Intune-Admins (!)</span>, + GRP-Ventes',
+        '<span class="e">-</span> E1006  Leaver  lucas.girard      disabled, sessions revoked, licence on 2026-12-13',
+        '<span class="m">[=] Plan: 46 to add, 10 to change, 15 to remove (4 high risk)</span>',
+        '<span class="m">[!] Nothing changes until Invoke-ELPlan is run and confirmed.</span>',
+        '<span class="m">[+] Report written to .\\plan.html</span>',
+        '<span class="m">Code: <a href="https://github.com/MamadouPapa/EntraLifecycle" target="_blank" rel="noopener">github.com/MamadouPapa/EntraLifecycle</a></span>'
       ].join('\n');
     },
     'test-availability': function () { return '<span class="v">True</span>  <span class="m"># Available immediately · permanent or fixed-term</span>'; },
