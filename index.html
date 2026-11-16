@@ -1,476 +1,974 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
-    <link rel="stylesheet" href="assets/css/style.css">
-    <script src="https://kit.fontawesome.com/26accdcdfc.js" crossorigin="anonymous"></script>
-    <link rel="shortcut icon" href="../Portfolio/images/logo.png" type="image/x-icon">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
-    <script src="assets/js/index.js" defer></script>
-    <canvas id="cursor-canvas" style="position:fixed;top:0;left:0;pointer-events:none;z-index:2147483647;"></canvas>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Papa Mamadou Gueye · Ingénieur Systèmes & Cybersécurité</title>
+<meta name="description" content="Ingénieur systèmes et cybersécurité, spécialiste Microsoft hybride (Active Directory, Entra ID, Microsoft 365) et IAM. Disponible en CDI ou CDD, mobile partout en France.">
+<meta property="og:title" content="Papa Mamadou Gueye · Ingénieur Systèmes & Cybersécurité">
+<meta property="og:description" content="2 ans comme responsable du SI en environnement Microsoft hybride. IAM, MFA, durcissement, PRA/PCA. Disponible en CDI ou CDD.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://mamadoupapa.github.io/portfoliio/">
+<meta name="theme-color" content="#0A0F1A">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230A0F1A'/%3E%3Cpath d='M32 12l16 6v12c0 10-7 18-16 22-9-4-16-12-16-22V18z' fill='none' stroke='%237F9CFF' stroke-width='4'/%3E%3Cpath d='M25 32l5 5 9-10' fill='none' stroke='%234FD1A0' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: dark-first. Identity-graph hero with a conditional-access policy, project files with architecture
+   diagrams, production missions, a live PowerShell console, skills, timeline, certificates. */
+:root {
+  --bg: #0A0F1A;
+  --surface: #0F1626;
+  --raise: #152036;
+  --ink: #E7ECF5;
+  --muted: #8B97AD;
+  --line: #1F2B42;
+  --accent: #7F9CFF;
+  --accent-ink: #0A0F1A;
+  --accent-soft: #172443;
+  --ok: #4FD1A0;
+  --ok-soft: #0F2A22;
+  --warn: #FFB454;
+  --warn-soft: #2B2112;
+  --font-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --step-1: 1.125rem;
+  --step-2: 1.5rem;
+  --step-3: clamp(1.8rem, 1.2rem + 2.2vw, 2.75rem);
+  --step-4: clamp(2.8rem, 1.2rem + 6.4vw, 6.4rem);
+  --radius: 12px;
+  --wrap: 1180px;
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --bg: #F2F4F8; --surface: #FFFFFF; --raise: #F7F9FC; --ink: #0E1729; --muted: #536079; --line: #D6DCE6;
+    --accent: #2747D6; --accent-ink: #FFFFFF; --accent-soft: #E3E9FC; --ok: #127A4D; --ok-soft: #DCF1E6;
+    --warn: #9A5600; --warn-soft: #FBEBD3;
+    color-scheme: light;
+  }
+}
+:root[data-theme="light"] {
+  --bg: #F2F4F8; --surface: #FFFFFF; --raise: #F7F9FC; --ink: #0E1729; --muted: #536079; --line: #D6DCE6;
+  --accent: #2747D6; --accent-ink: #FFFFFF; --accent-soft: #E3E9FC; --ok: #127A4D; --ok-soft: #DCF1E6;
+  --warn: #9A5600; --warn-soft: #FBEBD3;
+  color-scheme: light;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font-family: var(--font-body); font-size: 1rem; line-height: 1.6;
+  padding-inline: 20px; -webkit-font-smoothing: antialiased; overflow-x: hidden;
+}
+img { max-width: 100%; display: block; }
+.wrap { max-width: var(--wrap); margin-inline: auto; }
+a { color: inherit; }
+code { font-family: var(--font-mono); font-size: .88em; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; margin: 0; line-height: 1.05; }
+p { margin: 0; }
+.label { font-family: var(--font-mono); font-size: .75rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.skip { position: absolute; left: -999px; top: 8px; }
+.skip:focus { left: 12px; z-index: 100; background: var(--accent); color: var(--accent-ink); padding: 8px 12px; border-radius: 6px; }
+
+/* Header */
+.top {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20;
+  margin-inline: -20px; padding: 12px 20px;
+  background: color-mix(in srgb, var(--bg) 82%, transparent);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+}
+.top .wrap { display: flex; align-items: center; gap: 20px; justify-content: space-between; }
+.brand { font-family: var(--font-display); font-stretch: 122%; font-weight: 780; text-decoration: none; letter-spacing: .01em; white-space: nowrap; }
+.brand span { color: var(--accent); }
+.nav { display: flex; gap: 22px; font-size: .9rem; }
+.nav a { text-decoration: none; color: var(--muted); transition: color .15s; }
+.nav a:hover { color: var(--ink); }
+.top-right { display: flex; align-items: center; gap: 12px; }
+.status { display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; font-family: var(--font-mono); font-size: .72rem; padding: 5px 10px; border-radius: 999px; background: var(--ok-soft); color: var(--ok); }
+.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--ok); animation: pulse 2.4s infinite; }
+@keyframes pulse { 0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--ok) 60%, transparent); } 70% { box-shadow: 0 0 0 8px transparent; } 100% { box-shadow: 0 0 0 0 transparent; } }
+.btn-sm { font: 500 .85rem var(--font-body); text-decoration: none; padding: 7px 12px; border-radius: 7px; background: var(--accent); color: var(--accent-ink); white-space: nowrap; }
+@media (max-width: 980px) { .nav { display: none; } }
+@media (max-width: 520px) { .status { display: none; } }
+
+/* Hero */
+.hero-zone { position: relative; margin-inline: -20px; padding-inline: 20px; isolation: isolate; }
+#graph { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; opacity: .9;
+  -webkit-mask-image: radial-gradient(120% 90% at 70% 30%, #000 30%, transparent 75%);
+          mask-image: radial-gradient(120% 90% at 70% 30%, #000 30%, transparent 75%); }
+.hero { padding-block: clamp(56px, 9vw, 112px) 64px; display: grid; grid-template-columns: 1.2fr .8fr; gap: clamp(32px, 5vw, 72px); align-items: center; }
+.hero > * { min-width: 0; }
+.role { color: var(--accent); margin-bottom: 22px; }
+.name { font-size: var(--step-4); font-stretch: 125%; font-weight: 800; letter-spacing: -.025em; text-transform: uppercase; line-height: .9; }
+.name span { display: block; }
+.name .soft { -webkit-text-stroke: 1.5px var(--ink); color: transparent; font-weight: 700; }
+.thesis { margin-top: 30px; font-size: var(--step-1); max-width: 33em; color: color-mix(in srgb, var(--ink) 86%, var(--muted)); }
+.thesis strong { color: var(--ink); font-weight: 600; }
+.cta { margin-top: 34px; display: flex; flex-wrap: wrap; gap: 12px; }
+.btn { display: inline-flex; align-items: center; gap: 9px; cursor: pointer; font: 500 .95rem var(--font-body); text-decoration: none; padding: 12px 18px; border-radius: 9px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); transition: transform .15s ease, border-color .15s ease; }
+.btn:hover { border-color: var(--accent); transform: translateY(-1px); }
+.btn.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.btn svg { width: 16px; height: 16px; flex: none; }
+
+/* Conditional access policy */
+.policy { background: color-mix(in srgb, var(--surface) 92%, transparent); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; backdrop-filter: blur(6px); box-shadow: 0 30px 60px -30px rgba(0,0,0,.55); }
+.policy-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 14px 18px; border-bottom: 1px solid var(--line); }
+.policy-head h2 { font-size: .98rem; font-stretch: 100%; font-weight: 650; }
+.pill { font-family: var(--font-mono); font-size: .7rem; padding: 3px 8px; border-radius: 4px; background: var(--accent-soft); color: var(--accent); white-space: nowrap; }
+.policy dl { margin: 0; padding: 4px 18px; display: grid; grid-template-columns: max-content 1fr; column-gap: 16px; }
+.policy dt, .policy dd { margin: 0; padding: 9px 0; border-bottom: 1px dashed var(--line); font-size: .88rem; }
+.policy dt { font-family: var(--font-mono); font-size: .72rem; color: var(--muted); padding-top: 11px; }
+.policy dl > :nth-last-child(-n+2) { border-bottom: 0; }
+.checks { list-style: none; margin: 0; padding: 14px 18px; border-top: 1px solid var(--line); background: var(--raise); display: grid; gap: 9px; }
+.checks li { display: grid; grid-template-columns: 20px 1fr; gap: 10px; align-items: start; font-size: .86rem; transition: opacity .25s ease; }
+.mark { width: 18px; height: 18px; border-radius: 50%; display: grid; place-items: center; background: var(--ok); color: var(--bg); font-size: 11px; font-weight: 700; margin-top: 2px; }
+.checks li.pending { opacity: .4; }
+.checks li.pending .mark { background: var(--line); color: transparent; }
+.verdict { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; padding: 14px 18px; border-top: 1px solid var(--line); }
+.verdict-text { font-family: var(--font-mono); font-size: .8rem; color: var(--ok); font-weight: 500; }
+.verdict-text.wait { color: var(--muted); }
+.ghost { font: 500 .8rem var(--font-body); background: none; border: 1px solid var(--line); color: var(--ink); padding: 7px 12px; border-radius: 6px; cursor: pointer; }
+.ghost:hover { border-color: var(--accent); }
+@media (max-width: 980px) { .hero { grid-template-columns: 1fr; } }
+
+/* Facts */
+.facts { display: grid; grid-template-columns: repeat(4, 1fr); border-block: 1px solid var(--line); }
+.fact { padding: 24px 20px 24px 0; display: grid; gap: 4px; }
+.fact + .fact { padding-left: 20px; border-left: 1px solid var(--line); }
+.fact b { font-family: var(--font-display); font-stretch: 115%; font-size: var(--step-2); font-weight: 720; line-height: 1.1; }
+.fact span { color: var(--muted); font-size: .88rem; }
+@media (max-width: 760px) {
+  .facts { grid-template-columns: 1fr 1fr; }
+  .fact:nth-child(3) { padding-left: 0; border-left: 0; }
+  .fact:nth-child(n+3) { border-top: 1px solid var(--line); }
+}
+
+/* Sections */
+section { padding-block: clamp(64px, 9vw, 112px); scroll-margin-top: 60px; }
+.sec-head { display: grid; grid-template-columns: 220px 1fr; gap: 24px; margin-bottom: 44px; align-items: baseline; }
+.sec-head h2 { font-size: var(--step-3); font-stretch: 116%; font-weight: 760; letter-spacing: -.01em; }
+.sec-head p { color: var(--muted); max-width: 42em; margin-top: 14px; }
+@media (max-width: 760px) { .sec-head { grid-template-columns: 1fr; gap: 8px; } }
+
+/* Projects */
+.projects { display: grid; gap: 28px; }
+.project { display: grid; grid-template-columns: 1fr 1.05fr; border: 1px solid var(--line); border-radius: 16px; overflow: hidden; background: var(--surface); }
+.project > * { min-width: 0; }
+.project-body { padding: clamp(24px, 3.4vw, 40px); display: grid; gap: 16px; align-content: start; }
+.project-meta { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.badge { font-family: var(--font-mono); font-size: .7rem; padding: 3px 8px; border-radius: 4px; border: 1px solid var(--line); color: var(--muted); }
+.badge.ok { border-color: transparent; background: var(--ok-soft); color: var(--ok); }
+.badge.warn { border-color: transparent; background: var(--warn-soft); color: var(--warn); }
+.project h3 { font-size: clamp(1.6rem, 1.2rem + 1.4vw, 2.2rem); font-stretch: 118%; font-weight: 780; letter-spacing: -.01em; }
+.project .lede { color: color-mix(in srgb, var(--ink) 82%, var(--muted)); font-size: 1.02rem; }
+.project h4 { margin: 6px 0 0; font: 600 .8rem var(--font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--accent); }
+.project ul { margin: 0; padding-left: 1.1em; display: grid; gap: 6px; color: var(--muted); }
+.project ul strong { color: var(--ink); font-weight: 500; }
+.project li::marker { color: var(--accent); }
+.stack { display: flex; flex-wrap: wrap; gap: 6px; }
+.stack span { font-family: var(--font-mono); font-size: .74rem; padding: 4px 9px; border-radius: 999px; background: var(--accent-soft); color: var(--ink); }
+.project-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 4px; }
+.link-arrow { font: 500 .9rem var(--font-body); color: var(--accent); text-decoration: none; display: inline-flex; gap: 6px; align-items: center; }
+.link-arrow:hover { text-decoration: underline; text-underline-offset: 4px; }
+.note { font-size: .82rem; color: var(--muted); }
+.project-visual { background: var(--raise); border-left: 1px solid var(--line); padding: clamp(20px, 3vw, 32px); display: grid; gap: 14px; align-content: center; }
+.project-body, .project-visual { grid-template-columns: minmax(0, 1fr); }
+.diagram { overflow-x: auto; min-width: 0; }
+.diagram svg { width: 100%; min-width: 520px; height: auto; display: block; }
+.d-box { fill: var(--surface); stroke: var(--line); stroke-width: 1.2; }
+.d-box.hl { stroke: var(--accent); }
+.d-box.danger { stroke: var(--warn); }
+.d-box.good { stroke: var(--ok); }
+.d-t { fill: var(--ink); font: 600 13px var(--font-body); }
+.d-s { fill: var(--muted); font: 400 10.5px var(--font-mono); }
+.d-line { stroke: var(--muted); stroke-width: 1.2; fill: none; }
+.d-line.dash { stroke-dasharray: 4 4; }
+.d-flow { stroke: var(--accent); stroke-width: 1.6; fill: none; stroke-dasharray: 5 7; animation: flow 1.6s linear infinite; }
+.d-flow.warn { stroke: var(--warn); }
+.d-flow.ok { stroke: var(--ok); }
+.d-lab { fill: var(--muted); font: 500 10px var(--font-mono); }
+.d-head { fill: var(--accent); }
+.d-head.warn { fill: var(--warn); }
+.d-head.ok { fill: var(--ok); }
+@keyframes flow { to { stroke-dashoffset: -24; } }
+.caption { font-family: var(--font-mono); font-size: .72rem; color: var(--muted); }
+@media (max-width: 960px) { .project { grid-template-columns: 1fr; } .project-visual { border-left: 0; border-top: 1px solid var(--line); } }
+
+/* Missions */
+.cases { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+.case { background: var(--surface); padding: clamp(22px, 3vw, 32px); display: grid; gap: 12px; align-content: start; min-width: 0; transition: background .2s; }
+.case:hover { background: var(--raise); }
+.case-id { display: flex; justify-content: space-between; gap: 12px; }
+.case h3 { font-size: 1.3rem; font-stretch: 108%; font-weight: 700; }
+.case ul { margin: 0; padding-left: 1.1em; display: grid; gap: 5px; font-size: .95rem; }
+.case li::marker { color: var(--accent); }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag { font-family: var(--font-mono); font-size: .7rem; padding: 3px 8px; border-radius: 4px; border: 1px solid var(--line); color: var(--muted); }
+@media (max-width: 860px) { .cases { grid-template-columns: 1fr; } }
+
+/* Console: always dark, like a real terminal */
+.console { border: 1px solid var(--line); border-radius: 14px; overflow: hidden; background: #0B1020; color: #DCE3F2; box-shadow: 0 30px 70px -40px rgba(0,0,0,.6); }
+.console-bar { display: flex; align-items: center; gap: 12px; padding: 10px 14px; background: #121A30; border-bottom: 1px solid #1F2A45; }
+.console-bar .lights { display: flex; gap: 6px; }
+.console-bar .lights i { width: 10px; height: 10px; border-radius: 50%; background: #2A3555; }
+.console-bar .title { font-family: var(--font-mono); font-size: .75rem; color: #8B97B5; flex: 1; text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.console-out { font-family: var(--font-mono); font-size: .86rem; line-height: 1.6; padding: 18px 18px 6px; height: 380px; overflow-y: auto; white-space: pre-wrap; overflow-wrap: anywhere; }
+.console-out .p { color: #7F9CFF; }
+.console-out .cmd { color: #FFFFFF; }
+.console-out .k { color: #FFD479; }
+.console-out .v { color: #9FE8C7; }
+.console-out .e { color: #FF8A94; }
+.console-out .m { color: #8B97B5; }
+.console-out a { color: #9FB4FF; }
+.console-in { display: flex; align-items: center; gap: 8px; padding: 8px 18px 16px; font-family: var(--font-mono); font-size: .86rem; }
+.console-in label { color: #7F9CFF; white-space: nowrap; }
+.console-in input { flex: 1; min-width: 0; background: transparent; border: 0; outline: 0; color: #FFFFFF; font: inherit; caret-color: #4FD1A0; }
+.console-chips { display: flex; flex-wrap: wrap; gap: 8px; padding: 12px 14px; border-top: 1px solid #1F2A45; background: #0E1428; }
+.console-chips button { font: 500 .78rem var(--font-mono); background: #172042; color: #C9D4F0; border: 1px solid #25305A; padding: 6px 10px; border-radius: 6px; cursor: pointer; }
+.console-chips button:hover { border-color: #7F9CFF; color: #FFFFFF; }
+
+/* Skills */
+.skills { display: grid; grid-template-columns: repeat(3, 1fr); gap: 34px 40px; }
+.skill-group { display: grid; gap: 12px; align-content: start; min-width: 0; }
+.skill-group h3 { font-size: 1.05rem; font-stretch: 106%; font-weight: 660; padding-bottom: 10px; border-bottom: 2px solid var(--accent); }
+.skill-group.extra h3 { border-bottom-color: var(--line); color: var(--muted); }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { font-size: .85rem; padding: 4px 10px; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); }
+.skill-group.core .chip { background: var(--accent-soft); border-color: transparent; }
+@media (max-width: 960px) { .skills { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .skills { grid-template-columns: 1fr; } }
+
+/* Timeline */
+.timeline { list-style: none; margin: 0; padding: 0; display: grid; }
+.timeline li { display: grid; grid-template-columns: 150px 28px 1fr; gap: 16px; }
+.timeline time { font-family: var(--font-mono); font-size: .8rem; color: var(--muted); padding-top: 3px; font-variant-numeric: tabular-nums; }
+.rail { position: relative; display: flex; justify-content: center; }
+.rail::before { content: ""; position: absolute; top: 0; bottom: 0; width: 1px; background: var(--line); }
+.timeline li:first-child .rail::before { top: 10px; }
+.timeline li:last-child .rail::before { bottom: auto; height: 10px; }
+.rail i { position: relative; width: 11px; height: 11px; margin-top: 6px; border-radius: 50%; background: var(--bg); border: 2px solid var(--ink); }
+.timeline li.now .rail i { background: var(--ok); border-color: var(--ok); box-shadow: 0 0 0 4px var(--ok-soft); }
+.tl-body { padding-bottom: 32px; min-width: 0; }
+.tl-body h3 { font-size: 1.15rem; font-stretch: 105%; font-weight: 700; }
+.tl-body .where { color: var(--accent); font-size: .9rem; margin-top: 2px; }
+.tl-body p { color: var(--muted); margin-top: 8px; max-width: 46em; }
+@media (max-width: 600px) {
+  .timeline li { grid-template-columns: 20px 1fr; gap: 12px; }
+  .timeline time { grid-column: 2; grid-row: 1; }
+  .rail { grid-row: 1 / span 2; }
+  .tl-body { grid-column: 2; }
+}
+
+/* Certificates */
+.certs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 20px; }
+.cert { display: grid; gap: 10px; align-content: start; text-align: left; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 10px; cursor: zoom-in; color: inherit; font: inherit; transition: border-color .15s, transform .15s; }
+.cert:hover { border-color: var(--accent); transform: translateY(-2px); }
+.cert img { aspect-ratio: 4 / 3; object-fit: cover; object-position: top; border-radius: 6px; width: 100%; background: #fff; }
+.cert b { font-size: .86rem; font-weight: 500; line-height: 1.35; }
+.cert span { font-family: var(--font-mono); font-size: .68rem; color: var(--muted); }
+@media (max-width: 900px) { .certs { grid-template-columns: repeat(2, 1fr); } }
+dialog { border: 1px solid var(--line); border-radius: 14px; padding: 0; background: var(--surface); color: var(--ink); max-width: min(920px, 94vw); }
+dialog::backdrop { background: rgba(5, 8, 15, .78); backdrop-filter: blur(4px); }
+dialog img { width: 100%; height: auto; }
+.dialog-bar { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 12px 16px; border-bottom: 1px solid var(--line); }
+.dialog-bar b { font-size: .95rem; font-weight: 600; }
+
+.langs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; margin-top: 20px; }
+.langs div { background: var(--surface); padding: 16px; display: grid; gap: 2px; }
+.langs b { font-weight: 600; }
+.langs span { color: var(--muted); font-size: .85rem; }
+@media (max-width: 700px) { .langs { grid-template-columns: 1fr 1fr; } }
+.sub { margin-top: 56px; }
+
+/* Closing band */
+.closing { margin-top: 24px; padding-block: clamp(48px, 7vw, 88px); border-top: 1px solid var(--line); display: grid; gap: 28px; }
+.closing h2 { font-size: clamp(2rem, 1rem + 4.4vw, 4.4rem); font-stretch: 125%; font-weight: 800; letter-spacing: -.02em; text-transform: uppercase; line-height: .95; max-width: 16ch; }
+.closing h2 em { font-style: normal; color: var(--accent); }
+footer { padding-block: 24px 40px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; color: var(--muted); font-size: .85rem; border-top: 1px solid var(--line); }
+footer nav { display: flex; gap: 18px; flex-wrap: wrap; }
+footer a { color: var(--muted); text-decoration: none; }
+footer a:hover { color: var(--ink); }
+
+/* Motion: content is visible at rest; this only adds a short rise */
+@media (prefers-reduced-motion: no-preference) {
+  .rise { animation: rise .8s cubic-bezier(.2,.7,.2,1) both; }
+  .d1 { animation-delay: .08s; } .d2 { animation-delay: .16s; } .d3 { animation-delay: .26s; }
+  @keyframes rise { from { transform: translateY(16px); } to { transform: none; } }
+}
+@media (prefers-reduced-motion: reduce) { .dot, .d-flow { animation: none; } }
+</style>
 </head>
 <body>
+<a class="skip" href="#main">Aller au contenu</a>
 
-    <div id="header">
-        <div class="container">
-            <nav>
-                <img src="images/logo.png" alt="Mon logo" class="logo">
-                <ul id="sidemenu">
-                    <li><a href="#header">Accueil</a></li>
-                    <li><a href="#about">A propos</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#portfolio">Portfolio</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                    <i class="fas fa-times" onclick="closemenu()"></i> 
-                </ul>
-                <i class="fas fa-bars" onclick="openmenu()"></i>
-            </nav>
-                    <div class="header-content">
-                        <div class="header-text">
-                              <!-- Mon texte de présentation-->
-                           
-                            <h1>Papa Mamadou Gueye</h1>
-                            
-                            <!-- écriture en animlation du titre de mmon profile-->
-                          <div class="typing-container">
-                            <span id="typing-text"></span>
-                            <span class="cursor">|</span> <br> <br>
-                              <i>Développement Web & Mobile sécurisé | CI/CD | Cloud & Conteneurs</i>
-                         </div>
-                            
-                        </div>
-                        <div class="profile-image">
-                            <img src="images/l.JPG" alt="Papa Mamadou Gueye">
-                        </div>
-                    </div>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top">P<span>.</span>M<span>.</span> GUEYE</a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#projets">Projets</a>
+      <a href="#missions">Missions</a>
+      <a href="#console">Console</a>
+      <a href="#competences">Compétences</a>
+      <a href="#parcours">Parcours</a>
+    </nav>
+    <div class="top-right">
+      <span class="status"><span class="dot" aria-hidden="true"></span>Disponible · CDI / CDD</span>
+      <a class="btn-sm" href="cv/CV_Papa_Mamadou_Gueye.pdf" download>CV</a>
+    </div>
+  </div>
+</header>
 
-        </div>
+<main id="main">
+<div class="hero-zone" id="top">
+  <canvas id="graph" aria-hidden="true"></canvas>
+  <div class="wrap hero">
+    <div>
+      <p class="label role rise">Ingénieur Systèmes &amp; Cybersécurité · Microsoft hybride · IAM</p>
+      <h1 class="name rise d1"><span>Papa</span><span class="soft">Mamadou</span><span>Gueye</span></h1>
+      <p class="thesis rise d2">
+        Pendant deux ans, j'ai été <strong>responsable du système d'information</strong> d'une entreprise en environnement Microsoft hybride.
+        J'y ai géré les identités et les accès, déployé le MFA, durci les postes et les serveurs, et mis en place le PRA/PCA.
+        Je cherche un <strong>CDI ou un CDD</strong> pour faire la même chose à plus grande échelle.
+      </p>
+      <div class="cta rise d3">
+        <a class="btn primary" href="cv/CV_Papa_Mamadou_Gueye.pdf" download>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0l-5-5m5 5l5-5M5 21h14"/></svg>
+          Télécharger mon CV
+        </a>
+        <a class="btn" href="https://www.linkedin.com/in/papa-mamadou-gueye-developpeur-cybersecurite" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.1c.5-1 1.8-2 3.8-2 4 0 4.8 2.6 4.8 6V21h-4v-5.6c0-1.3 0-3-1.9-3s-2.2 1.5-2.2 2.9V21H9z"/></svg>
+          LinkedIn
+        </a>
+        <a class="btn" href="https://github.com/MamadouPapa" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.6 22.4c.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.9 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A11.5 11.5 0 0 0 12 .5z"/></svg>
+          GitHub
+        </a>
+      </div>
     </div>
 
-<!--  DEBUT DE LA  PARTIE " A PROPOS "-->
-
-<div id="about">
-
-    <div class="container">
-        <div class="row">
-            <div class="about-col-1"> 
-                <div class="image-slider">
-            <div class="slider-container">
-                <img src="images/travaux-2.jpg" alt="Photo 1">
-                <img src="images/a.JPG" alt="Photo 2">
-                <img src="images/o.jpg" alt="Photo 3">
-                <img src="images/d.JPG" alt="Photo 4">
-                <img src="images/f.jpg" alt="Photo 5">
-                <img src="images/b.jpg" alt="Photo 6">
-            </div>
-            <button class="slider-prev">❮</button>
-            <button class="slider-next">❯</button>
-        </div>
-             </div>
-            <div class="about-col-2">
-                <h1 class="sub-title">A propos  de moi </h1> <br> <br>
-                <p>
-                        Expert polyvalent en systèmes informatiques avec une passion pour les défis technologiques globaux. <br>
-                        Actuellement <b>Responsable Informatique  </b> en alternance chez Hautier IP, je pilote l'ensemble des opérations IT avec une approche 360° : 
-                        <ul>
-                                <li>🔐 Sécurité : Stratégie de protection des données et conformité </li>
-
-                                <li>🌐 Réseau & Infrastructure : Optimisation et maintenance des systèmes </li>
-
-                                <li>💻 Développement : Solutions sur mesure pour les besoins métiers </li>
-
-                               <li> ☁ Cloud Computing : Migration et gestion des environnements virtualisés </li>
-                        </ul>
-
-                <h3>Mes forces :</h3>
-                            <ul>
-                                <li>✔ Leadership visionnaire dans la transformation digitale</li>
-                                 <li>✔ Sécurisation des  SI</li>
-                                <li>✔ Résolution de problèmes complexes sous pression</li>
-                                <li>✔ Veille technologique permanente</li>
-                                <li>✔ Synergie entre expertise technique et stratégie business</li>
-                            </ul>  
-                            <blockquote id="credoPro">
-                                    <i>
-                                        "Transformer les contraintes techniques en opportunités innovantes" est mon credo professionnel. 
-                                        Mon expérience terrain, alliée à une solide formation, me permet d'apporter des solutions concrètes à tous les défis informatiques.
-                                    </i>
-                            </blockquote>
-                </p> <br>
-                <div class="tab-titles">
-                    <p class="tab-links active-link" onclick="opentab('Compétences')">Compétences</p>
-                    <p class="tab-links" onclick="opentab('Expériences')">Expériences</p>
-                    <p class="tab-links" onclick="opentab('Formations')">Formations</p>
-                </div>
-                <div class="tab-contents active-tab" id="Compétences">
-             <div class="skills-container">
-<div class="skill-category">
-    <div class="skill-header">
-                        <span class="skill-icon">🔧</span>
-                        <h3 class="skill-title">Développement Full-Stack</h3>
-                    </div>
-                    <div class="skill-items">
-                        <span class="skill-badge">HTML5/CSS3</span>
-                        <span class="skill-badge">JavaScript</span>
-                        <span class="skill-badge">React/React Native</span>
-                        <span class="skill-badge">PHP</span>
-                        <span class="skill-badge">Django</span>
-                        <span class="skill-badge">MySQL</span>
-                        <span class="skill-badge">Symfony </span>
-                        <span class="skill-badge">Bootstrap</span>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <div class="skill-header">
-                        <span class="skill-icon">🔐</span>
-                        <h3 class="skill-title">Cybersécurité</h3>
-                    </div>
-                    <div class="skill-items">
-                        <span class="skill-badge">Pentesting</span>
-                        <span class="skill-badge">RGPD</span>
-                        <span class="skill-badge">Hardening & Analyse de malware</span>
-                        <span class="skill-badge">OWASP Top 10</span>
-                        <span class="skill-badge">Gouvernance</span>
-                         <span class="skill-badge">Hardening systèmes</span>
-                         <span class="skill-badge">DevSecOps intégration</span>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <div class="skill-header">
-                        <span class="skill-icon">☁</span>
-                        <h3 class="skill-title">Cloud</h3>
-                    </div>
-                    <div class="skill-items">
-                        <span class="skill-badge">AWS</span>
-                        <span class="skill-badge">Azure</span>
-                        <span class="skill-badge">Kubernetes</span>
-                        <span class="skill-badge">Terraform</span>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <div class="skill-header">
-                        <span class="skill-icon">🚀</span>
-                        <h3 class="skill-title">DevOps</h3>
-                    </div>
-                    <div class="skill-items">
-                        <span class="skill-badge">CI/CD</span>
-                        <span class="skill-badge">Docker</span>
-                        <span class="skill-badge">Git</span>
-                        <span class="skill-badge">Jenkins</span>
-                    </div>
-                </div>
-            </div>
-                </div>
-
-                <div class="tab-contents" id="Expériences">
-                        <div class="timeline-container">
-
-                                <div class="timeline-item">
-                                    <div class="timeline-header">
-                                        <div class="timeline-icon">💼</div>
-                                        <h3 class="timeline-title">Responsable système d'information</h3>
-                                    </div>
-                                    <div class="timeline-details">
-                                        <div class="timeline-date">Sept 2024 - Aujourd'hui</div>
-                                        <div class="timeline-company">HAUTIER IP</div>
-                                        <ul class="timeline-tasks">
-                                            <li>Gestion complète du parc informatique</li>
-                                            <li>Mise en place de politiques de sécurité</li>
-                                             <li>Identification et planification des activités d'un projet informatique</li>
-                                              <li>Pilotage ou participation à toutes les activités d'un projet informatique : 
-                                                conception, développement, validation et mise en production</li>
-                                        </ul>
-                                    </div>
-                                </div>
-
-                                <!-- Partie Support IT supprimée -->
-
-                                <div class="timeline-item">
-                                    <div class="timeline-header">
-                                        <div class="timeline-icon">📱</div>
-                                        <h3 class="timeline-title">Stage en Developpement informatique</h3>
-                                    </div>
-                                    <div class="timeline-details">
-                                        <div class="timeline-date">Mai 2022 - Octobre 2022</div>
-                                        <div class="timeline-company">Lycom</div>
-                                        <ul class="timeline-tasks">
-                                            <li>Développement d'applications web (Front-end / Back-end)</li>                                  
-                                             <li>Gestion de base de données</li>
-                                             <li>Rédaction de documentation technique</li>
-                                              <li>Collaboration en environnement Agile / travail en équipe</li>
-                                        </ul>
-                                    </div>
-                                </div>
-
-                        </div>
-                </div>
-
-                <div class="tab-contents " id="Formations">
-                    <div class="timeline-container">
-                            <div class="timeline-item">
-                                <div class="timeline-header">
-                                    <div class="timeline-icon">🎓</div>
-                                    <h3 class="timeline-title">Master Cybersécurité & Cloud</h3>
-                                </div>
-                                <div class="timeline-details">
-                                    <div class="timeline-date">2024-2026</div>
-                                    <div class="timeline-school">IPSSI Paris, France</div>
-                                    
-                                </div>
-                            </div>
-
-                            <div class="timeline-item">
-                                <div class="timeline-header">
-                                    <div class="timeline-icon">📚</div>
-                                    <h3 class="timeline-title">Licence Dev Web/Mobile</h3>
-                                </div>
-                                <div class="timeline-details">
-                                    <div class="timeline-date">2022-2023</div>
-                                    <div class="timeline-school">Université Ibn Tofail, Kénitra</div>
-                                </div>
-                            </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
+    <aside class="policy rise d2" aria-label="Stratégie d'accès conditionnel">
+      <div class="policy-head">
+        <h2>Stratégie d'accès conditionnel</h2>
+        <span class="pill">Activée</span>
+      </div>
+      <dl>
+        <dt>Nom</dt><dd>Recrutement · P. M. Gueye</dd>
+        <dt>Utilisateurs</dt><dd>Recruteurs IT, managers infra et sécurité</dd>
+        <dt>Conditions</dt><dd>CDI ou CDD · Paris, Lyon ou partout en France</dd>
+        <dt>Contrôle</dt><dd>Accorder l'accès · exiger un échange de 15 min</dd>
+      </dl>
+      <ul class="checks" id="checks">
+        <li><span class="mark" aria-hidden="true">✓</span><span>Mastère Cybersécurité &amp; Cloud Computing (Bac+5)</span></li>
+        <li><span class="mark" aria-hidden="true">✓</span><span>2 ans comme responsable du SI, seul aux commandes</span></li>
+        <li><span class="mark" aria-hidden="true">✓</span><span>Active Directory, Entra ID, Microsoft 365, Intune</span></li>
+        <li><span class="mark" aria-hidden="true">✓</span><span>Disponible immédiatement, mobile partout en France</span></li>
+      </ul>
+      <div class="verdict">
+        <span class="verdict-text" id="verdict" aria-live="polite">Résultat : accès accordé</span>
+        <button class="ghost" id="run" type="button">Évaluer à nouveau</button>
+      </div>
+    </aside>
+  </div>
 </div>
 
-<!--  FIN DE LA   PARTIE " A PROPOS "-->
+<div class="wrap">
+  <div class="facts">
+    <div class="fact"><b>2 ans</b><span>Responsable du SI, Hautier IP</span></div>
+    <div class="fact"><b>Bac+5</b><span>Mastère IPSSI, en alternance</span></div>
+    <div class="fact"><b>AD + Entra</b><span>Environnement Microsoft hybride</span></div>
+    <div class="fact"><b>N1 → N2</b><span>Du support utilisateur au MCO</span></div>
+  </div>
 
-
-
-
-     <!--  DEBUT  DU  PARTIE " SERVICES "-->
-
-     <div id="services">
-        <div class="container">
-            <h1 class="sub-title">Mes Services</h1>
-            <div class="services-list">
-
-                <div>
-                    <i class="fas fa-code"></i>
-                    <h2>Développement Web</h2>
-                    <p>Création de Site Web  dynamique ou statique </p>
-                    <a href="#">Lire plus</a>
-                </div>
-
-                <div>
-                    <i class="fas fa-user-secret"></i>
-                    <h2>Sécurité Informatique</h2>
-                    <p>La sécurité des systèmes d'information ou plus simplement sécurité informatique </p>
-                    <a href="#">Lire plus</a>
-                </div>
-
-                <div>
-                    <i class="fab fa-app-store"></i>
-                    <h2>Développement d'application</h2>
-                    <p>Création Appliaction Mobile Adroid/iOS</p>
-                    <a href="#">Lire plus</a>
-                </div>
-
-
-            </div>
-        </div>
-     </div>
-    <!--  FIN DE LA   PARTIE " SERVICES  "-->
-
-
-<!-- DEBUT DE LA PARTIE "CERTIFICATIONS" -->
-<div id="certifications">
-    <div class="certifications-container">
-        <h1 class="sub-title">Mes Certifications</h1>
-        
-        <div class="certifications-carousel">
-            <!-- Certification 0 -->
-            <div class="certification-slide active">
-                <div class="certification-img-container">
-                    <img src="assets/certifications/cyber7.png" alt="Certification Le DPO et les outils de la conformités" class="certification-img">
-                </div>
-                <h3>Le DPO et les outils de la conformités</h3>
-            </div>
-            <!-- Certification 1 -->
-            <div class="certification-slide">
-                <div class="certification-img-container">
-                    <img src="assets/certifications/cyber8.png" alt="Certification Scrum  Fundamentals Certified" class="certification-img">
-                </div>
-                <h3>Scrum  Fundamentals Certified</h3>
-            </div>
-            
-            <!-- Certification 2 -->
-            <div class="certification-slide">
-                <div class="certification-img-container">
-                    <img src="assets/certifications/cyber1.png" alt="Certification les fondements de la sécurité informatique et cybersécurité" class="certification-img">
-                </div>
-                <h3>Les fondements de la sécurité informatique et cybersécurité</h3>
-            </div>
-            
-            <!-- Certification 3 -->
-            <div class="certification-slide">
-                <div class="certification-img-container">
-                    <img src="assets/certifications/cyber2.png" alt="Certification La sécurité informatique et cybersécurité : Niveau avancé" class="certification-img">
-                </div>
-                <h3>La sécurité informatique et cybersécurité : Niveau avancé</h3>
-            </div>
-            
-             <!-- Certification 4 -->
-            <div class="certification-slide">
-                <div class="certification-img-container">
-                    <img src="assets/certifications/cyber6.png" alt="Certification Les collectivités territoriales " class="certification-img">
-                </div>
-                <h3>Les collectivités territoriales</h3>
-            </div>
-
-             <!-- Certification 5 -->
-            <div class="certification-slide">
-                <div class="certification-img-container">
-                    <img src="assets/certifications/cyber3.png" alt="Certification Cybersécurité et gouvernance pour les leaders" class="certification-img">
-                </div>
-                <h3>Cybersécurité et gouvernance pour les leaders</h3>
-            </div>
-
-             <!-- Certification 6 -->
-            <div class="certification-slide">
-                <div class="certification-img-container">
-                    <img src="assets/certifications/cyber5.png" alt="Certification Les responsablités des acteurs" class="certification-img">
-                </div>
-                <h3>Les responsablités des acteurs</h3>
-            </div>
-
-             <!-- Certification 7 -->
-            <div class="certification-slide">
-                <div class="certification-img-container">
-                    <img src="assets/certifications/cyber4.png" alt="Certification Le RGPD et ses notions clés" class="certification-img">
-                </div>
-                <h3>Le RGPD et ses notions clés</h3>
-            </div>
-        </div>
-        
-        <div class="carousel-controls">
-            <button class="carousel-prev"><i class="fas fa-chevron-left"></i></button>
-            <div class="carousel-dots"></div>
-            <button class="carousel-next"><i class="fas fa-chevron-right"></i></button>
-        </div>
+  <section id="projets">
+    <div class="sec-head">
+      <p class="label">Projets</p>
+      <div>
+        <h2>Deux projets, deux côtés de la sécurité</h2>
+        <p>Un outil métier que j'ai conçu et mis en production pour une entreprise. Un ransomware que j'ai écrit en C pendant un TP, pour comprendre une attaque de l'intérieur.</p>
+      </div>
     </div>
+
+    <div class="projects">
+      <article class="project">
+        <div class="project-body">
+          <div class="project-meta">
+            <span class="badge ok">En production</span>
+            <span class="badge">Hautier IP · 2025</span>
+            <span class="badge">Code privé</span>
+          </div>
+          <h3>Hermes</h3>
+          <p class="lede">Comparateur de budgets pour les dépôts de brevets. L'équipe choisit un client et des pays, puis l'outil calcule les annuités et produit un devis PDF.</p>
+          <h4>Ce que j'ai construit</h4>
+          <ul>
+            <li><strong>Parcours complet :</strong> connexion, choix du client, sélection des pays sur une carte d'Europe, calcul des annuités et des honoraires</li>
+            <li><strong>Génération de devis PDF</strong> avec DOMPDF</li>
+            <li><strong>Tableau de bord admin</strong> pour créer les comptes et réinitialiser les mots de passe</li>
+          </ul>
+          <h4>Sécurité intégrée dès la conception</h4>
+          <ul>
+            <li>Jetons CSRF générés avec <code>random_bytes</code> et vérifiés avec <code>hash_equals</code></li>
+            <li>Cookies de session <code>Secure</code>, <code>HttpOnly</code> et <code>SameSite</code></li>
+            <li>Accès à MySQL par PDO, contrôle d'authentification sur chaque page</li>
+          </ul>
+          <div class="stack"><span>PHP</span><span>MySQL</span><span>PDO</span><span>JavaScript</span><span>Bootstrap</span><span>DOMPDF</span></div>
+          <p class="note">Outil interne : le code reste privé. Démonstration possible en entretien.</p>
+        </div>
+        <div class="project-visual">
+          <div class="diagram" role="img" aria-label="Schéma du parcours Hermes : connexion, client, pays, annuités, devis PDF, avec une base MySQL et un tableau de bord admin">
+            <svg viewBox="0 0 640 300" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="d-head" d="M0 0L10 5L0 10z"/></marker>
+              </defs>
+              <text class="d-lab" x="4" y="24">PARCOURS UTILISATEUR</text>
+              <rect class="d-box hl" x="4" y="40" width="110" height="64" rx="8"/>
+              <text class="d-t" x="16" y="66">Connexion</text><text class="d-s" x="16" y="86">session + CSRF</text>
+              <rect class="d-box" x="135" y="40" width="110" height="64" rx="8"/>
+              <text class="d-t" x="147" y="66">Client</text><text class="d-s" x="147" y="86">fiche client</text>
+              <rect class="d-box" x="266" y="40" width="110" height="64" rx="8"/>
+              <text class="d-t" x="278" y="66">Pays</text><text class="d-s" x="278" y="86">carte Europe</text>
+              <rect class="d-box" x="397" y="40" width="110" height="64" rx="8"/>
+              <text class="d-t" x="409" y="66">Annuités</text><text class="d-s" x="409" y="86">barèmes + HT</text>
+              <rect class="d-box good" x="528" y="40" width="108" height="64" rx="8"/>
+              <text class="d-t" x="540" y="66">Devis PDF</text><text class="d-s" x="540" y="86">DOMPDF</text>
+              <path class="d-flow" d="M114 72H133" marker-end="url(#ah)"/>
+              <path class="d-flow" d="M245 72H264" marker-end="url(#ah)"/>
+              <path class="d-flow" d="M376 72H395" marker-end="url(#ah)"/>
+              <path class="d-flow" d="M507 72H526" marker-end="url(#ah)"/>
+              <text class="d-lab" x="4" y="176">DONNÉES &amp; ADMINISTRATION</text>
+              <rect class="d-box" x="135" y="190" width="372" height="56" rx="8"/>
+              <text class="d-t" x="151" y="214">MySQL · PDO</text>
+              <text class="d-s" x="151" y="233">clients · comptes · annuités · totaux HT + honoraires</text>
+              <path class="d-line dash" d="M190 104V190M321 104V190M452 104V190"/>
+              <rect class="d-box hl" x="4" y="190" width="110" height="56" rx="8"/>
+              <text class="d-t" x="16" y="214">Admin</text><text class="d-s" x="16" y="233">comptes, mdp</text>
+              <path class="d-line dash" d="M59 104V190"/>
+              <path class="d-line dash" d="M114 218H135"/>
+              <text class="d-lab" x="4" y="284">Chaque page vérifie la session avant d'afficher quoi que ce soit.</text>
+            </svg>
+          </div>
+          <span class="caption">Architecture simplifiée · 7 tables MySQL</span>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="project-body">
+          <div class="project-meta">
+            <span class="badge warn">Lab offensif · environnement contrôlé</span>
+            <span class="badge">TP Mastère · 2025</span>
+            <span class="badge">Open source</span>
+          </div>
+          <h3>ProManager</h3>
+          <p class="lede">Un ransomware pédagogique en C, écrit pour comprendre une attaque de bout en bout : chiffrement, exfiltration de la clé, rançon et restitution.</p>
+          <h4>Comment il fonctionne</h4>
+          <ul>
+            <li><strong>Agent :</strong> surveille le dossier <code>TP/Projet</code>, le compresse puis le chiffre en <strong>AES-256-CBC</strong> (OpenSSL, clé et IV tirés avec <code>RAND_bytes</code>)</li>
+            <li><strong>Exfiltration :</strong> la clé et l'IV partent en TCP vers un serveur, et une note <code>RANÇON.txt</code> apparaît</li>
+            <li><strong>Client GTK :</strong> la victime présente des « excuses » (20 caractères minimum), récupère la clé et déchiffre</li>
+          </ul>
+          <h4>Ce que j'en retiens côté défense</h4>
+          <ul>
+            <li>Signaux à surveiller : écriture massive de fichiers, archive créée puis chiffrée, connexion sortante vers un port inhabituel</li>
+            <li>Une sauvegarde hors ligne et testée reste la meilleure parade, d'où mon travail sur le PRA</li>
+          </ul>
+          <div class="stack"><span>C</span><span>OpenSSL</span><span>Sockets TCP</span><span>libzip</span><span>GTK</span><span>Makefile</span></div>
+          <div class="project-links">
+            <a class="link-arrow" href="https://github.com/MamadouPapa/ProManager-Ransomware" target="_blank" rel="noopener">Voir le code sur GitHub ↗</a>
+          </div>
+        </div>
+        <div class="project-visual">
+          <div class="diagram" role="img" aria-label="Schéma ProManager : l'agent chiffre et envoie la clé au serveur, le client présente des excuses au serveur et reçoit la clé">
+            <svg viewBox="0 0 640 300" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <marker id="aw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="d-head warn" d="M0 0L10 5L0 10z"/></marker>
+                <marker id="ao" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="d-head ok" d="M0 0L10 5L0 10z"/></marker>
+                <marker id="aa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="d-head" d="M0 0L10 5L0 10z"/></marker>
+              </defs>
+              <text class="d-lab" x="4" y="24">3 PROGRAMMES · TCP 4242</text>
+              <rect class="d-box danger" x="4" y="50" width="180" height="96" rx="8"/>
+              <text class="d-t" x="18" y="76">Agent</text>
+              <text class="d-s" x="18" y="96">ransomware.c</text>
+              <text class="d-s" x="18" y="114">zip + AES-256-CBC</text>
+              <text class="d-s" x="18" y="132">dépose RANÇON.txt</text>
+              <rect class="d-box hl" x="230" y="50" width="180" height="96" rx="8"/>
+              <text class="d-t" x="244" y="76">Serveur</text>
+              <text class="d-s" x="244" y="96">serveur_pardon.c</text>
+              <text class="d-s" x="244" y="114">garde la clé + IV</text>
+              <text class="d-s" x="244" y="132">écoute sur :4242</text>
+              <rect class="d-box good" x="456" y="50" width="180" height="96" rx="8"/>
+              <text class="d-t" x="470" y="76">Client</text>
+              <text class="d-s" x="470" y="96">client_decrypt.c</text>
+              <text class="d-s" x="470" y="114">interface GTK</text>
+              <text class="d-s" x="470" y="132">déchiffre les fichiers</text>
+              <path class="d-flow warn" d="M184 98H228" marker-end="url(#aw)"/>
+              <text class="d-lab" x="186" y="88">clé+IV</text>
+              <path class="d-flow" d="M456 80H412" marker-end="url(#aa)"/>
+              <text class="d-lab" x="414" y="72">excuses</text>
+              <path class="d-flow ok" d="M410 118H454" marker-end="url(#ao)"/>
+              <text class="d-lab" x="420" y="136">clé</text>
+              <rect class="d-box" x="4" y="196" width="632" height="60" rx="8"/>
+              <text class="d-t" x="18" y="220">Dossier TP/Projet</text>
+              <text class="d-s" x="18" y="240">.txt .md .c .h .cpp .hpp · chiffré après 30 s en test, 1 h sinon</text>
+              <path class="d-line dash" d="M94 146V196M546 146V196"/>
+              <text class="d-lab" x="4" y="284">Exécuté uniquement dans une VM isolée, sur des fichiers de test.</text>
+            </svg>
+          </div>
+          <span class="caption">460 lignes de C · 3 exécutables</span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="missions">
+    <div class="sec-head">
+      <p class="label">Missions</p>
+      <div>
+        <h2>Ce que j'ai tenu en production chez Hautier IP</h2>
+        <p>J'étais le seul responsable du SI. J'ai mené chaque chantier de la conception à la mise en production, puis je l'ai documenté.</p>
+      </div>
+    </div>
+    <div class="cases">
+      <article class="case">
+        <div class="case-id"><span class="label">Identités &amp; accès</span><span class="label">IAM</span></div>
+        <h3>Un annuaire hybride propre et protégé par le MFA</h3>
+        <ul>
+          <li>Comptes, groupes et GPO en Active Directory / Entra ID</li>
+          <li>Déploiement du MFA pour les utilisateurs</li>
+          <li>Politiques de sécurité et revue des droits d'accès</li>
+        </ul>
+        <div class="tags"><span class="tag">Active Directory</span><span class="tag">Entra ID</span><span class="tag">GPO</span><span class="tag">MFA</span></div>
+      </article>
+      <article class="case">
+        <div class="case-id"><span class="label">Durcissement &amp; conformité</span><span class="label">Hardening</span></div>
+        <h3>Des postes et des serveurs durcis, un SI conforme au RGPD</h3>
+        <ul>
+          <li>Durcissement des postes et serveurs Windows / Linux</li>
+          <li>Audits de sécurité et plans de correction</li>
+          <li>Mise en conformité RGPD du système d'information</li>
+        </ul>
+        <div class="tags"><span class="tag">Windows Server</span><span class="tag">Ubuntu</span><span class="tag">Debian</span><span class="tag">RGPD</span></div>
+      </article>
+      <article class="case">
+        <div class="case-id"><span class="label">Continuité</span><span class="label">PRA / PCA</span></div>
+        <h3>Des sauvegardes pilotées et un plan de reprise prêt</h3>
+        <ul>
+          <li>Mise en place et suivi des sauvegardes</li>
+          <li>Rédaction et pilotage du PRA / PCA</li>
+          <li>MCO de l'infrastructure VMware / Hyper-V et du réseau</li>
+        </ul>
+        <div class="tags"><span class="tag">VMware</span><span class="tag">Hyper-V</span><span class="tag">Pare-feu</span><span class="tag">VPN</span><span class="tag">VLAN</span></div>
+      </article>
+      <article class="case">
+        <div class="case-id"><span class="label">Automatisation</span><span class="label">Scripting</span></div>
+        <h3>Moins de tâches manuelles, des outils métier sur mesure</h3>
+        <ul>
+          <li>Scripts d'administration en PowerShell et Python</li>
+          <li>Applications métier avec Power Apps, Power Automate et Dataverse</li>
+          <li>Outils internes en PHP / SQL, dont Hermes</li>
+        </ul>
+        <div class="tags"><span class="tag">PowerShell</span><span class="tag">Python</span><span class="tag">Power Platform</span><span class="tag">Microsoft 365</span></div>
+      </article>
+    </div>
+  </section>
+
+  <section id="console">
+    <div class="sec-head">
+      <p class="label">Console</p>
+      <div>
+        <h2>Interrogez mon profil en PowerShell</h2>
+        <p>Tapez une commande ou cliquez sur un raccourci. Essayez <code>Get-Help</code> pour voir la liste.</p>
+      </div>
+    </div>
+    <div class="console">
+      <div class="console-bar">
+        <span class="lights" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span class="title">PS C:\Users\pmgueye&gt; .\profil.ps1</span>
+      </div>
+      <div class="console-out" id="out" aria-live="polite"></div>
+      <form class="console-in" id="cmdForm" autocomplete="off">
+        <label for="cmd">PS C:\&gt;</label>
+        <input id="cmd" name="cmd" type="text" spellcheck="false" autocapitalize="off">
+      </form>
+      <div class="console-chips" id="chips">
+        <button type="button" data-cmd="Get-Profil">Get-Profil</button>
+        <button type="button" data-cmd="Get-Experience">Get-Experience</button>
+        <button type="button" data-cmd="Get-Competences -Niveau Production">Get-Competences</button>
+        <button type="button" data-cmd="Get-Projets">Get-Projets</button>
+        <button type="button" data-cmd="Test-Disponibilite">Test-Disponibilite</button>
+        <button type="button" data-cmd="Get-CV">Get-CV</button>
+        <button type="button" data-cmd="Clear-Host">Clear-Host</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="competences">
+    <div class="sec-head">
+      <p class="label">Compétences</p>
+      <div>
+        <h2>Ce que je maîtrise, et ce que je connais</h2>
+        <p>Je pratique les trois premiers blocs en production. Le dernier, je l'ai étudié en mastère et je continue de le travailler.</p>
+      </div>
+    </div>
+    <div class="skills">
+      <div class="skill-group core">
+        <h3>Sécurité</h3>
+        <div class="chips"><span class="chip">IAM</span><span class="chip">MFA</span><span class="chip">Hardening</span><span class="chip">Audits de sécurité</span><span class="chip">Gestion des accès</span><span class="chip">Sauvegardes</span><span class="chip">PRA / PCA</span><span class="chip">RGPD</span><span class="chip">Gouvernance</span></div>
+      </div>
+      <div class="skill-group core">
+        <h3>Microsoft 365 &amp; Cloud</h3>
+        <div class="chips"><span class="chip">Entra ID</span><span class="chip">Microsoft 365</span><span class="chip">Exchange Online</span><span class="chip">Intune</span><span class="chip">Azure</span><span class="chip">Power Apps</span><span class="chip">Power Automate</span><span class="chip">Dataverse</span></div>
+      </div>
+      <div class="skill-group core">
+        <h3>Systèmes &amp; virtualisation</h3>
+        <div class="chips"><span class="chip">Windows Server</span><span class="chip">Active Directory</span><span class="chip">GPO</span><span class="chip">Ubuntu</span><span class="chip">Debian</span><span class="chip">VMware</span><span class="chip">Hyper-V</span></div>
+      </div>
+      <div class="skill-group">
+        <h3>Réseau</h3>
+        <div class="chips"><span class="chip">TCP/IP</span><span class="chip">DNS</span><span class="chip">DHCP</span><span class="chip">VLAN</span><span class="chip">VPN</span><span class="chip">Pare-feu</span><span class="chip">Supervision</span></div>
+      </div>
+      <div class="skill-group">
+        <h3>Scripting &amp; développement</h3>
+        <div class="chips"><span class="chip">PowerShell</span><span class="chip">Python</span><span class="chip">C</span><span class="chip">SQL</span><span class="chip">MySQL</span><span class="chip">PHP</span><span class="chip">JavaScript</span><span class="chip">Git</span></div>
+      </div>
+      <div class="skill-group extra">
+        <h3>Notions complémentaires</h3>
+        <div class="chips"><span class="chip">AWS</span><span class="chip">Docker</span><span class="chip">Kubernetes</span><span class="chip">Terraform</span><span class="chip">Jenkins</span><span class="chip">CI/CD</span><span class="chip">DevSecOps</span><span class="chip">Pentest</span><span class="chip">OWASP Top 10</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="parcours">
+    <div class="sec-head">
+      <p class="label">Parcours</p>
+      <div><h2>Du développement web à la sécurité du SI</h2></div>
+    </div>
+    <ol class="timeline">
+      <li class="now">
+        <time>Aujourd'hui</time><span class="rail"><i></i></span>
+        <div class="tl-body"><h3>Disponible pour un CDI ou un CDD</h3><p class="where">Paris, Lyon ou partout en France</p><p>Postes visés : ingénieur systèmes et sécurité, ingénieur Microsoft 365, consultant IAM / Entra ID.</p></div>
+      </li>
+      <li>
+        <time>09/2024 – 09/2026</time><span class="rail"><i></i></span>
+        <div class="tl-body"><h3>Responsable du Système d'Information</h3><p class="where">Hautier IP · Nice</p><p>IAM hybride AD / Entra ID, MFA, durcissement, audits, RGPD, Microsoft 365 et Intune, sauvegardes et PRA/PCA, virtualisation, réseau, support N1/N2, automatisation et applications métier.</p></div>
+      </li>
+      <li>
+        <time>02/2024 – 02/2026</time><span class="rail"><i></i></span>
+        <div class="tl-body"><h3>Mastère Cybersécurité &amp; Cloud Computing (Bac+5)</h3><p class="where">IPSSI · Paris · en alternance</p></div>
+      </li>
+      <li>
+        <time>09/2020 – 07/2023</time><span class="rail"><i></i></span>
+        <div class="tl-body"><h3>Licence Développement Web &amp; Mobile</h3><p class="where">Université Ibn Tofail · Kénitra, Maroc</p></div>
+      </li>
+      <li>
+        <time>05/2022 – 10/2022</time><span class="rail"><i></i></span>
+        <div class="tl-body"><h3>Développeur web · stage</h3><p class="where">Lycom · Rabat, Maroc</p><p>Applications web front et back (PHP, JavaScript, MySQL), conception de bases de données, tests et documentation en méthode Agile.</p></div>
+      </li>
+    </ol>
+
+    <div class="sub">
+      <p class="label">Certifications · cliquez pour agrandir</p>
+      <div class="certs" id="certs">
+        <button class="cert" type="button" data-src="assets/certifications/cyber1.png"><img src="assets/certifications/cyber1.png" alt="" loading="lazy"><b>Les fondements de la sécurité informatique et de la cybersécurité</b><span>LinkedIn Learning</span></button>
+        <button class="cert" type="button" data-src="assets/certifications/cyber2.png"><img src="assets/certifications/cyber2.png" alt="" loading="lazy"><b>Sécurité informatique et cybersécurité : niveau avancé</b><span>LinkedIn Learning</span></button>
+        <button class="cert" type="button" data-src="assets/certifications/cyber3.png"><img src="assets/certifications/cyber3.png" alt="" loading="lazy"><b>Cybersécurité et gouvernance pour les leaders</b><span>LinkedIn Learning</span></button>
+        <button class="cert" type="button" data-src="assets/certifications/cyber8.png"><img src="assets/certifications/cyber8.png" alt="" loading="lazy"><b>Scrum Fundamentals Certified</b><span>SCRUMstudy</span></button>
+        <button class="cert" type="button" data-src="assets/certifications/cyber4.png"><img src="assets/certifications/cyber4.png" alt="" loading="lazy"><b>Le RGPD et ses notions clés</b><span>CNIL</span></button>
+        <button class="cert" type="button" data-src="assets/certifications/cyber5.png"><img src="assets/certifications/cyber5.png" alt="" loading="lazy"><b>Les responsabilités des acteurs</b><span>CNIL</span></button>
+        <button class="cert" type="button" data-src="assets/certifications/cyber7.png"><img src="assets/certifications/cyber7.png" alt="" loading="lazy"><b>Le DPO et les outils de la conformité</b><span>CNIL</span></button>
+        <button class="cert" type="button" data-src="assets/certifications/cyber6.png"><img src="assets/certifications/cyber6.png" alt="" loading="lazy"><b>Le RGPD et les collectivités territoriales</b><span>CNIL</span></button>
+      </div>
+    </div>
+
+    <div class="sub">
+      <p class="label">Langues</p>
+      <div class="langs">
+        <div><b>Français</b><span>Courant</span></div>
+        <div><b>Anglais</b><span>Professionnel (B2, technique)</span></div>
+        <div><b>Wolof</b><span>Langue maternelle</span></div>
+        <div><b>Sérère</b><span>Langue maternelle</span></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="closing">
+    <h2>Votre SI mérite <em>quelqu'un qui l'a déjà tenu seul.</em></h2>
+    <div class="cta">
+      <a class="btn primary" href="cv/CV_Papa_Mamadou_Gueye.pdf" download>Télécharger mon CV</a>
+      <a class="btn" href="https://www.linkedin.com/in/papa-mamadou-gueye-developpeur-cybersecurite" target="_blank" rel="noopener">Voir mon LinkedIn</a>
+    </div>
+  </div>
 </div>
-<!-- FIN DE LA PARTIE "CERTIFICATIONS" -->
-    
-    <!--  DEBUT DE LA   PARTIE " PORTFOLIO  "-->
+</main>
 
-    <div id="portfolio">
-        <div class="container">
-            <h1 class="sub-title">Mes travaux</h1>
-            <div class="list-travaux">
-                <div class="travaux">
-                    <img src="images/travaux-1.jpg" alt="Images Travaux 1">
-                    <div class="infos">
-                        <h3>Calculatrice</h3>
-                        <p>
-                           Conception d'une calculatrice grâce à HTML et CSS
-                           pas besoin de vous casser la tête , je met à votre disposition un appareil électronique conçu pour 
-                           effectuer des opérations mathématiques telles que l'addition, la soustraction, la multiplication, la division, 
-                           ainsi que des fonctions plus avancées telles que les trigonométriques, les logarithmes, etc.
-                        </p>
-                        <a href="projets/calculatrice.html"> <i class="fas fa-external-link-alt"></i></a>
-                    </div>
-                </div>
-                <div class="travaux">
-                    <img src="images/travaux-2.jpg" alt="Images Travaux 2">
-                    <div class="infos">
-                        <h3>Menu Radial</h3>
-                        <p>
-                            J'aimerais  partager avec vous le code final pour créer un menu radial en HTML et CSS.
-                            Un menu radial en HTML et CSS est une interface utilisateur circulaire où les éléments de menu sont disposés autour d'un point central, généralement de manière équidistante.
-                             Ce type de menu est souvent utilisé pour des applications web ou des sites web afin de présenter des options de manière visuellement attrayante et intuitive.
-                        </p>
-                        <a href="projets/menu-radial.html"> <i class="fas fa-external-link-alt"></i></a>
-                    </div>
-                </div>
-                <div class="travaux">
-                    <img src="images/travaux-3.jpg" alt="Images Travaux 3">
-                    <div class="infos">
-                        <h3>Générateur de mot de passe</h3>
-                        <p>
-                            Nous vous laissons ci-dessous le code qui vous aidera à créer un générateur de mots de passe 
-                            élégant en utilisant HTML, CSS et JavaScript.
-                        </p>
-                        <a href="projets/mdp.html"> <i class="fas fa-external-link-alt"></i></a>
-        
-                    </div>
-                </div>
-            </div>
+<footer class="wrap">
+  <span>© <span id="year">2026</span> Papa Mamadou Gueye · Ingénieur Systèmes &amp; Cybersécurité</span>
+  <nav aria-label="Liens">
+    <a href="cv/CV_Papa_Mamadou_Gueye.pdf" download>CV</a>
+    <a href="https://www.linkedin.com/in/papa-mamadou-gueye-developpeur-cybersecurite" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="https://github.com/MamadouPapa" target="_blank" rel="noopener">GitHub</a>
+  </nav>
+</footer>
 
-            <a href="#"class="btn">Voir plus</a>
+<dialog id="certDialog" aria-labelledby="certTitle">
+  <div class="dialog-bar"><b id="certTitle"></b><button class="ghost" type="button" id="certClose">Fermer</button></div>
+  <img id="certImg" src="data:," alt="">
+</dialog>
 
+<script>
+(function () {
+  'use strict';
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.getElementById('year').textContent = String(new Date().getFullYear());
 
-        </div>
-    </div> 
-    <!--  FIN DE LA   PARTIE " SERVICES  "-->
+  /* ---------- Identity graph (hero background) ---------- */
+  var NODE_DENSITY = 1 / 16000;
+  var MAX_NODES = 70;
+  var LINK_DISTANCE = 150;
+  var PULSE_CHANCE = 0.0012;
+  var MAX_PULSES = 40;
+  var canvas = document.getElementById('graph');
+  var ctx = canvas.getContext('2d');
+  var nodes = [], pulses = [];
+  var width = 0, height = 0, running = false;
+  var colors = {};
 
+  function readColors() {
+    var s = getComputedStyle(document.documentElement);
+    colors = { accent: s.getPropertyValue('--accent').trim(), ok: s.getPropertyValue('--ok').trim(), line: s.getPropertyValue('--line').trim() };
+  }
 
+  function resize() {
+    var rect = canvas.getBoundingClientRect();
+    var ratio = Math.min(window.devicePixelRatio || 1, 2);
+    width = rect.width; height = rect.height;
+    canvas.width = Math.round(width * ratio); canvas.height = Math.round(height * ratio);
+    ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+    var count = Math.min(MAX_NODES, Math.round(width * height * NODE_DENSITY));
+    nodes = [];
+    for (var i = 0; i < count; i++) {
+      nodes.push({
+        x: Math.random() * width, y: Math.random() * height,
+        vx: (Math.random() - 0.5) * 0.25, vy: (Math.random() - 0.5) * 0.25,
+        r: Math.random() < 0.15 ? 3.2 : 1.8,
+        shield: Math.random() < 0.18
+      });
+    }
+    pulses = [];
+  }
 
-        <!--  FIN DE LA   PARTIE " CONTACT  "-->
+  function draw() {
+    ctx.clearRect(0, 0, width, height);
+    ctx.lineWidth = 1;
+    for (var i = 0; i < nodes.length; i++) {
+      var a = nodes[i];
+      for (var j = i + 1; j < nodes.length; j++) {
+        var b = nodes[j];
+        var dx = a.x - b.x, dy = a.y - b.y, d = Math.sqrt(dx * dx + dy * dy);
+        if (d >= LINK_DISTANCE) continue;
+        ctx.globalAlpha = 1 - d / LINK_DISTANCE;
+        ctx.strokeStyle = colors.line;
+        ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+        if (running && pulses.length < MAX_PULSES && Math.random() < PULSE_CHANCE) pulses.push({ a: a, b: b, t: 0 });
+      }
+    }
+    nodes.forEach(function (n) {
+      ctx.fillStyle = n.shield ? colors.ok : colors.accent;
+      ctx.globalAlpha = n.shield ? 0.9 : 0.55;
+      ctx.beginPath(); ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2); ctx.fill();
+      if (n.shield) {
+        ctx.globalAlpha = 0.25; ctx.strokeStyle = colors.ok;
+        ctx.beginPath(); ctx.arc(n.x, n.y, n.r + 5, 0, Math.PI * 2); ctx.stroke();
+      }
+    });
+    pulses.forEach(function (p) {
+      ctx.globalAlpha = 1 - Math.abs(0.5 - p.t);
+      ctx.fillStyle = colors.accent;
+      ctx.beginPath(); ctx.arc(p.a.x + (p.b.x - p.a.x) * p.t, p.a.y + (p.b.y - p.a.y) * p.t, 2, 0, Math.PI * 2); ctx.fill();
+    });
+    ctx.globalAlpha = 1;
+  }
 
+  function step() {
+    nodes.forEach(function (n) {
+      n.x += n.vx; n.y += n.vy;
+      if (n.x < 0 || n.x > width) n.vx *= -1;
+      if (n.y < 0 || n.y > height) n.vy *= -1;
+    });
+    pulses = pulses.filter(function (p) { p.t += 0.02; return p.t < 1; });
+  }
 
-        <div id="contact">
-            <div class="container">
-                <div class="row">
+  function loop() {
+    if (!running) return;
+    step(); draw();
+    requestAnimationFrame(loop);
+  }
 
-                    <div class="contact-left">
-                        <h1 class="sub-title">Me Contacter</h1>
-                        <p><i class="fas fa-paper-plane"></i>mamadoupmg@gmail.com</p>
-                        <p><i class="fas fa-phone-square-alt"></i>+33753167787</p>
-                        <div class="social-icon">
-                            
-                            <a href="https://github.com/MamadouPapa" target="_blank"><i class="fab fa-github"></i></a>
-                            <a href="https://www.instagram.com/papa_mamadou_gueye_?igsh=bm9nYzNtbHJ1dmF4&utm_source=qr" target="_blank"><i class="fab fa-instagram"></i></a>
-                            <a href="https://www.linkedin.com/in/papa-mamadou-gueye-4852211a9" target="_blank"><i class="fab fa-linkedin"></i></a>
-                        </div>
-                       
-                    </div>
+  function start() { if (!running && !reduceMotion) { running = true; loop(); } }
 
-                    <div class="contact-right">
-                        <form  name="submit-to-google-sheet" action="https://formsubmit.co/mamadoupmg@gmail.com" method="post">
+  readColors(); resize(); draw();
+  window.addEventListener('resize', function () { resize(); draw(); });
+  window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', function () { readColors(); draw(); });
+  if (!reduceMotion) {
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (entries) {
+        if (entries[0].isIntersecting) start(); else running = false;
+      }).observe(canvas);
+    } else { start(); }
+  }
 
-                            
-                            <input type="text" name="Name" placeholder="Votre nom" required>
-                            <input type="email" name="Email" placeholder="Votre Email" required>
-                            <textarea name="Message" rows="6" placeholder="Votre Message" ></textarea>
-                            <button type="submit" class="btn btn2">Envoyer</button>
-                        </form> 
-                        <span id="msg"></span>                                                    
+  /* ---------- Conditional access evaluation ---------- */
+  var STEP_DELAY_MS = 420;
+  var checkItems = Array.prototype.slice.call(document.querySelectorAll('#checks li'));
+  var verdict = document.getElementById('verdict');
+  var timers = [];
+  document.getElementById('run').addEventListener('click', function () {
+    timers.forEach(clearTimeout); timers = [];
+    if (reduceMotion) { verdict.textContent = 'Résultat : accès accordé'; return; }
+    checkItems.forEach(function (li) { li.classList.add('pending'); });
+    verdict.classList.add('wait'); verdict.textContent = 'Évaluation en cours…';
+    checkItems.forEach(function (li, i) {
+      timers.push(setTimeout(function () { li.classList.remove('pending'); }, STEP_DELAY_MS * (i + 1)));
+    });
+    timers.push(setTimeout(function () {
+      verdict.classList.remove('wait'); verdict.textContent = 'Résultat : accès accordé';
+    }, STEP_DELAY_MS * (checkItems.length + 1)));
+  });
 
-                    </div>
+  /* ---------- PowerShell console ---------- */
+  var out = document.getElementById('out');
+  var input = document.getElementById('cmd');
+  var history = [], historyIndex = 0;
+  var COMMAND_NAMES = ['Get-Help', 'Get-Profil', 'Get-Experience', 'Get-Competences', 'Get-Projets', 'Test-Disponibilite', 'Get-CV', 'Clear-Host'];
 
-                </div>
-            </div>
-            <div class="copyright">
-                <p>copyright © Papa Mamadou Gueye. Portfolio <i class="fas fa-heart"> </i>   Juillet 2025</p>
-            </div>
-        </div>
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function kv(key, value) { return '<span class="k">' + esc(key.padEnd(12)) + '</span>: <span class="v">' + esc(value) + '</span>'; }
 
+  var COMMANDS = {
+    'get-help': function () {
+      return [
+        '<span class="m">Commandes disponibles :</span>',
+        '  <span class="k">Get-Profil</span>            Qui je suis, en une fiche',
+        '  <span class="k">Get-Experience</span>        Mon parcours',
+        '  <span class="k">Get-Competences</span>       Mes compétences (-Niveau Production | Notions)',
+        '  <span class="k">Get-Projets</span>           Mes projets',
+        '  <span class="k">Test-Disponibilite</span>    Suis-je disponible ?',
+        '  <span class="k">Get-CV</span>                Lien vers mon CV en PDF',
+        '  <span class="k">Clear-Host</span>            Effacer la console'
+      ].join('\n');
+    },
+    'get-profil': function () {
+      return [
+        kv('Nom', 'Papa Mamadou Gueye'),
+        kv('Titre', 'Ingénieur Systèmes et Cybersécurité'),
+        kv('Experience', '2 ans · Responsable du SI (Hautier IP)'),
+        kv('Diplome', 'Mastère Cybersécurité & Cloud Computing (Bac+5)'),
+        kv('Specialite', 'Microsoft hybride · IAM · Durcissement · PRA/PCA'),
+        kv('Recherche', 'CDI ou CDD'),
+        kv('Mobilite', 'Paris, Lyon, toute la France')
+      ].join('\n');
+    },
+    'get-experience': function () {
+      return [
+        '<span class="m">Periode             Poste                                  Lieu</span>',
+        '<span class="m">-------             -----                                  ----</span>',
+        '09/2024 - 09/2026   Responsable du Système d\'Information   Hautier IP · Nice',
+        '02/2024 - 02/2026   Mastère Cyber &amp; Cloud (alternance)     IPSSI · Paris',
+        '05/2022 - 10/2022   Développeur web (stage)                Lycom · Rabat'
+      ].join('\n');
+    },
+    'get-competences': function (args) {
+      var level = (args.match(/-niveau\s+(\S+)/i) || [])[1] || '';
+      var prod = [
+        kv('Securite', 'IAM, MFA, hardening, audits, PRA/PCA, RGPD'),
+        kv('Microsoft', 'Entra ID, M365, Exchange Online, Intune, Azure, Power Platform'),
+        kv('Systemes', 'Windows Server, AD, GPO, Ubuntu, Debian, VMware, Hyper-V'),
+        kv('Reseau', 'TCP/IP, DNS, DHCP, VLAN, VPN, pare-feu'),
+        kv('Scripting', 'PowerShell, Python, C, SQL, PHP, JavaScript')
+      ];
+      var notions = [kv('Notions', 'AWS, Docker, Kubernetes, Terraform, Jenkins, CI/CD, pentest, OWASP')];
+      if (/^notions$/i.test(level)) return notions.join('\n');
+      if (/^production$/i.test(level)) return prod.join('\n');
+      return prod.concat(notions).join('\n');
+    },
+    'get-projets': function () {
+      return [
+        '<span class="m">Nom         Type                    Stack</span>',
+        '<span class="m">---         ----                    -----</span>',
+        'Hermes      Outil métier (prod)     PHP, MySQL, PDO, DOMPDF',
+        'ProManager  Lab ransomware (TP)     C, OpenSSL, TCP, GTK',
+        '',
+        '<span class="m">Détails : <a href="#projets">section Projets</a></span>'
+      ].join('\n');
+    },
+    'test-disponibilite': function () {
+      return '<span class="v">True</span>  <span class="m"># Disponible immédiatement · CDI ou CDD</span>';
+    },
+    'get-cv': function () {
+      return '<span class="m">CV :</span> <a href="cv/CV_Papa_Mamadou_Gueye.pdf" download>cv/CV_Papa_Mamadou_Gueye.pdf</a>';
+    },
+    'whoami': function () { return 'pmgueye  <span class="m"># prêt pour un nouveau SI</span>'; }
+  };
 
+  function print(html) { out.insertAdjacentHTML('beforeend', html + '\n'); out.scrollTop = out.scrollHeight; }
 
+  function run(raw) {
+    var line = raw.trim();
+    print('<span class="p">PS C:\\&gt;</span> <span class="cmd">' + esc(line) + '</span>');
+    if (!line) return;
+    var first = line.split(/\s+/)[0];
+    var name = first.toLowerCase();
+    if (name === 'clear-host' || name === 'cls' || name === 'clear') { out.innerHTML = ''; return; }
+    var fn = COMMANDS[name];
+    if (fn) { print(fn(line.slice(first.length)) + '\n'); return; }
+    print('<span class="e">' + esc(first) + ' : Le terme « ' + esc(first) + ' » n\'est pas reconnu comme nom d\'applet de commande.\nEssayez Get-Help pour voir les commandes disponibles.</span>\n');
+  }
 
+  document.getElementById('cmdForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var value = input.value;
+    if (value.trim()) history.push(value);
+    historyIndex = history.length;
+    run(value); input.value = '';
+  });
+  input.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowUp' && history.length) { historyIndex = Math.max(0, historyIndex - 1); input.value = history[historyIndex]; e.preventDefault(); }
+    else if (e.key === 'ArrowDown' && history.length) { historyIndex = Math.min(history.length, historyIndex + 1); input.value = history[historyIndex] || ''; e.preventDefault(); }
+    else if (e.key === 'Tab' && input.value) {
+      var partial = input.value.toLowerCase();
+      var match = COMMAND_NAMES.filter(function (n) { return n.toLowerCase().indexOf(partial) === 0; })[0];
+      if (match) { input.value = match; e.preventDefault(); }
+    }
+  });
+  document.getElementById('chips').addEventListener('click', function (e) {
+    var btn = e.target.closest('button[data-cmd]');
+    if (btn) run(btn.getAttribute('data-cmd'));
+  });
 
-        <!--  FIN DE LA   PARTIE " CONTACT  "-->
+  print('<span class="m">Windows PowerShell · profil de Papa Mamadou Gueye\nTapez Get-Help pour la liste des commandes.</span>\n');
+  run('Get-Profil');
 
-
+  /* ---------- Certificate viewer ---------- */
+  var dialog = document.getElementById('certDialog');
+  var certImg = document.getElementById('certImg');
+  var certTitle = document.getElementById('certTitle');
+  document.getElementById('certs').addEventListener('click', function (e) {
+    var card = e.target.closest('.cert');
+    if (!card) return;
+    var src = card.getAttribute('data-src');
+    if (typeof dialog.showModal !== 'function') { window.open(src, '_blank', 'noopener'); return; }
+    var title = card.querySelector('b').textContent;
+    certImg.src = src; certImg.alt = 'Certificat : ' + title; certTitle.textContent = title;
+    dialog.showModal();
+  });
+  document.getElementById('certClose').addEventListener('click', function () { dialog.close(); });
+  dialog.addEventListener('click', function (e) { if (e.target === dialog) dialog.close(); });
+})();
 </script>
-<script src="https://wzrd.in/standalone/formdata-polyfill"></script>
-<script src="https://wzrd.in/standalone/promise-polyfill@latest"></script>
-<script src="https://wzrd.in/standalone/whatwg-fetch@latest"></script>
-
-
-
-     <!-- FIN  CODE JAVASCRIPT-->
-
 </body>
 </html>
