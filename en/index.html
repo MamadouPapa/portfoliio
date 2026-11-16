@@ -324,6 +324,9 @@ section { padding-block: clamp(56px, 7vw, 96px); scroll-margin-top: 64px; }
 .d-flow { stroke: var(--accent); stroke-width: 1.6; fill: none; stroke-dasharray: 5 7; animation: flow 1.6s linear infinite; }
 .d-lab { fill: var(--muted); font: 500 10px var(--font-mono); }
 .d-head { fill: var(--accent); }
+.d-lock { fill: none; stroke: var(--accent); stroke-width: 1.6; stroke-linecap: round; }
+.d-redact { fill: color-mix(in srgb, var(--muted) 45%, var(--line)); }
+.badge.conf { border-color: transparent; background: var(--warn-soft); color: var(--warn); }
 @keyframes flow { to { stroke-dashoffset: -24; } }
 .caption { font-family: var(--font-mono); font-size: .72rem; color: var(--muted); }
 @media (max-width: 960px) { .project { grid-template-columns: minmax(0, 1fr); } .project-visual { border-left: 0; border-top: 1px solid var(--line); } }
@@ -697,39 +700,45 @@ footer a:hover { color: var(--ink); }
 
       <article class="project reveal">
         <div class="project-body">
-          <div class="project-meta"><span class="badge ok">In production</span><span class="badge">Hautier IP · 2025</span><span class="badge">Private code</span></div>
-          <h3>Hermes</h3>
-          <p class="lede">A budget comparison tool for patent filings. The team picks a client and a set of countries, and the tool calculates the renewal fees and generates a PDF quote.</p>
+          <div class="project-meta"><span class="badge ok">In production</span><span class="badge">Hautier IP · 2025</span><span class="badge conf">Confidential · code and data not shared</span></div>
+          <h3>Internal business tool</h3>
+          <p class="lede">A confidential project: an internal web application for a team to manage records and generate PDF documents. I designed, built, secured and shipped it to production.</p>
+          <h4>What I did</h4>
+          <ul>
+            <li><strong>Design and development</strong> of the application, from the data model to the screens</li>
+            <li><strong>Production rollout</strong>, then maintenance and new features</li>
+            <li><strong>Security</strong> built in from the start, detailed below</li>
+          </ul>
           <h4>Security built in by design</h4>
           <ul>
             <li>CSRF tokens generated with <code>random_bytes</code> and checked with <code>hash_equals</code></li>
             <li><code>Secure</code>, <code>HttpOnly</code> and <code>SameSite</code> session cookies</li>
-            <li>MySQL access through PDO, authentication check on every page</li>
+            <li>MySQL access through PDO prepared statements, authentication check on every page</li>
             <li>Admin dashboard for account management</li>
           </ul>
           <div class="stack"><span>PHP</span><span>MySQL</span><span>PDO</span><span>JavaScript</span><span>Bootstrap</span><span>DOMPDF</span></div>
-          <p class="note">Internal tool, so the code stays private. Happy to demo it during an interview.</p>
+          <p class="note">Happy to go into detail and give a demo during an interview, within the limits of confidentiality.</p>
         </div>
         <div class="project-visual">
-          <div class="diagram" role="img" aria-label="Hermes user journey: sign-in, client, countries, renewal fees, PDF quote, backed by a MySQL database and an admin dashboard">
-            <svg viewBox="0 0 640 300" xmlns="http://www.w3.org/2000/svg">
+          <div class="diagram" role="img" aria-label="Generic architecture: a browser talks over HTTPS to a protected PHP application (session, CSRF, authentication), which reaches MySQL through prepared statements and produces PDF documents. The business logic stays confidential.">
+            <svg viewBox="0 0 640 290" xmlns="http://www.w3.org/2000/svg">
               <defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="d-head" d="M0 0L10 5L0 10z"/></marker></defs>
-              <text class="d-lab" x="4" y="24">USER JOURNEY</text>
-              <rect class="d-box hl" x="4" y="40" width="110" height="64" rx="8"/><text class="d-t" x="16" y="66">Sign-in</text><text class="d-s" x="16" y="86">session + CSRF</text>
-              <rect class="d-box" x="135" y="40" width="110" height="64" rx="8"/><text class="d-t" x="147" y="66">Client</text><text class="d-s" x="147" y="86">client record</text>
-              <rect class="d-box" x="266" y="40" width="110" height="64" rx="8"/><text class="d-t" x="278" y="66">Countries</text><text class="d-s" x="278" y="86">Europe map</text>
-              <rect class="d-box" x="397" y="40" width="110" height="64" rx="8"/><text class="d-t" x="409" y="66">Renewal fees</text><text class="d-s" x="409" y="86">rates + excl. VAT</text>
-              <rect class="d-box good" x="528" y="40" width="108" height="64" rx="8"/><text class="d-t" x="540" y="66">PDF quote</text><text class="d-s" x="540" y="86">DOMPDF</text>
-              <path class="d-flow" d="M114 72H133" marker-end="url(#ah)"/><path class="d-flow" d="M245 72H264" marker-end="url(#ah)"/><path class="d-flow" d="M376 72H395" marker-end="url(#ah)"/><path class="d-flow" d="M507 72H526" marker-end="url(#ah)"/>
-              <text class="d-lab" x="4" y="176">DATA &amp; ADMINISTRATION</text>
-              <rect class="d-box" x="135" y="190" width="372" height="56" rx="8"/><text class="d-t" x="151" y="214">MySQL · PDO</text><text class="d-s" x="151" y="233">clients · accounts · fees · totals excl. VAT + service fees</text>
-              <path class="d-line" d="M190 104V190M321 104V190M452 104V190"/>
-              <rect class="d-box hl" x="4" y="190" width="110" height="56" rx="8"/><text class="d-t" x="16" y="214">Admin</text><text class="d-s" x="16" y="233">accounts, pwd</text>
-              <path class="d-line" d="M59 104V190"/><path class="d-line" d="M114 218H135"/>
-              <text class="d-lab" x="4" y="284">Every page checks the session before displaying anything.</text>
+              <text class="d-lab" x="4" y="22">GENERIC ARCHITECTURE</text>
+              <rect class="d-box" x="4" y="38" width="170" height="70" rx="8"/><text class="d-t" x="18" y="66">Browser</text><text class="d-s" x="18" y="88">secure cookies</text>
+              <rect class="d-box hl" x="235" y="38" width="170" height="70" rx="8"/><text class="d-t" x="249" y="66">PHP application</text><text class="d-s" x="249" y="88">session · CSRF · auth</text><g class="d-lock" transform="translate(381 46)"><rect x="0" y="7" width="14" height="11" rx="2.5"/><path d="M3.5 7V4.8a3.5 3.5 0 0 1 7 0V7"/></g>
+              <rect class="d-box good" x="466" y="38" width="170" height="70" rx="8"/><text class="d-t" x="480" y="66">MySQL</text><text class="d-s" x="480" y="88">prepared statements</text>
+              <path class="d-flow" d="M174 73H233" marker-end="url(#ah)"/><path class="d-flow" d="M405 73H464" marker-end="url(#ah)"/>
+              <text class="d-lab" x="180" y="64">HTTPS</text><text class="d-lab" x="414" y="64">PDO</text>
+              <path class="d-line" d="M350 108V214H464"/>
+              <rect class="d-box" x="466" y="182" width="170" height="64" rx="8"/><text class="d-t" x="480" y="208">PDF documents</text><text class="d-s" x="480" y="228">DOMPDF</text>
+              <text class="d-lab" x="4" y="164">BUSINESS LOGIC</text>
+              <rect class="d-box" x="4" y="178" width="300" height="72" rx="8"/><g class="d-lock" transform="translate(18 190)"><rect x="0" y="7" width="14" height="11" rx="2.5"/><path d="M3.5 7V4.8a3.5 3.5 0 0 1 7 0V7"/></g><text class="d-t" x="42" y="206">Confidential</text>
+              <rect class="d-redact" x="18" y="220" width="120" height="9" rx="2"/><rect class="d-redact" x="146" y="220" width="70" height="9" rx="2"/><rect class="d-redact" x="224" y="220" width="64" height="9" rx="2"/>
+              <rect class="d-redact" x="18" y="235" width="86" height="9" rx="2"/><rect class="d-redact" x="112" y="235" width="140" height="9" rx="2"/>
+              <text class="d-lab" x="4" y="282">Every page checks the session before rendering anything.</text>
             </svg>
           </div>
-          <span class="caption">Simplified architecture · 7 MySQL tables</span>
+          <span class="caption">Deliberately generic diagram · no business details</span>
         </div>
       </article>
     </div>
@@ -747,7 +756,7 @@ footer a:hover { color: var(--ink); }
       <article class="case"><div class="case-id"><span class="label accent">Identity &amp; access</span><span class="label">PR.AA</span></div><h3>A clean hybrid directory, protected by MFA</h3><ul><li>Accounts, groups and GPOs in Active Directory / Entra ID</li><li>MFA rollout for all users</li><li>Security policies and access rights reviews</li></ul><div class="tags"><span class="tag">Active Directory</span><span class="tag">Entra ID</span><span class="tag">GPO</span><span class="tag">MFA</span></div></article>
       <article class="case"><div class="case-id"><span class="label accent">Hardening &amp; compliance</span><span class="label">PR.PS</span></div><h3>Hardened workstations and servers, GDPR-compliant IT</h3><ul><li>Hardening of Windows / Linux workstations and servers</li><li>Security audits and remediation plans</li><li>GDPR compliance for the whole IT estate</li></ul><div class="tags"><span class="tag">Windows Server</span><span class="tag">Ubuntu</span><span class="tag">Debian</span><span class="tag">Intune</span><span class="tag">GDPR</span></div></article>
       <article class="case"><div class="case-id"><span class="label accent">Continuity</span><span class="label">RC.RP</span></div><h3>Managed backups and a ready-to-use recovery plan</h3><ul><li>Backup setup and monitoring</li><li>Wrote and maintained the DRP / BCP</li><li>Day-to-day operations of the VMware / Hyper-V infrastructure and the network</li></ul><div class="tags"><span class="tag">VMware</span><span class="tag">Hyper-V</span><span class="tag">Firewall</span><span class="tag">VPN</span><span class="tag">VLAN</span></div></article>
-      <article class="case"><div class="case-id"><span class="label accent">Automation</span><span class="label">Scripting</span></div><h3>Fewer manual tasks, tailor-made business tools</h3><ul><li>Admin scripts in PowerShell and Python</li><li>Business apps built with Power Apps, Power Automate and Dataverse</li><li>Internal PHP / SQL tools, including Hermes</li></ul><div class="tags"><span class="tag">PowerShell</span><span class="tag">Python</span><span class="tag">Power Platform</span><span class="tag">Microsoft 365</span></div></article>
+      <article class="case"><div class="case-id"><span class="label accent">Automation</span><span class="label">Scripting</span></div><h3>Fewer manual tasks, tailor-made business tools</h3><ul><li>Admin scripts in PowerShell and Python</li><li>Business apps built with Power Apps, Power Automate and Dataverse</li><li>Internal PHP / SQL tools, including one running in production</li></ul><div class="tags"><span class="tag">PowerShell</span><span class="tag">Python</span><span class="tag">Power Platform</span><span class="tag">Microsoft 365</span></div></article>
     </div>
   </section>
 
@@ -1159,7 +1168,7 @@ footer a:hover { color: var(--ink); }
         'RansomWatch    Blue team · detection     Python, Sigma, auditd, Suricata',
         'IdentityGuard  Audit AD / Entra ID       PowerShell, Microsoft Graph',
         'EntraLifecycle Entra ID lifecycle (JML)  PowerShell, Microsoft Graph',
-        'Hermes         Business tool (prod)      PHP, MySQL, PDO, DOMPDF',
+        'Internal tool  Confidential (prod)       PHP, MySQL, PDO, DOMPDF',
         '',
         '<span class="m">Details: <a href="#projects">Projects section</a></span>'
       ].join('\n');
