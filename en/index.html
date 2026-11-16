@@ -394,6 +394,8 @@ footer a:hover { color: var(--ink); }
 .lang-switch a { text-decoration: none; color: var(--muted); transition: color .15s; }
 .lang-switch a:hover, .lang-switch a[aria-current="page"] { color: var(--ink); }
 .lang-switch a[aria-current="page"] { font-weight: 600; }
+.lang-switch a { display: inline-flex; align-items: center; gap: 6px; }
+.lang-switch .flag { width: 18px; height: 12px; border-radius: 2px; box-shadow: 0 0 0 1px color-mix(in srgb, var(--ink) 15%, transparent); flex: none; }
 </style>
 </head>
 <body>
@@ -414,8 +416,8 @@ footer a:hover { color: var(--ink); }
     </nav>
     <div class="top-right">
       <nav class="lang-switch" aria-label="Language">
-        <a href="../" hreflang="fr" lang="fr" aria-label="Version française">FR</a>
-        <a href="./" hreflang="en" lang="en" aria-label="English version" aria-current="page">EN</a>
+        <a href="../" hreflang="fr" lang="fr" aria-label="Version française"><svg class="flag" viewBox="0 0 3 2" aria-hidden="true"><rect width="1" height="2" fill="#0055A4"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#EF4135"/></svg>FR</a>
+        <a href="./" hreflang="en" lang="en" aria-label="English version" aria-current="page"><svg class="flag" viewBox="0 0 60 30" aria-hidden="true"><clipPath id="fl-uk"><path d="M0,0v30h60V0z"/></clipPath><clipPath id="fl-t"><path d="M30,15h30v15zv15H0zH0V0zV0h30z"/></clipPath><g clip-path="url(#fl-uk)"><path d="M0,0v30h60V0z" fill="#012169"/><path d="M0,0 60,30M60,0 0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 60,30M60,0 0,30" clip-path="url(#fl-t)" stroke="#C8102E" stroke-width="4"/><path d="M30,0v30M0,15h60" stroke="#fff" stroke-width="10"/><path d="M30,0v30M0,15h60" stroke="#C8102E" stroke-width="6"/></g></svg>EN</a>
       </nav>
       <span class="status"><span class="dot" aria-hidden="true"></span>Available · Permanent / Fixed-term</span>
       <a class="btn-sm" href="../cv/CV_Papa_Mamadou_Gueye_EN.pdf" download aria-label="Download my CV (PDF)">CV</a>
