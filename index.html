@@ -4,56 +4,64 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Papa Mamadou Gueye · Ingénieur Systèmes & Cybersécurité</title>
-<meta name="description" content="Ingénieur systèmes et cybersécurité, spécialiste Microsoft hybride (Active Directory, Entra ID, Microsoft 365) et IAM. Disponible en CDI ou CDD, mobile partout en France.">
+<meta name="description" content="Ingénieur systèmes et cybersécurité, spécialiste Microsoft hybride (Active Directory, Entra ID, Microsoft 365) et IAM. Attaque, détection, durcissement, PRA. Disponible en CDI ou CDD.">
 <meta property="og:title" content="Papa Mamadou Gueye · Ingénieur Systèmes & Cybersécurité">
-<meta property="og:description" content="2 ans comme responsable du SI en environnement Microsoft hybride. IAM, MFA, durcissement, PRA/PCA. Disponible en CDI ou CDD.">
+<meta property="og:description" content="2 ans comme responsable du SI en environnement Microsoft hybride. IAM, MFA, durcissement, détection, PRA/PCA. Disponible en CDI ou CDD.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://mamadoupapa.github.io/portfoliio/">
-<meta name="theme-color" content="#0A0F1A">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230A0F1A'/%3E%3Cpath d='M32 12l16 6v12c0 10-7 18-16 22-9-4-16-12-16-22V18z' fill='none' stroke='%237F9CFF' stroke-width='4'/%3E%3Cpath d='M25 32l5 5 9-10' fill='none' stroke='%234FD1A0' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<meta name="theme-color" content="#05080F">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2305080F'/%3E%3Cpath d='M32 12l16 6v12c0 10-7 18-16 22-9-4-16-12-16-22V18z' fill='none' stroke='%2389A2FF' stroke-width='4'/%3E%3Cpath d='M25 32l5 5 9-10' fill='none' stroke='%2345D6B4' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
 <style>
-/* Layout: dark-first. Identity-graph hero with a conditional-access policy, project files with architecture
-   diagrams, production missions, a live PowerShell console, skills, timeline, certificates. */
+/* Layout: security-operations brief. Dot-globe hero (real places of the career), NIST CSF 2.0 coverage band,
+   attack-vs-defence project pair, identity audit tool, production app, missions, PowerShell console, background.
+   Dark-first; light theme mirrors the tokens. */
 :root {
-  --bg: #0A0F1A;
-  --surface: #0F1626;
-  --raise: #152036;
-  --ink: #E7ECF5;
-  --muted: #8B97AD;
-  --line: #1F2B42;
-  --accent: #7F9CFF;
-  --accent-ink: #0A0F1A;
-  --accent-soft: #172443;
-  --ok: #4FD1A0;
-  --ok-soft: #0F2A22;
-  --warn: #FFB454;
-  --warn-soft: #2B2112;
+  --bg: #05080F;
+  --bg-2: #0A0F1C;
+  --surface: #0D1424;
+  --raise: #121B30;
+  --ink: #E9EEF7;
+  --muted: #8994AB;
+  --faint: #4A5571;
+  --line: #1A2440;
+  --accent: #89A2FF;
+  --accent-2: #B48CFF;
+  --accent-ink: #05080F;
+  --accent-soft: #141F3D;
+  --ok: #45D6B4;
+  --ok-soft: #0B2622;
+  --warn: #FFB25B;
+  --warn-soft: #2A1E10;
+  --crit: #FF6B7A;
   --font-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
   --font-body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
   --step-1: 1.125rem;
   --step-2: 1.5rem;
-  --step-3: clamp(1.8rem, 1.2rem + 2.2vw, 2.75rem);
-  --step-4: clamp(2.8rem, 1.2rem + 6.4vw, 6.4rem);
-  --radius: 12px;
-  --wrap: 1180px;
+  --step-3: clamp(1.9rem, 1.2rem + 2.4vw, 3rem);
+  --step-4: clamp(2.7rem, 1rem + 5.6vw, 6rem);
+  --radius: 14px;
+  --wrap: 1220px;
+  --glow: 0 0 0 1px color-mix(in srgb, var(--accent) 30%, transparent), 0 20px 60px -20px color-mix(in srgb, var(--accent) 35%, transparent);
   color-scheme: dark;
 }
 @media (prefers-color-scheme: light) {
   :root:not([data-theme="dark"]) {
-    --bg: #F2F4F8; --surface: #FFFFFF; --raise: #F7F9FC; --ink: #0E1729; --muted: #536079; --line: #D6DCE6;
-    --accent: #2747D6; --accent-ink: #FFFFFF; --accent-soft: #E3E9FC; --ok: #127A4D; --ok-soft: #DCF1E6;
-    --warn: #9A5600; --warn-soft: #FBEBD3;
+    --bg: #F3F5FA; --bg-2: #EBEEF6; --surface: #FFFFFF; --raise: #F7F8FC; --ink: #0B1222; --muted: #525E78; --faint: #9AA3B8; --line: #D9DEEA;
+    --accent: #3149D8; --accent-2: #7A3FE0; --accent-ink: #FFFFFF; --accent-soft: #E6EAFC; --ok: #0F7A62; --ok-soft: #DAF2EB;
+    --warn: #9C5300; --warn-soft: #FBECD7; --crit: #C0263A;
+    --glow: 0 0 0 1px color-mix(in srgb, var(--accent) 22%, transparent), 0 20px 50px -26px color-mix(in srgb, var(--accent) 40%, transparent);
     color-scheme: light;
   }
 }
 :root[data-theme="light"] {
-  --bg: #F2F4F8; --surface: #FFFFFF; --raise: #F7F9FC; --ink: #0E1729; --muted: #536079; --line: #D6DCE6;
-  --accent: #2747D6; --accent-ink: #FFFFFF; --accent-soft: #E3E9FC; --ok: #127A4D; --ok-soft: #DCF1E6;
-  --warn: #9A5600; --warn-soft: #FBEBD3;
+  --bg: #F3F5FA; --bg-2: #EBEEF6; --surface: #FFFFFF; --raise: #F7F8FC; --ink: #0B1222; --muted: #525E78; --faint: #9AA3B8; --line: #D9DEEA;
+  --accent: #3149D8; --accent-2: #7A3FE0; --accent-ink: #FFFFFF; --accent-soft: #E6EAFC; --ok: #0F7A62; --ok-soft: #DAF2EB;
+  --warn: #9C5300; --warn-soft: #FBECD7; --crit: #C0263A;
+  --glow: 0 0 0 1px color-mix(in srgb, var(--accent) 22%, transparent), 0 20px 50px -26px color-mix(in srgb, var(--accent) 40%, transparent);
   color-scheme: light;
 }
 
@@ -61,186 +69,240 @@
 html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 body {
-  margin: 0; background: var(--bg); color: var(--ink);
+  margin: 0; background-color: var(--bg); color: var(--ink);
   font-family: var(--font-body); font-size: 1rem; line-height: 1.6;
   padding-inline: 20px; -webkit-font-smoothing: antialiased; overflow-x: hidden;
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--line) 45%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--line) 45%, transparent) 1px, transparent 1px);
+  background-size: 64px 64px;
 }
 img { max-width: 100%; display: block; }
 .wrap { max-width: var(--wrap); margin-inline: auto; }
 a { color: inherit; }
-code { font-family: var(--font-mono); font-size: .88em; }
+code { font-family: var(--font-mono); font-size: .86em; color: var(--ink); background: var(--accent-soft); padding: 1px 5px; border-radius: 4px; }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
-h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; margin: 0; line-height: 1.05; }
+h1, h2, h3, h4 { font-family: var(--font-display); text-wrap: balance; margin: 0; line-height: 1.05; }
 p { margin: 0; }
-.label { font-family: var(--font-mono); font-size: .75rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.label { font-family: var(--font-mono); font-size: .74rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.label.accent { color: var(--accent); }
 .skip { position: absolute; left: -999px; top: 8px; }
 .skip:focus { left: 12px; z-index: 100; background: var(--accent); color: var(--accent-ink); padding: 8px 12px; border-radius: 6px; }
 
 /* Header */
 .top {
-  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20;
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 30;
   margin-inline: -20px; padding: 12px 20px;
-  background: color-mix(in srgb, var(--bg) 82%, transparent);
-  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  background: color-mix(in srgb, var(--bg) 78%, transparent);
+  backdrop-filter: blur(14px) saturate(140%); -webkit-backdrop-filter: blur(14px) saturate(140%);
   border-bottom: 1px solid var(--line);
 }
 .top .wrap { display: flex; align-items: center; gap: 20px; justify-content: space-between; }
-.brand { font-family: var(--font-display); font-stretch: 122%; font-weight: 780; text-decoration: none; letter-spacing: .01em; white-space: nowrap; }
-.brand span { color: var(--accent); }
-.nav { display: flex; gap: 22px; font-size: .9rem; }
+.brand { display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-display); font-stretch: 122%; font-weight: 780; text-decoration: none; letter-spacing: .02em; white-space: nowrap; }
+.brand svg { width: 22px; height: 22px; }
+.nav { display: flex; gap: 24px; font-size: .88rem; }
 .nav a { text-decoration: none; color: var(--muted); transition: color .15s; }
 .nav a:hover { color: var(--ink); }
 .top-right { display: flex; align-items: center; gap: 12px; }
 .status { display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; font-family: var(--font-mono); font-size: .72rem; padding: 5px 10px; border-radius: 999px; background: var(--ok-soft); color: var(--ok); }
-.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--ok); animation: pulse 2.4s infinite; }
+.dot { width: 7px; height: 7px; border-radius: 50%; background: var(--ok); animation: pulse 2.4s infinite; }
 @keyframes pulse { 0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--ok) 60%, transparent); } 70% { box-shadow: 0 0 0 8px transparent; } 100% { box-shadow: 0 0 0 0 transparent; } }
-.btn-sm { font: 500 .85rem var(--font-body); text-decoration: none; padding: 7px 12px; border-radius: 7px; background: var(--accent); color: var(--accent-ink); white-space: nowrap; }
-@media (max-width: 980px) { .nav { display: none; } }
-@media (max-width: 520px) { .status { display: none; } }
+.btn-sm { font: 600 .82rem var(--font-body); text-decoration: none; padding: 7px 13px; border-radius: 8px; background: var(--ink); color: var(--bg); white-space: nowrap; }
+@media (max-width: 1020px) { .nav { display: none; } }
+@media (max-width: 560px) { .status { display: none; } }
 
 /* Hero */
-.hero-zone { position: relative; margin-inline: -20px; padding-inline: 20px; isolation: isolate; }
-#graph { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; opacity: .9;
-  -webkit-mask-image: radial-gradient(120% 90% at 70% 30%, #000 30%, transparent 75%);
-          mask-image: radial-gradient(120% 90% at 70% 30%, #000 30%, transparent 75%); }
-.hero { padding-block: clamp(56px, 9vw, 112px) 64px; display: grid; grid-template-columns: 1.2fr .8fr; gap: clamp(32px, 5vw, 72px); align-items: center; }
+.hero-zone { position: relative; isolation: isolate; }
+.hero-zone::before {
+  content: ""; position: absolute; inset: -120px -10vw 0; z-index: -2; pointer-events: none;
+  background:
+    radial-gradient(40% 50% at 72% 38%, color-mix(in srgb, var(--accent) 22%, transparent), transparent 70%),
+    radial-gradient(30% 40% at 90% 70%, color-mix(in srgb, var(--accent-2) 16%, transparent), transparent 70%);
+}
+.hero { padding-block: clamp(48px, 7vw, 96px) 40px; display: grid; grid-template-columns: 1.08fr .92fr; gap: clamp(24px, 4vw, 56px); align-items: center; }
 .hero > * { min-width: 0; }
-.role { color: var(--accent); margin-bottom: 22px; }
-.name { font-size: var(--step-4); font-stretch: 125%; font-weight: 800; letter-spacing: -.025em; text-transform: uppercase; line-height: .9; }
+.kicker { display: inline-flex; align-items: center; gap: 10px; padding: 6px 12px 6px 6px; border: 1px solid var(--line); border-radius: 999px; background: color-mix(in srgb, var(--surface) 70%, transparent); font-size: .82rem; color: var(--muted); max-width: 100%; }
+.kicker b { font: 600 .68rem var(--font-mono); letter-spacing: .08em; padding: 3px 8px; border-radius: 999px; background: var(--accent); color: var(--accent-ink); white-space: nowrap; }
+.name { margin-top: 26px; font-size: var(--step-4); font-stretch: 125%; font-weight: 800; letter-spacing: -.03em; text-transform: uppercase; line-height: .88; }
 .name span { display: block; }
-.name .soft { -webkit-text-stroke: 1.5px var(--ink); color: transparent; font-weight: 700; }
-.thesis { margin-top: 30px; font-size: var(--step-1); max-width: 33em; color: color-mix(in srgb, var(--ink) 86%, var(--muted)); }
+.name .outline { -webkit-text-stroke: 1.4px color-mix(in srgb, var(--ink) 75%, transparent); color: transparent; }
+.name .grad { background: linear-gradient(92deg, var(--ink) 10%, var(--accent) 60%, var(--accent-2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.role { margin-top: 22px; min-height: 1.6em; font: 500 clamp(.95rem, .85rem + .5vw, 1.2rem) var(--font-mono); color: var(--accent); }
+.role .cursor { display: inline-block; width: .55em; height: 1.1em; vertical-align: -.18em; background: var(--accent); margin-left: 4px; animation: blink 1.1s steps(1) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+.thesis { margin-top: 18px; font-size: var(--step-1); max-width: 34em; color: color-mix(in srgb, var(--ink) 84%, var(--muted)); }
 .thesis strong { color: var(--ink); font-weight: 600; }
-.cta { margin-top: 34px; display: flex; flex-wrap: wrap; gap: 12px; }
-.btn { display: inline-flex; align-items: center; gap: 9px; cursor: pointer; font: 500 .95rem var(--font-body); text-decoration: none; padding: 12px 18px; border-radius: 9px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); transition: transform .15s ease, border-color .15s ease; }
+.cta { margin-top: 30px; display: flex; flex-wrap: wrap; gap: 12px; }
+.btn { display: inline-flex; align-items: center; gap: 9px; cursor: pointer; font: 500 .95rem var(--font-body); text-decoration: none; padding: 12px 18px; border-radius: 10px; border: 1px solid var(--line); background: color-mix(in srgb, var(--surface) 80%, transparent); color: var(--ink); transition: transform .15s ease, border-color .15s ease; }
 .btn:hover { border-color: var(--accent); transform: translateY(-1px); }
-.btn.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.btn.primary { background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: var(--accent-ink); border-color: transparent; box-shadow: var(--glow); font-weight: 600; }
 .btn svg { width: 16px; height: 16px; flex: none; }
 
-/* Conditional access policy */
-.policy { background: color-mix(in srgb, var(--surface) 92%, transparent); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; backdrop-filter: blur(6px); box-shadow: 0 30px 60px -30px rgba(0,0,0,.55); }
-.policy-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 14px 18px; border-bottom: 1px solid var(--line); }
-.policy-head h2 { font-size: .98rem; font-stretch: 100%; font-weight: 650; }
-.pill { font-family: var(--font-mono); font-size: .7rem; padding: 3px 8px; border-radius: 4px; background: var(--accent-soft); color: var(--accent); white-space: nowrap; }
-.policy dl { margin: 0; padding: 4px 18px; display: grid; grid-template-columns: max-content 1fr; column-gap: 16px; }
-.policy dt, .policy dd { margin: 0; padding: 9px 0; border-bottom: 1px dashed var(--line); font-size: .88rem; }
-.policy dt { font-family: var(--font-mono); font-size: .72rem; color: var(--muted); padding-top: 11px; }
-.policy dl > :nth-last-child(-n+2) { border-bottom: 0; }
-.checks { list-style: none; margin: 0; padding: 14px 18px; border-top: 1px solid var(--line); background: var(--raise); display: grid; gap: 9px; }
-.checks li { display: grid; grid-template-columns: 20px 1fr; gap: 10px; align-items: start; font-size: .86rem; transition: opacity .25s ease; }
-.mark { width: 18px; height: 18px; border-radius: 50%; display: grid; place-items: center; background: var(--ok); color: var(--bg); font-size: 11px; font-weight: 700; margin-top: 2px; }
-.checks li.pending { opacity: .4; }
-.checks li.pending .mark { background: var(--line); color: transparent; }
-.verdict { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; padding: 14px 18px; border-top: 1px solid var(--line); }
-.verdict-text { font-family: var(--font-mono); font-size: .8rem; color: var(--ok); font-weight: 500; }
-.verdict-text.wait { color: var(--muted); }
-.ghost { font: 500 .8rem var(--font-body); background: none; border: 1px solid var(--line); color: var(--ink); padding: 7px 12px; border-radius: 6px; cursor: pointer; }
-.ghost:hover { border-color: var(--accent); }
-@media (max-width: 980px) { .hero { grid-template-columns: 1fr; } }
+.globe-wrap { position: relative; aspect-ratio: 1 / 1; width: 100%; }
+#globe { position: absolute; inset: 0; width: 100%; height: 100%; }
+.globe-hud { position: absolute; left: 0; right: 0; bottom: 2%; display: flex; justify-content: center; }
+.hud { font-family: var(--font-mono); font-size: .7rem; color: var(--muted); display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; padding: 8px 14px; border: 1px solid var(--line); border-radius: 999px; background: color-mix(in srgb, var(--bg) 70%, transparent); backdrop-filter: blur(8px); }
+.hud span::before { content: "●"; margin-right: 6px; color: var(--ok); }
+@media (max-width: 1020px) { .hero { grid-template-columns: 1fr; } .globe-wrap { max-width: 520px; margin-inline: auto; } }
 
 /* Facts */
-.facts { display: grid; grid-template-columns: repeat(4, 1fr); border-block: 1px solid var(--line); }
-.fact { padding: 24px 20px 24px 0; display: grid; gap: 4px; }
-.fact + .fact { padding-left: 20px; border-left: 1px solid var(--line); }
-.fact b { font-family: var(--font-display); font-stretch: 115%; font-size: var(--step-2); font-weight: 720; line-height: 1.1; }
+.facts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; margin-top: 40px; }
+.fact { padding: 24px; display: grid; gap: 4px; background: color-mix(in srgb, var(--surface) 92%, transparent); }
+.fact b { font-family: var(--font-display); font-stretch: 118%; font-size: var(--step-2); font-weight: 760; line-height: 1.1; }
 .fact span { color: var(--muted); font-size: .88rem; }
-@media (max-width: 760px) {
-  .facts { grid-template-columns: 1fr 1fr; }
-  .fact:nth-child(3) { padding-left: 0; border-left: 0; }
-  .fact:nth-child(n+3) { border-top: 1px solid var(--line); }
-}
+@media (max-width: 760px) { .facts { grid-template-columns: 1fr 1fr; } .fact { padding: 18px; } }
+
+/* Ticker */
+.ticker { margin-top: 56px; margin-inline: -20px; border-block: 1px solid var(--line); background: color-mix(in srgb, var(--bg-2) 85%, transparent); overflow: hidden; }
+.ticker-track { display: flex; gap: 40px; width: max-content; padding: 14px 0; font: 500 .82rem var(--font-mono); color: var(--muted); animation: ticker 52s linear infinite; }
+.ticker-track span { white-space: nowrap; }
+.ticker-track span::before { content: "/"; color: var(--accent); margin-right: 40px; }
+@keyframes ticker { to { transform: translateX(-50%); } }
 
 /* Sections */
-section { padding-block: clamp(64px, 9vw, 112px); scroll-margin-top: 60px; }
-.sec-head { display: grid; grid-template-columns: 220px 1fr; gap: 24px; margin-bottom: 44px; align-items: baseline; }
-.sec-head h2 { font-size: var(--step-3); font-stretch: 116%; font-weight: 760; letter-spacing: -.01em; }
-.sec-head p { color: var(--muted); max-width: 42em; margin-top: 14px; }
+section { padding-block: clamp(56px, 7vw, 96px); scroll-margin-top: 64px; }
+.sec-head { display: grid; grid-template-columns: 240px 1fr; gap: 24px; margin-bottom: 48px; align-items: baseline; }
+.sec-head .idx { font: 500 .74rem var(--font-mono); color: var(--accent); letter-spacing: .1em; text-transform: uppercase; }
+.sec-head h2 { font-size: var(--step-3); font-stretch: 118%; font-weight: 780; letter-spacing: -.015em; }
+.sec-head p { color: var(--muted); max-width: 44em; margin-top: 16px; font-size: 1.04rem; }
 @media (max-width: 760px) { .sec-head { grid-template-columns: 1fr; gap: 8px; } }
 
-/* Projects */
-.projects { display: grid; gap: 28px; }
-.project { display: grid; grid-template-columns: 1fr 1.05fr; border: 1px solid var(--line); border-radius: 16px; overflow: hidden; background: var(--surface); }
-.project > * { min-width: 0; }
-.project-body { padding: clamp(24px, 3.4vw, 40px); display: grid; gap: 16px; align-content: start; }
+/* NIST CSF coverage */
+.csf { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; }
+.csf-col { border: 1px solid var(--line); border-radius: var(--radius); background: color-mix(in srgb, var(--surface) 92%, transparent); padding: 20px 18px; display: grid; gap: 12px; align-content: start; min-width: 0; transition: border-color .2s, transform .2s, box-shadow .2s; }
+.csf-col:hover { border-color: color-mix(in srgb, var(--accent) 60%, var(--line)); transform: translateY(-3px); box-shadow: var(--glow); }
+.csf-col .code { font: 600 .72rem var(--font-mono); color: var(--accent); letter-spacing: .08em; }
+.csf-col h3 { font-size: 1.12rem; font-stretch: 110%; font-weight: 720; }
+.csf-col ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; font-size: .86rem; color: var(--muted); }
+.csf-col li { padding-left: 14px; position: relative; }
+.csf-col li::before { content: ""; position: absolute; left: 0; top: .72em; width: 6px; height: 1px; background: var(--accent); }
+.csf-col li.lab { color: var(--ink); }
+.csf-col li.lab::after { content: "lab"; margin-left: 6px; font: 600 .62rem var(--font-mono); color: var(--accent-2); border: 1px solid color-mix(in srgb, var(--accent-2) 50%, transparent); padding: 0 5px; border-radius: 3px; vertical-align: 1px; }
+.csf-note { margin-top: 18px; color: var(--muted); font-size: .84rem; }
+@media (max-width: 1100px) { .csf { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 640px) { .csf { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 420px) { .csf { grid-template-columns: 1fr; } }
+
+/* Attack vs defence */
+.duel { border: 1px solid var(--line); border-radius: 20px; overflow: hidden; background: color-mix(in srgb, var(--surface) 94%, transparent); }
+.duel-head { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: stretch; border-bottom: 1px solid var(--line); }
+.duel-side { padding: clamp(22px, 3vw, 36px); display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; align-content: start; }
+.duel-side.red { background: linear-gradient(160deg, color-mix(in srgb, var(--warn) 10%, transparent), transparent 60%); }
+.duel-side.blue { background: linear-gradient(200deg, color-mix(in srgb, var(--ok) 10%, transparent), transparent 60%); }
+.duel-vs { display: grid; place-items: center; padding: 0 10px; border-inline: 1px solid var(--line); font: 700 .8rem var(--font-mono); color: var(--muted); writing-mode: vertical-rl; letter-spacing: .3em; }
+.team { font: 600 .72rem var(--font-mono); letter-spacing: .1em; text-transform: uppercase; }
+.red .team { color: var(--warn); }
+.blue .team { color: var(--ok); }
+.duel h3 { font-size: clamp(1.8rem, 1.2rem + 1.8vw, 2.6rem); font-stretch: 120%; font-weight: 800; letter-spacing: -.015em; }
+.duel .lede { color: color-mix(in srgb, var(--ink) 82%, var(--muted)); }
+.stack { display: flex; flex-wrap: wrap; gap: 6px; }
+.stack span { font-family: var(--font-mono); font-size: .72rem; padding: 4px 9px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); }
+.link-arrow { font: 600 .9rem var(--font-body); color: var(--accent); text-decoration: none; display: inline-flex; gap: 6px; align-items: center; }
+.link-arrow:hover { text-decoration: underline; text-underline-offset: 4px; }
+.chain { overflow-x: auto; }
+.chain table { width: 100%; border-collapse: collapse; min-width: 720px; font-size: .9rem; }
+.chain th { text-align: left; font: 600 .7rem var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); padding: 14px 20px; border-bottom: 1px solid var(--line); background: var(--raise); }
+.chain td { padding: 14px 20px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.chain tr:last-child td { border-bottom: 0; }
+.chain tbody tr { transition: background .15s; }
+.chain tbody tr:hover { background: color-mix(in srgb, var(--accent) 6%, transparent); }
+.step { font: 600 .72rem var(--font-mono); color: var(--faint); }
+.tech { font: 600 .74rem var(--font-mono); color: var(--accent); white-space: nowrap; }
+.atk small, .def small { display: block; color: var(--muted); font-size: .8rem; margin-top: 2px; }
+.def b { font: 600 .68rem var(--font-mono); color: var(--ok); background: var(--ok-soft); padding: 2px 6px; border-radius: 4px; margin-right: 6px; }
+@media (max-width: 860px) {
+  .duel-head { grid-template-columns: minmax(0, 1fr); }
+  .duel-vs { writing-mode: horizontal-tb; border-inline: 0; border-block: 1px solid var(--line); padding: 10px; }
+}
+
+/* Project cards */
+.projects { display: grid; gap: 24px; margin-top: 24px; }
+.project { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr); border: 1px solid var(--line); border-radius: 20px; overflow: hidden; background: color-mix(in srgb, var(--surface) 94%, transparent); }
+.project-body { padding: clamp(24px, 3.4vw, 40px); display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; align-content: start; }
 .project-meta { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
-.badge { font-family: var(--font-mono); font-size: .7rem; padding: 3px 8px; border-radius: 4px; border: 1px solid var(--line); color: var(--muted); }
+.badge { font-family: var(--font-mono); font-size: .68rem; padding: 3px 8px; border-radius: 4px; border: 1px solid var(--line); color: var(--muted); }
 .badge.ok { border-color: transparent; background: var(--ok-soft); color: var(--ok); }
-.badge.warn { border-color: transparent; background: var(--warn-soft); color: var(--warn); }
-.project h3 { font-size: clamp(1.6rem, 1.2rem + 1.4vw, 2.2rem); font-stretch: 118%; font-weight: 780; letter-spacing: -.01em; }
+.badge.lab { border-color: transparent; background: color-mix(in srgb, var(--accent-2) 16%, transparent); color: var(--accent-2); }
+.project h3 { font-size: clamp(1.7rem, 1.2rem + 1.5vw, 2.4rem); font-stretch: 120%; font-weight: 800; letter-spacing: -.015em; }
 .project .lede { color: color-mix(in srgb, var(--ink) 82%, var(--muted)); font-size: 1.02rem; }
-.project h4 { margin: 6px 0 0; font: 600 .8rem var(--font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--accent); }
-.project ul { margin: 0; padding-left: 1.1em; display: grid; gap: 6px; color: var(--muted); }
+.project h4 { margin-top: 6px; font: 600 .74rem var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+.project ul { margin: 0; padding-left: 1.1em; display: grid; gap: 6px; color: var(--muted); font-size: .95rem; }
 .project ul strong { color: var(--ink); font-weight: 500; }
 .project li::marker { color: var(--accent); }
-.stack { display: flex; flex-wrap: wrap; gap: 6px; }
-.stack span { font-family: var(--font-mono); font-size: .74rem; padding: 4px 9px; border-radius: 999px; background: var(--accent-soft); color: var(--ink); }
-.project-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 4px; }
-.link-arrow { font: 500 .9rem var(--font-body); color: var(--accent); text-decoration: none; display: inline-flex; gap: 6px; align-items: center; }
-.link-arrow:hover { text-decoration: underline; text-underline-offset: 4px; }
 .note { font-size: .82rem; color: var(--muted); }
-.project-visual { background: var(--raise); border-left: 1px solid var(--line); padding: clamp(20px, 3vw, 32px); display: grid; gap: 14px; align-content: center; }
-.project-body, .project-visual { grid-template-columns: minmax(0, 1fr); }
-.diagram { overflow-x: auto; min-width: 0; }
+.project-visual { background: var(--raise); border-left: 1px solid var(--line); padding: clamp(20px, 3vw, 32px); display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; align-content: center; }
+.diagram { overflow-x: auto; }
 .diagram svg { width: 100%; min-width: 520px; height: auto; display: block; }
 .d-box { fill: var(--surface); stroke: var(--line); stroke-width: 1.2; }
 .d-box.hl { stroke: var(--accent); }
-.d-box.danger { stroke: var(--warn); }
 .d-box.good { stroke: var(--ok); }
 .d-t { fill: var(--ink); font: 600 13px var(--font-body); }
 .d-s { fill: var(--muted); font: 400 10.5px var(--font-mono); }
-.d-line { stroke: var(--muted); stroke-width: 1.2; fill: none; }
-.d-line.dash { stroke-dasharray: 4 4; }
+.d-line { stroke: var(--muted); stroke-width: 1.2; fill: none; stroke-dasharray: 4 4; }
 .d-flow { stroke: var(--accent); stroke-width: 1.6; fill: none; stroke-dasharray: 5 7; animation: flow 1.6s linear infinite; }
-.d-flow.warn { stroke: var(--warn); }
-.d-flow.ok { stroke: var(--ok); }
 .d-lab { fill: var(--muted); font: 500 10px var(--font-mono); }
 .d-head { fill: var(--accent); }
-.d-head.warn { fill: var(--warn); }
-.d-head.ok { fill: var(--ok); }
 @keyframes flow { to { stroke-dashoffset: -24; } }
 .caption { font-family: var(--font-mono); font-size: .72rem; color: var(--muted); }
-@media (max-width: 960px) { .project { grid-template-columns: 1fr; } .project-visual { border-left: 0; border-top: 1px solid var(--line); } }
+@media (max-width: 960px) { .project { grid-template-columns: minmax(0, 1fr); } .project-visual { border-left: 0; border-top: 1px solid var(--line); } }
+
+/* Report mock (IdentityGuard) */
+.report { border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: var(--surface); font-size: .84rem; }
+.report-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 12px 16px; border-bottom: 1px solid var(--line); }
+.report-top b { font: 600 .8rem var(--font-mono); }
+.sev-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border-bottom: 1px solid var(--line); }
+.sev { background: var(--surface); padding: 10px 12px; display: grid; gap: 2px; }
+.sev span { font: 500 .64rem var(--font-mono); text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+.sev i { font: 700 1rem var(--font-mono); font-style: normal; }
+.sev.c i { color: var(--crit); } .sev.h i { color: var(--warn); } .sev.m i { color: var(--accent); } .sev.l i { color: var(--ok); }
+.check { display: grid; grid-template-columns: 62px minmax(0, 1fr) auto; gap: 10px; align-items: center; padding: 9px 16px; border-bottom: 1px solid var(--line); }
+.check:last-child { border-bottom: 0; }
+.check code { background: none; padding: 0; color: var(--muted); font-size: .72rem; }
+.check em { font: 600 .64rem var(--font-mono); font-style: normal; padding: 2px 7px; border-radius: 4px; white-space: nowrap; }
+.check em.c { background: color-mix(in srgb, var(--crit) 16%, transparent); color: var(--crit); }
+.check em.h { background: var(--warn-soft); color: var(--warn); }
+.check em.m { background: var(--accent-soft); color: var(--accent); }
 
 /* Missions */
 .cases { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
-.case { background: var(--surface); padding: clamp(22px, 3vw, 32px); display: grid; gap: 12px; align-content: start; min-width: 0; transition: background .2s; }
+.case { background: color-mix(in srgb, var(--surface) 94%, transparent); padding: clamp(22px, 3vw, 32px); display: grid; gap: 12px; align-content: start; min-width: 0; transition: background .2s; }
 .case:hover { background: var(--raise); }
 .case-id { display: flex; justify-content: space-between; gap: 12px; }
-.case h3 { font-size: 1.3rem; font-stretch: 108%; font-weight: 700; }
-.case ul { margin: 0; padding-left: 1.1em; display: grid; gap: 5px; font-size: .95rem; }
+.case h3 { font-size: 1.3rem; font-stretch: 110%; font-weight: 720; }
+.case ul { margin: 0; padding-left: 1.1em; display: grid; gap: 5px; font-size: .95rem; color: var(--muted); }
 .case li::marker { color: var(--accent); }
 .tags { display: flex; flex-wrap: wrap; gap: 6px; }
 .tag { font-family: var(--font-mono); font-size: .7rem; padding: 3px 8px; border-radius: 4px; border: 1px solid var(--line); color: var(--muted); }
 @media (max-width: 860px) { .cases { grid-template-columns: 1fr; } }
 
 /* Console: always dark, like a real terminal */
-.console { border: 1px solid var(--line); border-radius: 14px; overflow: hidden; background: #0B1020; color: #DCE3F2; box-shadow: 0 30px 70px -40px rgba(0,0,0,.6); }
-.console-bar { display: flex; align-items: center; gap: 12px; padding: 10px 14px; background: #121A30; border-bottom: 1px solid #1F2A45; }
+.console { border: 1px solid #1C2645; border-radius: 16px; overflow: hidden; background: #070B16; color: #DCE3F2; box-shadow: 0 40px 90px -50px rgba(0,0,0,.8), 0 0 0 1px rgba(137,162,255,.08); }
+.console-bar { display: flex; align-items: center; gap: 12px; padding: 10px 14px; background: #0D1326; border-bottom: 1px solid #1C2645; }
 .console-bar .lights { display: flex; gap: 6px; }
 .console-bar .lights i { width: 10px; height: 10px; border-radius: 50%; background: #2A3555; }
 .console-bar .title { font-family: var(--font-mono); font-size: .75rem; color: #8B97B5; flex: 1; text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.console-out { font-family: var(--font-mono); font-size: .86rem; line-height: 1.6; padding: 18px 18px 6px; height: 380px; overflow-y: auto; white-space: pre-wrap; overflow-wrap: anywhere; }
-.console-out .p { color: #7F9CFF; }
+.console-out { font-family: var(--font-mono); font-size: .86rem; line-height: 1.6; padding: 18px 18px 6px; height: 400px; overflow-y: auto; white-space: pre-wrap; overflow-wrap: anywhere; }
+.console-out .p { color: #89A2FF; }
 .console-out .cmd { color: #FFFFFF; }
 .console-out .k { color: #FFD479; }
-.console-out .v { color: #9FE8C7; }
+.console-out .v { color: #8FF0D4; }
 .console-out .e { color: #FF8A94; }
 .console-out .m { color: #8B97B5; }
-.console-out a { color: #9FB4FF; }
+.console-out a { color: #A9BBFF; }
 .console-in { display: flex; align-items: center; gap: 8px; padding: 8px 18px 16px; font-family: var(--font-mono); font-size: .86rem; }
-.console-in label { color: #7F9CFF; white-space: nowrap; }
-.console-in input { flex: 1; min-width: 0; background: transparent; border: 0; outline: 0; color: #FFFFFF; font: inherit; caret-color: #4FD1A0; }
-.console-chips { display: flex; flex-wrap: wrap; gap: 8px; padding: 12px 14px; border-top: 1px solid #1F2A45; background: #0E1428; }
-.console-chips button { font: 500 .78rem var(--font-mono); background: #172042; color: #C9D4F0; border: 1px solid #25305A; padding: 6px 10px; border-radius: 6px; cursor: pointer; }
-.console-chips button:hover { border-color: #7F9CFF; color: #FFFFFF; }
+.console-in label { color: #89A2FF; white-space: nowrap; }
+.console-in input { flex: 1; min-width: 0; background: transparent; border: 0; outline: 0; color: #FFFFFF; font: inherit; caret-color: #45D6B4; }
+.console-chips { display: flex; flex-wrap: wrap; gap: 8px; padding: 12px 14px; border-top: 1px solid #1C2645; background: #0A1022; }
+.console-chips button { font: 500 .78rem var(--font-mono); background: #131C3A; color: #C9D4F0; border: 1px solid #25305A; padding: 6px 10px; border-radius: 6px; cursor: pointer; }
+.console-chips button:hover { border-color: #89A2FF; color: #FFFFFF; }
 
 /* Skills */
 .skills { display: grid; grid-template-columns: repeat(3, 1fr); gap: 34px 40px; }
 .skill-group { display: grid; gap: 12px; align-content: start; min-width: 0; }
-.skill-group h3 { font-size: 1.05rem; font-stretch: 106%; font-weight: 660; padding-bottom: 10px; border-bottom: 2px solid var(--accent); }
+.skill-group h3 { font-size: 1.05rem; font-stretch: 108%; font-weight: 680; padding-bottom: 10px; border-bottom: 1px solid var(--accent); }
 .skill-group.extra h3 { border-bottom-color: var(--line); color: var(--muted); }
 .chips { display: flex; flex-wrap: wrap; gap: 6px; }
-.chip { font-size: .85rem; padding: 4px 10px; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); }
+.chip { font-size: .85rem; padding: 4px 10px; border-radius: 999px; background: color-mix(in srgb, var(--surface) 90%, transparent); border: 1px solid var(--line); }
 .skill-group.core .chip { background: var(--accent-soft); border-color: transparent; }
 @media (max-width: 960px) { .skills { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 560px) { .skills { grid-template-columns: 1fr; } }
@@ -253,10 +315,10 @@ section { padding-block: clamp(64px, 9vw, 112px); scroll-margin-top: 60px; }
 .rail::before { content: ""; position: absolute; top: 0; bottom: 0; width: 1px; background: var(--line); }
 .timeline li:first-child .rail::before { top: 10px; }
 .timeline li:last-child .rail::before { bottom: auto; height: 10px; }
-.rail i { position: relative; width: 11px; height: 11px; margin-top: 6px; border-radius: 50%; background: var(--bg); border: 2px solid var(--ink); }
+.rail i { position: relative; width: 11px; height: 11px; margin-top: 6px; border-radius: 50%; background: var(--bg); border: 2px solid var(--accent); }
 .timeline li.now .rail i { background: var(--ok); border-color: var(--ok); box-shadow: 0 0 0 4px var(--ok-soft); }
 .tl-body { padding-bottom: 32px; min-width: 0; }
-.tl-body h3 { font-size: 1.15rem; font-stretch: 105%; font-weight: 700; }
+.tl-body h3 { font-size: 1.15rem; font-stretch: 106%; font-weight: 700; }
 .tl-body .where { color: var(--accent); font-size: .9rem; margin-top: 2px; }
 .tl-body p { color: var(--muted); margin-top: 8px; max-width: 46em; }
 @media (max-width: 600px) {
@@ -268,41 +330,46 @@ section { padding-block: clamp(64px, 9vw, 112px); scroll-margin-top: 60px; }
 
 /* Certificates */
 .certs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 20px; }
-.cert { display: grid; gap: 10px; align-content: start; text-align: left; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 10px; cursor: zoom-in; color: inherit; font: inherit; transition: border-color .15s, transform .15s; }
+.cert { display: grid; gap: 10px; align-content: start; text-align: left; background: color-mix(in srgb, var(--surface) 94%, transparent); border: 1px solid var(--line); border-radius: 12px; padding: 10px; cursor: zoom-in; color: inherit; font: inherit; transition: border-color .15s, transform .15s; }
 .cert:hover { border-color: var(--accent); transform: translateY(-2px); }
-.cert img { aspect-ratio: 4 / 3; object-fit: cover; object-position: top; border-radius: 6px; width: 100%; background: #fff; }
+.cert img { aspect-ratio: 4 / 3; object-fit: cover; object-position: top; border-radius: 7px; width: 100%; background: #fff; }
 .cert b { font-size: .86rem; font-weight: 500; line-height: 1.35; }
 .cert span { font-family: var(--font-mono); font-size: .68rem; color: var(--muted); }
 @media (max-width: 900px) { .certs { grid-template-columns: repeat(2, 1fr); } }
 dialog { border: 1px solid var(--line); border-radius: 14px; padding: 0; background: var(--surface); color: var(--ink); max-width: min(920px, 94vw); }
-dialog::backdrop { background: rgba(5, 8, 15, .78); backdrop-filter: blur(4px); }
+dialog::backdrop { background: rgba(3, 5, 10, .8); backdrop-filter: blur(4px); }
 dialog img { width: 100%; height: auto; }
 .dialog-bar { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 12px 16px; border-bottom: 1px solid var(--line); }
 .dialog-bar b { font-size: .95rem; font-weight: 600; }
+.ghost { font: 500 .8rem var(--font-body); background: none; border: 1px solid var(--line); color: var(--ink); padding: 7px 12px; border-radius: 6px; cursor: pointer; }
+.ghost:hover { border-color: var(--accent); }
 
-.langs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; margin-top: 20px; }
-.langs div { background: var(--surface); padding: 16px; display: grid; gap: 2px; }
+.langs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; margin-top: 20px; }
+.langs div { background: color-mix(in srgb, var(--surface) 94%, transparent); padding: 16px; display: grid; gap: 2px; }
 .langs b { font-weight: 600; }
 .langs span { color: var(--muted); font-size: .85rem; }
 @media (max-width: 700px) { .langs { grid-template-columns: 1fr 1fr; } }
 .sub { margin-top: 56px; }
 
-/* Closing band */
-.closing { margin-top: 24px; padding-block: clamp(48px, 7vw, 88px); border-top: 1px solid var(--line); display: grid; gap: 28px; }
-.closing h2 { font-size: clamp(2rem, 1rem + 4.4vw, 4.4rem); font-stretch: 125%; font-weight: 800; letter-spacing: -.02em; text-transform: uppercase; line-height: .95; max-width: 16ch; }
-.closing h2 em { font-style: normal; color: var(--accent); }
-footer { padding-block: 24px 40px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; color: var(--muted); font-size: .85rem; border-top: 1px solid var(--line); }
+/* Closing */
+.closing { position: relative; margin-top: 24px; padding: clamp(32px, 6vw, 80px); border: 1px solid var(--line); border-radius: 24px; overflow: hidden; display: grid; gap: 24px; isolation: isolate; background: color-mix(in srgb, var(--surface) 90%, transparent); }
+.closing::before { content: ""; position: absolute; inset: 0; z-index: -1; background: radial-gradient(60% 120% at 100% 0%, color-mix(in srgb, var(--accent) 22%, transparent), transparent 60%), radial-gradient(50% 100% at 0% 100%, color-mix(in srgb, var(--accent-2) 14%, transparent), transparent 60%); }
+.closing h2 { font-size: clamp(2rem, 1rem + 4.2vw, 4.6rem); font-stretch: 125%; font-weight: 800; letter-spacing: -.025em; text-transform: uppercase; line-height: .95; max-width: 15ch; }
+.closing h2 em { font-style: normal; background: linear-gradient(92deg, var(--accent), var(--accent-2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+footer { margin-top: 64px; padding-block: 24px 40px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; color: var(--muted); font-size: .85rem; border-top: 1px solid var(--line); }
 footer nav { display: flex; gap: 18px; flex-wrap: wrap; }
 footer a { color: var(--muted); text-decoration: none; }
 footer a:hover { color: var(--ink); }
 
-/* Motion: content is visible at rest; this only adds a short rise */
+/* Motion: content is visible at rest; reveal only adds a short rise */
 @media (prefers-reduced-motion: no-preference) {
-  .rise { animation: rise .8s cubic-bezier(.2,.7,.2,1) both; }
-  .d1 { animation-delay: .08s; } .d2 { animation-delay: .16s; } .d3 { animation-delay: .26s; }
-  @keyframes rise { from { transform: translateY(16px); } to { transform: none; } }
+  .rise { animation: rise .9s cubic-bezier(.2,.7,.2,1) both; }
+  .d1 { animation-delay: .08s; } .d2 { animation-delay: .18s; } .d3 { animation-delay: .28s; }
+  @keyframes rise { from { transform: translateY(18px); } to { transform: none; } }
+  .reveal { transition: transform .8s cubic-bezier(.2,.7,.2,1); }
+  .reveal.pending { transform: translateY(24px); }
 }
-@media (prefers-reduced-motion: reduce) { .dot, .d-flow { animation: none; } }
+@media (prefers-reduced-motion: reduce) { .dot, .d-flow, .role .cursor, .ticker-track { animation: none; } }
 </style>
 </head>
 <body>
@@ -310,12 +377,15 @@ footer a:hover { color: var(--ink); }
 
 <header class="top">
   <div class="wrap">
-    <a class="brand" href="#top">P<span>.</span>M<span>.</span> GUEYE</a>
+    <a class="brand" href="#top">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2.5l7.5 2.8v5.6c0 4.8-3.3 8.8-7.5 10.6-4.2-1.8-7.5-5.8-7.5-10.6V5.3z" stroke="#89A2FF" stroke-width="1.8"/><path d="M8.6 12l2.4 2.4 4.4-4.8" stroke="#45D6B4" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      P.M. GUEYE
+    </a>
     <nav class="nav" aria-label="Sections">
+      <a href="#couverture">Couverture</a>
       <a href="#projets">Projets</a>
       <a href="#missions">Missions</a>
       <a href="#console">Console</a>
-      <a href="#competences">Compétences</a>
       <a href="#parcours">Parcours</a>
     </nav>
     <div class="top-right">
@@ -326,96 +396,164 @@ footer a:hover { color: var(--ink); }
 </header>
 
 <main id="main">
-<div class="hero-zone" id="top">
-  <canvas id="graph" aria-hidden="true"></canvas>
-  <div class="wrap hero">
-    <div>
-      <p class="label role rise">Ingénieur Systèmes &amp; Cybersécurité · Microsoft hybride · IAM</p>
-      <h1 class="name rise d1"><span>Papa</span><span class="soft">Mamadou</span><span>Gueye</span></h1>
-      <p class="thesis rise d2">
-        Pendant deux ans, j'ai été <strong>responsable du système d'information</strong> d'une entreprise en environnement Microsoft hybride.
-        J'y ai géré les identités et les accès, déployé le MFA, durci les postes et les serveurs, et mis en place le PRA/PCA.
-        Je cherche un <strong>CDI ou un CDD</strong> pour faire la même chose à plus grande échelle.
-      </p>
-      <div class="cta rise d3">
-        <a class="btn primary" href="cv/CV_Papa_Mamadou_Gueye.pdf" download>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0l-5-5m5 5l5-5M5 21h14"/></svg>
-          Télécharger mon CV
-        </a>
-        <a class="btn" href="https://www.linkedin.com/in/papa-mamadou-gueye-developpeur-cybersecurite" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.1c.5-1 1.8-2 3.8-2 4 0 4.8 2.6 4.8 6V21h-4v-5.6c0-1.3 0-3-1.9-3s-2.2 1.5-2.2 2.9V21H9z"/></svg>
-          LinkedIn
-        </a>
-        <a class="btn" href="https://github.com/MamadouPapa" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.6 22.4c.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.9 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A11.5 11.5 0 0 0 12 .5z"/></svg>
-          GitHub
-        </a>
+<div class="wrap">
+  <div class="hero-zone" id="top">
+    <div class="hero">
+      <div>
+        <span class="kicker rise"><b>OPEN TO WORK</b>Ingénieur Systèmes &amp; Cybersécurité</span>
+        <h1 class="name rise d1"><span>Papa</span><span class="outline">Mamadou</span><span class="grad">Gueye</span></h1>
+        <p class="role rise d2">&gt; <span id="typed">Microsoft hybride · Entra ID · IAM</span><span class="cursor" aria-hidden="true"></span></p>
+        <p class="thesis rise d2">
+          Deux ans comme <strong>responsable du système d'information</strong>, seul aux commandes, en environnement Microsoft hybride.
+          Je sécurise les identités, je durcis les postes et les serveurs, et je prépare la reprise après incident.
+          Je sais aussi <strong>écrire une attaque, puis la détecter</strong>.
+        </p>
+        <div class="cta rise d3">
+          <a class="btn primary" href="cv/CV_Papa_Mamadou_Gueye.pdf" download>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0l-5-5m5 5l5-5M5 21h14"/></svg>
+            Télécharger mon CV
+          </a>
+          <a class="btn" href="#projets">Voir les projets</a>
+          <a class="btn" href="https://www.linkedin.com/in/papa-mamadou-gueye-developpeur-cybersecurite" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.1c.5-1 1.8-2 3.8-2 4 0 4.8 2.6 4.8 6V21h-4v-5.6c0-1.3 0-3-1.9-3s-2.2 1.5-2.2 2.9V21H9z"/></svg>
+            LinkedIn
+          </a>
+          <a class="btn" href="https://github.com/MamadouPapa" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.6 22.4c.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.9 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A11.5 11.5 0 0 0 12 .5z"/></svg>
+            GitHub
+          </a>
+        </div>
+      </div>
+      <div class="globe-wrap rise d2">
+        <canvas id="globe" role="img" aria-label="Globe animé reliant Kénitra, Rabat, Paris, Nice et Lyon, les villes de mon parcours"></canvas>
+        <div class="globe-hud"><div class="hud"><span>Kénitra</span><span>Rabat</span><span>Nice</span><span>Paris</span><span>Lyon</span></div></div>
       </div>
     </div>
 
-    <aside class="policy rise d2" aria-label="Stratégie d'accès conditionnel">
-      <div class="policy-head">
-        <h2>Stratégie d'accès conditionnel</h2>
-        <span class="pill">Activée</span>
-      </div>
-      <dl>
-        <dt>Nom</dt><dd>Recrutement · P. M. Gueye</dd>
-        <dt>Utilisateurs</dt><dd>Recruteurs IT, managers infra et sécurité</dd>
-        <dt>Conditions</dt><dd>CDI ou CDD · Paris, Lyon ou partout en France</dd>
-        <dt>Contrôle</dt><dd>Accorder l'accès · exiger un échange de 15 min</dd>
-      </dl>
-      <ul class="checks" id="checks">
-        <li><span class="mark" aria-hidden="true">✓</span><span>Mastère Cybersécurité &amp; Cloud Computing (Bac+5)</span></li>
-        <li><span class="mark" aria-hidden="true">✓</span><span>2 ans comme responsable du SI, seul aux commandes</span></li>
-        <li><span class="mark" aria-hidden="true">✓</span><span>Active Directory, Entra ID, Microsoft 365, Intune</span></li>
-        <li><span class="mark" aria-hidden="true">✓</span><span>Disponible immédiatement, mobile partout en France</span></li>
-      </ul>
-      <div class="verdict">
-        <span class="verdict-text" id="verdict" aria-live="polite">Résultat : accès accordé</span>
-        <button class="ghost" id="run" type="button">Évaluer à nouveau</button>
-      </div>
-    </aside>
+    <div class="facts">
+      <div class="fact"><b>2 ans</b><span>Responsable du SI, Hautier IP</span></div>
+      <div class="fact"><b>Bac+5</b><span>Mastère Cybersécurité &amp; Cloud</span></div>
+      <div class="fact"><b>4 projets</b><span>Production, attaque, détection, audit</span></div>
+      <div class="fact"><b>6 / 6</b><span>Fonctions du NIST CSF 2.0 couvertes</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track" id="ticker">
+    <span>Active Directory</span><span>Entra ID</span><span>Microsoft 365</span><span>Intune</span><span>Exchange Online</span><span>GPO</span><span>MFA</span><span>IAM</span><span>Hardening</span><span>PRA / PCA</span><span>RGPD</span><span>MITRE ATT&amp;CK</span><span>Sigma</span><span>auditd</span><span>PowerShell</span><span>Microsoft Graph</span><span>Python</span><span>VMware</span><span>Hyper-V</span><span>VLAN</span><span>VPN</span><span>OpenSSL</span>
   </div>
 </div>
 
 <div class="wrap">
-  <div class="facts">
-    <div class="fact"><b>2 ans</b><span>Responsable du SI, Hautier IP</span></div>
-    <div class="fact"><b>Bac+5</b><span>Mastère IPSSI, en alternance</span></div>
-    <div class="fact"><b>AD + Entra</b><span>Environnement Microsoft hybride</span></div>
-    <div class="fact"><b>N1 → N2</b><span>Du support utilisateur au MCO</span></div>
-  </div>
+  <section id="couverture">
+    <div class="sec-head">
+      <p class="idx">01 · Couverture</p>
+      <div>
+        <h2>Mon travail, rangé selon le NIST CSF 2.0</h2>
+        <p>Le Cybersecurity Framework du NIST découpe la sécurité en six fonctions. Voici ce que j'ai fait dans chacune, en production chez Hautier IP ou dans mes labs.</p>
+      </div>
+    </div>
+    <div class="csf">
+      <article class="csf-col reveal"><span class="code">GV · Gouverner</span><h3>Cadre &amp; conformité</h3><ul><li>Mise en conformité RGPD</li><li>Politiques de sécurité</li><li>Documentation technique du SI</li></ul></article>
+      <article class="csf-col reveal"><span class="code">ID · Identifier</span><h3>Connaître le SI</h3><ul><li>Gestion complète du parc</li><li>Audits de sécurité</li><li class="lab">Audit des identités AD / Entra</li></ul></article>
+      <article class="csf-col reveal"><span class="code">PR · Protéger</span><h3>Réduire la surface</h3><ul><li>IAM hybride, revue des droits</li><li>Déploiement du MFA</li><li>Durcissement Windows / Linux</li><li>Pare-feu, VPN, VLAN</li></ul></article>
+      <article class="csf-col reveal"><span class="code">DE · Détecter</span><h3>Voir l'attaque</h3><ul><li>Supervision réseau</li><li class="lab">Détection comportementale de ransomware</li><li class="lab">Règles Sigma et auditd</li></ul></article>
+      <article class="csf-col reveal"><span class="code">RS · Répondre</span><h3>Comprendre &amp; réagir</h3><ul><li>Support N1 / N2</li><li class="lab">Analyse d'un ransomware écrit en C</li><li class="lab">Cartographie MITRE ATT&amp;CK</li></ul></article>
+      <article class="csf-col reveal"><span class="code">RC · Rétablir</span><h3>Repartir vite</h3><ul><li>Sauvegardes pilotées</li><li>PRA / PCA rédigé et suivi</li><li>MCO VMware / Hyper-V</li></ul></article>
+    </div>
+    <p class="csf-note">Les éléments marqués <code>lab</code> viennent de mes projets personnels et de mastère, pas de la production.</p>
+  </section>
 
   <section id="projets">
     <div class="sec-head">
-      <p class="label">Projets</p>
+      <p class="idx">02 · Projets</p>
       <div>
-        <h2>Deux projets, deux côtés de la sécurité</h2>
-        <p>Un outil métier que j'ai conçu et mis en production pour une entreprise. Un ransomware que j'ai écrit en C pendant un TP, pour comprendre une attaque de l'intérieur.</p>
+        <h2>J'écris l'attaque, puis je la détecte</h2>
+        <p>Quatre projets : un duel attaque / défense sur le même scénario, un outil d'audit des identités Microsoft, et une application que j'ai mise en production.</p>
       </div>
     </div>
 
+    <article class="duel reveal">
+      <div class="duel-head">
+        <div class="duel-side red">
+          <span class="team">Red team · TP Mastère</span>
+          <h3>ProManager</h3>
+          <p class="lede">Un ransomware pédagogique en C, exécuté dans une VM isolée. Il compresse un dossier, le chiffre en AES-256-CBC, envoie la clé à un serveur et laisse une note de rançon.</p>
+          <div class="stack"><span>C</span><span>OpenSSL</span><span>Sockets TCP</span><span>libzip</span><span>GTK</span></div>
+          <a class="link-arrow" href="https://github.com/MamadouPapa/ProManager-Ransomware" target="_blank" rel="noopener">Code de l'attaque ↗</a>
+        </div>
+        <div class="duel-vs" aria-hidden="true">VS</div>
+        <div class="duel-side blue">
+          <span class="team">Blue team · Lab 2026</span>
+          <h3>RansomWatch</h3>
+          <p class="lede">La détection du même ransomware : un détecteur comportemental en Python avec 5 règles, plus des règles Sigma, auditd et Suricata. 49 tests automatisés.</p>
+          <div class="stack"><span>Python</span><span>Sigma</span><span>auditd</span><span>Suricata</span><span>MITRE ATT&amp;CK</span></div>
+          <a class="link-arrow" href="https://github.com/MamadouPapa/RansomWatch" target="_blank" rel="noopener">Code de la détection ↗</a>
+        </div>
+      </div>
+      <div class="chain">
+        <table>
+          <thead><tr><th>Étape</th><th>Ce que fait l'attaque</th><th>ATT&amp;CK</th><th>Ce qui la détecte</th></tr></thead>
+          <tbody id="chainBody">
+            <tr><td class="step">01</td><td class="atk">Parcourt <code>TP/Projet</code><small>cible .txt .md .c .h .cpp .hpp</small></td><td class="tech">T1083</td><td class="def"><b>auditd</b>Surveillance du dossier protégé</td></tr>
+            <tr><td class="step">02</td><td class="atk">Compresse le dossier<small>archive zip via libzip</small></td><td class="tech">T1560.002</td><td class="def"><b>RW-004</b>Archive créée puis originaux supprimés</td></tr>
+            <tr><td class="step">03</td><td class="atk">Chiffre en AES-256-CBC<small>clé et IV tirés avec RAND_bytes</small></td><td class="tech">T1486</td><td class="def"><b>RW-002</b><b>RW-005</b>Entropie &gt; 7,5 bits/octet, fichiers remplacés par des <code>.enc</code><small>RW-001 : rafale d'écritures sur de gros volumes</small></td></tr>
+            <tr><td class="step">04</td><td class="atk">Envoie la clé au serveur<small>TCP brut sur le port 4242</small></td><td class="tech">T1041 · T1095</td><td class="def"><b>Sigma</b><b>Suricata</b>Connexion vers le port 4242<small>la clé passe en clair : une capture réseau suffit à déchiffrer</small></td></tr>
+            <tr><td class="step">05</td><td class="atk">Dépose <code>RANÇON.txt</code></td><td class="tech">T1486</td><td class="def"><b>RW-003</b><b>Sigma</b>Nom de fichier type note de rançon</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </article>
+
     <div class="projects">
-      <article class="project">
+      <article class="project reveal">
         <div class="project-body">
-          <div class="project-meta">
-            <span class="badge ok">En production</span>
-            <span class="badge">Hautier IP · 2025</span>
-            <span class="badge">Code privé</span>
+          <div class="project-meta"><span class="badge lab">Lab · 2026</span><span class="badge">Lecture seule</span><span class="badge">Open source</span></div>
+          <h3>IdentityGuard</h3>
+          <p class="lede">Un module PowerShell qui audite la sécurité des identités sur Active Directory et Entra ID (16 contrôles), puis produit un rapport HTML avec un score, la gravité et la correction de chaque point.</p>
+          <h4>Ce qu'il contrôle</h4>
+          <ul>
+            <li><strong>Active Directory :</strong> âge du mot de passe krbtgt, comptes Kerberoastables et AS-REP roastables, délégation non contrainte, groupes à privilèges, comptes inactifs, LAPS</li>
+            <li><strong>Entra ID :</strong> utilisateurs sans MFA, rôles à privilèges permanents, invités, accès conditionnel, secrets d'applications qui expirent</li>
+            <li>Chaque constat renvoie vers MITRE ATT&amp;CK ou la documentation Microsoft</li>
+          </ul>
+          <div class="stack"><span>PowerShell</span><span>Microsoft Graph</span><span>ActiveDirectory</span><span>Pester</span><span>GitHub Actions</span></div>
+          <p class="note">67 tests Pester, validés en CI sur Linux, Windows et Windows PowerShell 5.1.</p>
+          <div class="project-links" style="display:flex;flex-wrap:wrap;gap:18px"><a class="link-arrow" href="demo/identityguard-report.html" target="_blank" rel="noopener">Ouvrir le rapport démo ↗</a><a class="link-arrow" href="https://github.com/MamadouPapa/IdentityGuard" target="_blank" rel="noopener">Voir le code ↗</a></div>
+        </div>
+        <div class="project-visual">
+          <div class="report" role="img" aria-label="Aperçu d'un rapport IdentityGuard en mode démo">
+            <div class="report-top"><b>IdentityGuard · rapport démo</b><span class="label">score 54 / 100 · niveau D</span></div>
+            <div class="sev-row" id="sevRow">
+              <div class="sev c"><span>Critique</span><i>3</i></div>
+              <div class="sev h"><span>Élevée</span><i>5</i></div>
+              <div class="sev m"><span>Moyenne</span><i>5</i></div>
+              <div class="sev l"><span>Faible</span><i>1</i></div>
+            </div>
+            <div id="checkList">
+              <div class="check"><code>AD-006</code><span>Comptes utilisateurs avec SPN (Kerberoasting)</span><em class="c">Critique</em></div>
+              <div class="check"><code>AD-007</code><span>Délégation Kerberos non contrainte hors contrôleurs de domaine</span><em class="c">Critique</em></div>
+              <div class="check"><code>ENT-001</code><span>Comptes membres sans méthode MFA enregistrée</span><em class="c">Critique</em></div>
+              <div class="check"><code>AD-001</code><span>Mot de passe krbtgt non renouvelé depuis plus de 180 jours</span><em class="h">Élevée</em></div>
+              <div class="check"><code>ENT-002</code><span>Attributions permanentes de rôles à privilèges</span><em class="h">Élevée</em></div>
+            </div>
           </div>
+          <span class="caption">Extrait du vrai rapport généré par le CI · données fictives du mode démo</span>
+        </div>
+      </article>
+
+      <article class="project reveal">
+        <div class="project-body">
+          <div class="project-meta"><span class="badge ok">En production</span><span class="badge">Hautier IP · 2025</span><span class="badge">Code privé</span></div>
           <h3>Hermes</h3>
           <p class="lede">Comparateur de budgets pour les dépôts de brevets. L'équipe choisit un client et des pays, puis l'outil calcule les annuités et produit un devis PDF.</p>
-          <h4>Ce que j'ai construit</h4>
-          <ul>
-            <li><strong>Parcours complet :</strong> connexion, choix du client, sélection des pays sur une carte d'Europe, calcul des annuités et des honoraires</li>
-            <li><strong>Génération de devis PDF</strong> avec DOMPDF</li>
-            <li><strong>Tableau de bord admin</strong> pour créer les comptes et réinitialiser les mots de passe</li>
-          </ul>
           <h4>Sécurité intégrée dès la conception</h4>
           <ul>
             <li>Jetons CSRF générés avec <code>random_bytes</code> et vérifiés avec <code>hash_equals</code></li>
             <li>Cookies de session <code>Secure</code>, <code>HttpOnly</code> et <code>SameSite</code></li>
-            <li>Accès à MySQL par PDO, contrôle d'authentification sur chaque page</li>
+            <li>Accès MySQL par PDO, contrôle d'authentification sur chaque page</li>
+            <li>Tableau de bord admin pour gérer les comptes</li>
           </ul>
           <div class="stack"><span>PHP</span><span>MySQL</span><span>PDO</span><span>JavaScript</span><span>Bootstrap</span><span>DOMPDF</span></div>
           <p class="note">Outil interne : le code reste privé. Démonstration possible en entretien.</p>
@@ -423,103 +561,23 @@ footer a:hover { color: var(--ink); }
         <div class="project-visual">
           <div class="diagram" role="img" aria-label="Schéma du parcours Hermes : connexion, client, pays, annuités, devis PDF, avec une base MySQL et un tableau de bord admin">
             <svg viewBox="0 0 640 300" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="d-head" d="M0 0L10 5L0 10z"/></marker>
-              </defs>
+              <defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="d-head" d="M0 0L10 5L0 10z"/></marker></defs>
               <text class="d-lab" x="4" y="24">PARCOURS UTILISATEUR</text>
-              <rect class="d-box hl" x="4" y="40" width="110" height="64" rx="8"/>
-              <text class="d-t" x="16" y="66">Connexion</text><text class="d-s" x="16" y="86">session + CSRF</text>
-              <rect class="d-box" x="135" y="40" width="110" height="64" rx="8"/>
-              <text class="d-t" x="147" y="66">Client</text><text class="d-s" x="147" y="86">fiche client</text>
-              <rect class="d-box" x="266" y="40" width="110" height="64" rx="8"/>
-              <text class="d-t" x="278" y="66">Pays</text><text class="d-s" x="278" y="86">carte Europe</text>
-              <rect class="d-box" x="397" y="40" width="110" height="64" rx="8"/>
-              <text class="d-t" x="409" y="66">Annuités</text><text class="d-s" x="409" y="86">barèmes + HT</text>
-              <rect class="d-box good" x="528" y="40" width="108" height="64" rx="8"/>
-              <text class="d-t" x="540" y="66">Devis PDF</text><text class="d-s" x="540" y="86">DOMPDF</text>
-              <path class="d-flow" d="M114 72H133" marker-end="url(#ah)"/>
-              <path class="d-flow" d="M245 72H264" marker-end="url(#ah)"/>
-              <path class="d-flow" d="M376 72H395" marker-end="url(#ah)"/>
-              <path class="d-flow" d="M507 72H526" marker-end="url(#ah)"/>
+              <rect class="d-box hl" x="4" y="40" width="110" height="64" rx="8"/><text class="d-t" x="16" y="66">Connexion</text><text class="d-s" x="16" y="86">session + CSRF</text>
+              <rect class="d-box" x="135" y="40" width="110" height="64" rx="8"/><text class="d-t" x="147" y="66">Client</text><text class="d-s" x="147" y="86">fiche client</text>
+              <rect class="d-box" x="266" y="40" width="110" height="64" rx="8"/><text class="d-t" x="278" y="66">Pays</text><text class="d-s" x="278" y="86">carte Europe</text>
+              <rect class="d-box" x="397" y="40" width="110" height="64" rx="8"/><text class="d-t" x="409" y="66">Annuités</text><text class="d-s" x="409" y="86">barèmes + HT</text>
+              <rect class="d-box good" x="528" y="40" width="108" height="64" rx="8"/><text class="d-t" x="540" y="66">Devis PDF</text><text class="d-s" x="540" y="86">DOMPDF</text>
+              <path class="d-flow" d="M114 72H133" marker-end="url(#ah)"/><path class="d-flow" d="M245 72H264" marker-end="url(#ah)"/><path class="d-flow" d="M376 72H395" marker-end="url(#ah)"/><path class="d-flow" d="M507 72H526" marker-end="url(#ah)"/>
               <text class="d-lab" x="4" y="176">DONNÉES &amp; ADMINISTRATION</text>
-              <rect class="d-box" x="135" y="190" width="372" height="56" rx="8"/>
-              <text class="d-t" x="151" y="214">MySQL · PDO</text>
-              <text class="d-s" x="151" y="233">clients · comptes · annuités · totaux HT + honoraires</text>
-              <path class="d-line dash" d="M190 104V190M321 104V190M452 104V190"/>
-              <rect class="d-box hl" x="4" y="190" width="110" height="56" rx="8"/>
-              <text class="d-t" x="16" y="214">Admin</text><text class="d-s" x="16" y="233">comptes, mdp</text>
-              <path class="d-line dash" d="M59 104V190"/>
-              <path class="d-line dash" d="M114 218H135"/>
+              <rect class="d-box" x="135" y="190" width="372" height="56" rx="8"/><text class="d-t" x="151" y="214">MySQL · PDO</text><text class="d-s" x="151" y="233">clients · comptes · annuités · totaux HT + honoraires</text>
+              <path class="d-line" d="M190 104V190M321 104V190M452 104V190"/>
+              <rect class="d-box hl" x="4" y="190" width="110" height="56" rx="8"/><text class="d-t" x="16" y="214">Admin</text><text class="d-s" x="16" y="233">comptes, mdp</text>
+              <path class="d-line" d="M59 104V190"/><path class="d-line" d="M114 218H135"/>
               <text class="d-lab" x="4" y="284">Chaque page vérifie la session avant d'afficher quoi que ce soit.</text>
             </svg>
           </div>
           <span class="caption">Architecture simplifiée · 7 tables MySQL</span>
-        </div>
-      </article>
-
-      <article class="project">
-        <div class="project-body">
-          <div class="project-meta">
-            <span class="badge warn">Lab offensif · environnement contrôlé</span>
-            <span class="badge">TP Mastère · 2025</span>
-            <span class="badge">Open source</span>
-          </div>
-          <h3>ProManager</h3>
-          <p class="lede">Un ransomware pédagogique en C, écrit pour comprendre une attaque de bout en bout : chiffrement, exfiltration de la clé, rançon et restitution.</p>
-          <h4>Comment il fonctionne</h4>
-          <ul>
-            <li><strong>Agent :</strong> surveille le dossier <code>TP/Projet</code>, le compresse puis le chiffre en <strong>AES-256-CBC</strong> (OpenSSL, clé et IV tirés avec <code>RAND_bytes</code>)</li>
-            <li><strong>Exfiltration :</strong> la clé et l'IV partent en TCP vers un serveur, et une note <code>RANÇON.txt</code> apparaît</li>
-            <li><strong>Client GTK :</strong> la victime présente des « excuses » (20 caractères minimum), récupère la clé et déchiffre</li>
-          </ul>
-          <h4>Ce que j'en retiens côté défense</h4>
-          <ul>
-            <li>Signaux à surveiller : écriture massive de fichiers, archive créée puis chiffrée, connexion sortante vers un port inhabituel</li>
-            <li>Une sauvegarde hors ligne et testée reste la meilleure parade, d'où mon travail sur le PRA</li>
-          </ul>
-          <div class="stack"><span>C</span><span>OpenSSL</span><span>Sockets TCP</span><span>libzip</span><span>GTK</span><span>Makefile</span></div>
-          <div class="project-links">
-            <a class="link-arrow" href="https://github.com/MamadouPapa/ProManager-Ransomware" target="_blank" rel="noopener">Voir le code sur GitHub ↗</a>
-          </div>
-        </div>
-        <div class="project-visual">
-          <div class="diagram" role="img" aria-label="Schéma ProManager : l'agent chiffre et envoie la clé au serveur, le client présente des excuses au serveur et reçoit la clé">
-            <svg viewBox="0 0 640 300" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <marker id="aw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="d-head warn" d="M0 0L10 5L0 10z"/></marker>
-                <marker id="ao" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="d-head ok" d="M0 0L10 5L0 10z"/></marker>
-                <marker id="aa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="d-head" d="M0 0L10 5L0 10z"/></marker>
-              </defs>
-              <text class="d-lab" x="4" y="24">3 PROGRAMMES · TCP 4242</text>
-              <rect class="d-box danger" x="4" y="50" width="180" height="96" rx="8"/>
-              <text class="d-t" x="18" y="76">Agent</text>
-              <text class="d-s" x="18" y="96">ransomware.c</text>
-              <text class="d-s" x="18" y="114">zip + AES-256-CBC</text>
-              <text class="d-s" x="18" y="132">dépose RANÇON.txt</text>
-              <rect class="d-box hl" x="230" y="50" width="180" height="96" rx="8"/>
-              <text class="d-t" x="244" y="76">Serveur</text>
-              <text class="d-s" x="244" y="96">serveur_pardon.c</text>
-              <text class="d-s" x="244" y="114">garde la clé + IV</text>
-              <text class="d-s" x="244" y="132">écoute sur :4242</text>
-              <rect class="d-box good" x="456" y="50" width="180" height="96" rx="8"/>
-              <text class="d-t" x="470" y="76">Client</text>
-              <text class="d-s" x="470" y="96">client_decrypt.c</text>
-              <text class="d-s" x="470" y="114">interface GTK</text>
-              <text class="d-s" x="470" y="132">déchiffre les fichiers</text>
-              <path class="d-flow warn" d="M184 98H228" marker-end="url(#aw)"/>
-              <text class="d-lab" x="186" y="88">clé+IV</text>
-              <path class="d-flow" d="M456 80H412" marker-end="url(#aa)"/>
-              <text class="d-lab" x="414" y="72">excuses</text>
-              <path class="d-flow ok" d="M410 118H454" marker-end="url(#ao)"/>
-              <text class="d-lab" x="420" y="136">clé</text>
-              <rect class="d-box" x="4" y="196" width="632" height="60" rx="8"/>
-              <text class="d-t" x="18" y="220">Dossier TP/Projet</text>
-              <text class="d-s" x="18" y="240">.txt .md .c .h .cpp .hpp · chiffré après 30 s en test, 1 h sinon</text>
-              <path class="d-line dash" d="M94 146V196M546 146V196"/>
-              <text class="d-lab" x="4" y="284">Exécuté uniquement dans une VM isolée, sur des fichiers de test.</text>
-            </svg>
-          </div>
-          <span class="caption">460 lignes de C · 3 exécutables</span>
         </div>
       </article>
     </div>
@@ -527,69 +585,30 @@ footer a:hover { color: var(--ink); }
 
   <section id="missions">
     <div class="sec-head">
-      <p class="label">Missions</p>
+      <p class="idx">03 · Missions</p>
       <div>
         <h2>Ce que j'ai tenu en production chez Hautier IP</h2>
         <p>J'étais le seul responsable du SI. J'ai mené chaque chantier de la conception à la mise en production, puis je l'ai documenté.</p>
       </div>
     </div>
     <div class="cases">
-      <article class="case">
-        <div class="case-id"><span class="label">Identités &amp; accès</span><span class="label">IAM</span></div>
-        <h3>Un annuaire hybride propre et protégé par le MFA</h3>
-        <ul>
-          <li>Comptes, groupes et GPO en Active Directory / Entra ID</li>
-          <li>Déploiement du MFA pour les utilisateurs</li>
-          <li>Politiques de sécurité et revue des droits d'accès</li>
-        </ul>
-        <div class="tags"><span class="tag">Active Directory</span><span class="tag">Entra ID</span><span class="tag">GPO</span><span class="tag">MFA</span></div>
-      </article>
-      <article class="case">
-        <div class="case-id"><span class="label">Durcissement &amp; conformité</span><span class="label">Hardening</span></div>
-        <h3>Des postes et des serveurs durcis, un SI conforme au RGPD</h3>
-        <ul>
-          <li>Durcissement des postes et serveurs Windows / Linux</li>
-          <li>Audits de sécurité et plans de correction</li>
-          <li>Mise en conformité RGPD du système d'information</li>
-        </ul>
-        <div class="tags"><span class="tag">Windows Server</span><span class="tag">Ubuntu</span><span class="tag">Debian</span><span class="tag">RGPD</span></div>
-      </article>
-      <article class="case">
-        <div class="case-id"><span class="label">Continuité</span><span class="label">PRA / PCA</span></div>
-        <h3>Des sauvegardes pilotées et un plan de reprise prêt</h3>
-        <ul>
-          <li>Mise en place et suivi des sauvegardes</li>
-          <li>Rédaction et pilotage du PRA / PCA</li>
-          <li>MCO de l'infrastructure VMware / Hyper-V et du réseau</li>
-        </ul>
-        <div class="tags"><span class="tag">VMware</span><span class="tag">Hyper-V</span><span class="tag">Pare-feu</span><span class="tag">VPN</span><span class="tag">VLAN</span></div>
-      </article>
-      <article class="case">
-        <div class="case-id"><span class="label">Automatisation</span><span class="label">Scripting</span></div>
-        <h3>Moins de tâches manuelles, des outils métier sur mesure</h3>
-        <ul>
-          <li>Scripts d'administration en PowerShell et Python</li>
-          <li>Applications métier avec Power Apps, Power Automate et Dataverse</li>
-          <li>Outils internes en PHP / SQL, dont Hermes</li>
-        </ul>
-        <div class="tags"><span class="tag">PowerShell</span><span class="tag">Python</span><span class="tag">Power Platform</span><span class="tag">Microsoft 365</span></div>
-      </article>
+      <article class="case"><div class="case-id"><span class="label accent">Identités &amp; accès</span><span class="label">PR.AA</span></div><h3>Un annuaire hybride propre et protégé par le MFA</h3><ul><li>Comptes, groupes et GPO en Active Directory / Entra ID</li><li>Déploiement du MFA pour les utilisateurs</li><li>Politiques de sécurité et revue des droits d'accès</li></ul><div class="tags"><span class="tag">Active Directory</span><span class="tag">Entra ID</span><span class="tag">GPO</span><span class="tag">MFA</span></div></article>
+      <article class="case"><div class="case-id"><span class="label accent">Durcissement &amp; conformité</span><span class="label">PR.PS</span></div><h3>Des postes et des serveurs durcis, un SI conforme au RGPD</h3><ul><li>Durcissement des postes et serveurs Windows / Linux</li><li>Audits de sécurité et plans de correction</li><li>Mise en conformité RGPD du système d'information</li></ul><div class="tags"><span class="tag">Windows Server</span><span class="tag">Ubuntu</span><span class="tag">Debian</span><span class="tag">Intune</span><span class="tag">RGPD</span></div></article>
+      <article class="case"><div class="case-id"><span class="label accent">Continuité</span><span class="label">RC.RP</span></div><h3>Des sauvegardes pilotées et un plan de reprise prêt</h3><ul><li>Mise en place et suivi des sauvegardes</li><li>Rédaction et pilotage du PRA / PCA</li><li>MCO de l'infrastructure VMware / Hyper-V et du réseau</li></ul><div class="tags"><span class="tag">VMware</span><span class="tag">Hyper-V</span><span class="tag">Pare-feu</span><span class="tag">VPN</span><span class="tag">VLAN</span></div></article>
+      <article class="case"><div class="case-id"><span class="label accent">Automatisation</span><span class="label">Scripting</span></div><h3>Moins de tâches manuelles, des outils métier sur mesure</h3><ul><li>Scripts d'administration en PowerShell et Python</li><li>Applications métier avec Power Apps, Power Automate et Dataverse</li><li>Outils internes en PHP / SQL, dont Hermes</li></ul><div class="tags"><span class="tag">PowerShell</span><span class="tag">Python</span><span class="tag">Power Platform</span><span class="tag">Microsoft 365</span></div></article>
     </div>
   </section>
 
   <section id="console">
     <div class="sec-head">
-      <p class="label">Console</p>
+      <p class="idx">04 · Console</p>
       <div>
         <h2>Interrogez mon profil en PowerShell</h2>
-        <p>Tapez une commande ou cliquez sur un raccourci. Essayez <code>Get-Help</code> pour voir la liste.</p>
+        <p>Tapez une commande ou cliquez sur un raccourci. <code>Get-Help</code> affiche la liste, la touche Tab complète.</p>
       </div>
     </div>
     <div class="console">
-      <div class="console-bar">
-        <span class="lights" aria-hidden="true"><i></i><i></i><i></i></span>
-        <span class="title">PS C:\Users\pmgueye&gt; .\profil.ps1</span>
-      </div>
+      <div class="console-bar"><span class="lights" aria-hidden="true"><i></i><i></i><i></i></span><span class="title">PS C:\Users\pmgueye&gt; .\profil.ps1</span></div>
       <div class="console-out" id="out" aria-live="polite"></div>
       <form class="console-in" id="cmdForm" autocomplete="off">
         <label for="cmd">PS C:\&gt;</label>
@@ -600,6 +619,7 @@ footer a:hover { color: var(--ink); }
         <button type="button" data-cmd="Get-Experience">Get-Experience</button>
         <button type="button" data-cmd="Get-Competences -Niveau Production">Get-Competences</button>
         <button type="button" data-cmd="Get-Projets">Get-Projets</button>
+        <button type="button" data-cmd="Invoke-IdentityGuard -DemoMode">Invoke-IdentityGuard</button>
         <button type="button" data-cmd="Test-Disponibilite">Test-Disponibilite</button>
         <button type="button" data-cmd="Get-CV">Get-CV</button>
         <button type="button" data-cmd="Clear-Host">Clear-Host</button>
@@ -609,66 +629,33 @@ footer a:hover { color: var(--ink); }
 
   <section id="competences">
     <div class="sec-head">
-      <p class="label">Compétences</p>
+      <p class="idx">05 · Compétences</p>
       <div>
         <h2>Ce que je maîtrise, et ce que je connais</h2>
         <p>Je pratique les trois premiers blocs en production. Le dernier, je l'ai étudié en mastère et je continue de le travailler.</p>
       </div>
     </div>
     <div class="skills">
-      <div class="skill-group core">
-        <h3>Sécurité</h3>
-        <div class="chips"><span class="chip">IAM</span><span class="chip">MFA</span><span class="chip">Hardening</span><span class="chip">Audits de sécurité</span><span class="chip">Gestion des accès</span><span class="chip">Sauvegardes</span><span class="chip">PRA / PCA</span><span class="chip">RGPD</span><span class="chip">Gouvernance</span></div>
-      </div>
-      <div class="skill-group core">
-        <h3>Microsoft 365 &amp; Cloud</h3>
-        <div class="chips"><span class="chip">Entra ID</span><span class="chip">Microsoft 365</span><span class="chip">Exchange Online</span><span class="chip">Intune</span><span class="chip">Azure</span><span class="chip">Power Apps</span><span class="chip">Power Automate</span><span class="chip">Dataverse</span></div>
-      </div>
-      <div class="skill-group core">
-        <h3>Systèmes &amp; virtualisation</h3>
-        <div class="chips"><span class="chip">Windows Server</span><span class="chip">Active Directory</span><span class="chip">GPO</span><span class="chip">Ubuntu</span><span class="chip">Debian</span><span class="chip">VMware</span><span class="chip">Hyper-V</span></div>
-      </div>
-      <div class="skill-group">
-        <h3>Réseau</h3>
-        <div class="chips"><span class="chip">TCP/IP</span><span class="chip">DNS</span><span class="chip">DHCP</span><span class="chip">VLAN</span><span class="chip">VPN</span><span class="chip">Pare-feu</span><span class="chip">Supervision</span></div>
-      </div>
-      <div class="skill-group">
-        <h3>Scripting &amp; développement</h3>
-        <div class="chips"><span class="chip">PowerShell</span><span class="chip">Python</span><span class="chip">C</span><span class="chip">SQL</span><span class="chip">MySQL</span><span class="chip">PHP</span><span class="chip">JavaScript</span><span class="chip">Git</span></div>
-      </div>
-      <div class="skill-group extra">
-        <h3>Notions complémentaires</h3>
-        <div class="chips"><span class="chip">AWS</span><span class="chip">Docker</span><span class="chip">Kubernetes</span><span class="chip">Terraform</span><span class="chip">Jenkins</span><span class="chip">CI/CD</span><span class="chip">DevSecOps</span><span class="chip">Pentest</span><span class="chip">OWASP Top 10</span></div>
-      </div>
+      <div class="skill-group core"><h3>Sécurité</h3><div class="chips"><span class="chip">IAM</span><span class="chip">MFA</span><span class="chip">Hardening</span><span class="chip">Audits de sécurité</span><span class="chip">Gestion des accès</span><span class="chip">Sauvegardes</span><span class="chip">PRA / PCA</span><span class="chip">RGPD</span><span class="chip">Gouvernance</span></div></div>
+      <div class="skill-group core"><h3>Microsoft 365 &amp; Cloud</h3><div class="chips"><span class="chip">Entra ID</span><span class="chip">Microsoft 365</span><span class="chip">Exchange Online</span><span class="chip">Intune</span><span class="chip">Azure</span><span class="chip">Power Apps</span><span class="chip">Power Automate</span><span class="chip">Dataverse</span></div></div>
+      <div class="skill-group core"><h3>Systèmes &amp; virtualisation</h3><div class="chips"><span class="chip">Windows Server</span><span class="chip">Active Directory</span><span class="chip">GPO</span><span class="chip">Ubuntu</span><span class="chip">Debian</span><span class="chip">VMware</span><span class="chip">Hyper-V</span></div></div>
+      <div class="skill-group"><h3>Réseau</h3><div class="chips"><span class="chip">TCP/IP</span><span class="chip">DNS</span><span class="chip">DHCP</span><span class="chip">VLAN</span><span class="chip">VPN</span><span class="chip">Pare-feu</span><span class="chip">Supervision</span></div></div>
+      <div class="skill-group"><h3>Scripting &amp; détection</h3><div class="chips"><span class="chip">PowerShell</span><span class="chip">Python</span><span class="chip">C</span><span class="chip">SQL</span><span class="chip">PHP</span><span class="chip">JavaScript</span><span class="chip">Git</span><span class="chip">Sigma</span><span class="chip">MITRE ATT&amp;CK</span></div></div>
+      <div class="skill-group extra"><h3>Notions complémentaires</h3><div class="chips"><span class="chip">AWS</span><span class="chip">Docker</span><span class="chip">Kubernetes</span><span class="chip">Terraform</span><span class="chip">Jenkins</span><span class="chip">CI/CD</span><span class="chip">DevSecOps</span><span class="chip">Pentest</span><span class="chip">OWASP Top 10</span></div></div>
     </div>
   </section>
 
   <section id="parcours">
     <div class="sec-head">
-      <p class="label">Parcours</p>
+      <p class="idx">06 · Parcours</p>
       <div><h2>Du développement web à la sécurité du SI</h2></div>
     </div>
     <ol class="timeline">
-      <li class="now">
-        <time>Aujourd'hui</time><span class="rail"><i></i></span>
-        <div class="tl-body"><h3>Disponible pour un CDI ou un CDD</h3><p class="where">Paris, Lyon ou partout en France</p><p>Postes visés : ingénieur systèmes et sécurité, ingénieur Microsoft 365, consultant IAM / Entra ID.</p></div>
-      </li>
-      <li>
-        <time>09/2024 – 09/2026</time><span class="rail"><i></i></span>
-        <div class="tl-body"><h3>Responsable du Système d'Information</h3><p class="where">Hautier IP · Nice</p><p>IAM hybride AD / Entra ID, MFA, durcissement, audits, RGPD, Microsoft 365 et Intune, sauvegardes et PRA/PCA, virtualisation, réseau, support N1/N2, automatisation et applications métier.</p></div>
-      </li>
-      <li>
-        <time>02/2024 – 02/2026</time><span class="rail"><i></i></span>
-        <div class="tl-body"><h3>Mastère Cybersécurité &amp; Cloud Computing (Bac+5)</h3><p class="where">IPSSI · Paris · en alternance</p></div>
-      </li>
-      <li>
-        <time>09/2020 – 07/2023</time><span class="rail"><i></i></span>
-        <div class="tl-body"><h3>Licence Développement Web &amp; Mobile</h3><p class="where">Université Ibn Tofail · Kénitra, Maroc</p></div>
-      </li>
-      <li>
-        <time>05/2022 – 10/2022</time><span class="rail"><i></i></span>
-        <div class="tl-body"><h3>Développeur web · stage</h3><p class="where">Lycom · Rabat, Maroc</p><p>Applications web front et back (PHP, JavaScript, MySQL), conception de bases de données, tests et documentation en méthode Agile.</p></div>
-      </li>
+      <li class="now"><time>Aujourd'hui</time><span class="rail"><i></i></span><div class="tl-body"><h3>Disponible pour un CDI ou un CDD</h3><p class="where">Paris, Lyon ou partout en France</p><p>Postes visés : ingénieur systèmes et sécurité, ingénieur Microsoft 365, consultant IAM / Entra ID.</p></div></li>
+      <li><time>09/2024 – 09/2026</time><span class="rail"><i></i></span><div class="tl-body"><h3>Responsable du Système d'Information</h3><p class="where">Hautier IP · Nice</p><p>IAM hybride AD / Entra ID, MFA, durcissement, audits, RGPD, Microsoft 365 et Intune, sauvegardes et PRA/PCA, virtualisation, réseau, support N1/N2, automatisation et applications métier.</p></div></li>
+      <li><time>02/2024 – 02/2026</time><span class="rail"><i></i></span><div class="tl-body"><h3>Mastère Cybersécurité &amp; Cloud Computing (Bac+5)</h3><p class="where">IPSSI · Paris · en alternance</p></div></li>
+      <li><time>09/2020 – 07/2023</time><span class="rail"><i></i></span><div class="tl-body"><h3>Licence Développement Web &amp; Mobile</h3><p class="where">Université Ibn Tofail · Kénitra, Maroc</p></div></li>
+      <li><time>05/2022 – 10/2022</time><span class="rail"><i></i></span><div class="tl-body"><h3>Développeur web · stage</h3><p class="where">Lycom · Rabat, Maroc</p><p>Applications web front et back (PHP, JavaScript, MySQL), conception de bases de données, tests et documentation en méthode Agile.</p></div></li>
     </ol>
 
     <div class="sub">
@@ -696,24 +683,25 @@ footer a:hover { color: var(--ink); }
     </div>
   </section>
 
-  <div class="closing">
+  <div class="closing reveal">
+    <p class="label accent">Prochaine étape</p>
     <h2>Votre SI mérite <em>quelqu'un qui l'a déjà tenu seul.</em></h2>
     <div class="cta">
       <a class="btn primary" href="cv/CV_Papa_Mamadou_Gueye.pdf" download>Télécharger mon CV</a>
       <a class="btn" href="https://www.linkedin.com/in/papa-mamadou-gueye-developpeur-cybersecurite" target="_blank" rel="noopener">Voir mon LinkedIn</a>
     </div>
   </div>
+
+  <footer>
+    <span>© <span id="year">2026</span> Papa Mamadou Gueye · Ingénieur Systèmes &amp; Cybersécurité</span>
+    <nav aria-label="Liens">
+      <a href="cv/CV_Papa_Mamadou_Gueye.pdf" download>CV</a>
+      <a href="https://www.linkedin.com/in/papa-mamadou-gueye-developpeur-cybersecurite" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/MamadouPapa" target="_blank" rel="noopener">GitHub</a>
+    </nav>
+  </footer>
 </div>
 </main>
-
-<footer class="wrap">
-  <span>© <span id="year">2026</span> Papa Mamadou Gueye · Ingénieur Systèmes &amp; Cybersécurité</span>
-  <nav aria-label="Liens">
-    <a href="cv/CV_Papa_Mamadou_Gueye.pdf" download>CV</a>
-    <a href="https://www.linkedin.com/in/papa-mamadou-gueye-developpeur-cybersecurite" target="_blank" rel="noopener">LinkedIn</a>
-    <a href="https://github.com/MamadouPapa" target="_blank" rel="noopener">GitHub</a>
-  </nav>
-</footer>
 
 <dialog id="certDialog" aria-labelledby="certTitle">
   <div class="dialog-bar"><b id="certTitle"></b><button class="ghost" type="button" id="certClose">Fermer</button></div>
@@ -726,125 +714,194 @@ footer a:hover { color: var(--ink); }
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   document.getElementById('year').textContent = String(new Date().getFullYear());
 
-  /* ---------- Identity graph (hero background) ---------- */
-  var NODE_DENSITY = 1 / 16000;
-  var MAX_NODES = 70;
-  var LINK_DISTANCE = 150;
-  var PULSE_CHANCE = 0.0012;
-  var MAX_PULSES = 40;
-  var canvas = document.getElementById('graph');
-  var ctx = canvas.getContext('2d');
-  var nodes = [], pulses = [];
-  var width = 0, height = 0, running = false;
-  var colors = {};
-
-  function readColors() {
+  function themeColors() {
     var s = getComputedStyle(document.documentElement);
-    colors = { accent: s.getPropertyValue('--accent').trim(), ok: s.getPropertyValue('--ok').trim(), line: s.getPropertyValue('--line').trim() };
+    function v(name) { return s.getPropertyValue(name).trim(); }
+    return { accent: v('--accent'), accent2: v('--accent-2'), ok: v('--ok'), ink: v('--ink'), faint: v('--faint') };
   }
 
-  function resize() {
-    var rect = canvas.getBoundingClientRect();
+  /* ---------- Dot globe linking the real places of the career ---------- */
+  var GLOBE_POINTS = 1400;
+  var SWAY_SPEED = 0.0004;
+  var SWAY_DEGREES = 14;
+  var BASE_LONGITUDE = 0;
+  var TILT_RADIANS = 0.7;
+  var ARC_LIFT = 0.16;
+  var ARC_SEGMENTS = 40;
+  var GLOBE_SCALE = 0.44;
+  var ARC_PERIOD_MS = 2600;
+  var CITIES = [
+    { name: 'Kénitra', lat: 34.26, lon: -6.58, label: false },
+    { name: 'Rabat', lat: 34.02, lon: -6.84, label: true, dx: -50, dy: 18 },
+    { name: 'Paris', lat: 48.86, lon: 2.35, label: true, dx: -48, dy: -10 },
+    { name: 'Nice', lat: 43.70, lon: 7.27, label: true, dx: 10, dy: 16 },
+    { name: 'Lyon', lat: 45.76, lon: 4.84, label: true, dx: 10, dy: -6 }
+  ];
+  var ROUTES = [[1, 2], [0, 2], [2, 3], [3, 4], [4, 2]];
+  var globe = document.getElementById('globe');
+  var g = globe.getContext('2d');
+  var gW = 0, gH = 0, colors = themeColors(), globeRunning = false, t0 = performance.now();
+  var sphere = [];
+
+  (function buildSphere() {
+    var golden = Math.PI * (3 - Math.sqrt(5));
+    for (var i = 0; i < GLOBE_POINTS; i++) {
+      var y = 1 - (i / (GLOBE_POINTS - 1)) * 2;
+      var r = Math.sqrt(1 - y * y);
+      sphere.push([Math.cos(golden * i) * r, y, Math.sin(golden * i) * r]);
+    }
+  })();
+
+  function toVec(lat, lon) {
+    var phi = lat * Math.PI / 180, lam = lon * Math.PI / 180;
+    return [Math.cos(phi) * Math.sin(lam), Math.sin(phi), Math.cos(phi) * Math.cos(lam)];
+  }
+  var cityVecs = CITIES.map(function (c) { return toVec(c.lat, c.lon); });
+
+  function rotate(v, yaw) {
+    var cy = Math.cos(yaw), sy = Math.sin(yaw);
+    var x = v[0] * cy - v[2] * sy, z = v[0] * sy + v[2] * cy, y = v[1];
+    var ct = Math.cos(TILT_RADIANS), st = Math.sin(TILT_RADIANS);
+    return [x, y * ct - z * st, y * st + z * ct];
+  }
+
+  function arcPoint(a, b, t) {
+    var dot = Math.max(-1, Math.min(1, a[0] * b[0] + a[1] * b[1] + a[2] * b[2]));
+    var om = Math.acos(dot);
+    if (om < 1e-6) return a;
+    var s1 = Math.sin((1 - t) * om) / Math.sin(om), s2 = Math.sin(t * om) / Math.sin(om);
+    var lift = 1 + ARC_LIFT * Math.sin(Math.PI * t) * Math.min(1, om * 4);
+    return [(a[0] * s1 + b[0] * s2) * lift, (a[1] * s1 + b[1] * s2) * lift, (a[2] * s1 + b[2] * s2) * lift];
+  }
+
+  function sizeGlobe() {
+    var rect = globe.getBoundingClientRect();
     var ratio = Math.min(window.devicePixelRatio || 1, 2);
-    width = rect.width; height = rect.height;
-    canvas.width = Math.round(width * ratio); canvas.height = Math.round(height * ratio);
-    ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
-    var count = Math.min(MAX_NODES, Math.round(width * height * NODE_DENSITY));
-    nodes = [];
-    for (var i = 0; i < count; i++) {
-      nodes.push({
-        x: Math.random() * width, y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.25, vy: (Math.random() - 0.5) * 0.25,
-        r: Math.random() < 0.15 ? 3.2 : 1.8,
-        shield: Math.random() < 0.18
-      });
-    }
-    pulses = [];
+    gW = rect.width; gH = rect.height;
+    globe.width = Math.round(gW * ratio); globe.height = Math.round(gH * ratio);
+    g.setTransform(ratio, 0, 0, ratio, 0, 0);
   }
 
-  function draw() {
-    ctx.clearRect(0, 0, width, height);
-    ctx.lineWidth = 1;
-    for (var i = 0; i < nodes.length; i++) {
-      var a = nodes[i];
-      for (var j = i + 1; j < nodes.length; j++) {
-        var b = nodes[j];
-        var dx = a.x - b.x, dy = a.y - b.y, d = Math.sqrt(dx * dx + dy * dy);
-        if (d >= LINK_DISTANCE) continue;
-        ctx.globalAlpha = 1 - d / LINK_DISTANCE;
-        ctx.strokeStyle = colors.line;
-        ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
-        if (running && pulses.length < MAX_PULSES && Math.random() < PULSE_CHANCE) pulses.push({ a: a, b: b, t: 0 });
-      }
+  function drawDots(cx, cy, R, yaw) {
+    for (var i = 0; i < sphere.length; i++) {
+      var p = rotate(sphere[i], yaw);
+      var front = p[2] > 0;
+      g.globalAlpha = front ? 0.22 + 0.6 * p[2] : 0.07;
+      g.fillStyle = front ? colors.accent : colors.faint;
+      var size = front ? 1.7 : 1.1;
+      g.fillRect(cx + p[0] * R - size / 2, cy - p[1] * R - size / 2, size, size);
     }
-    nodes.forEach(function (n) {
-      ctx.fillStyle = n.shield ? colors.ok : colors.accent;
-      ctx.globalAlpha = n.shield ? 0.9 : 0.55;
-      ctx.beginPath(); ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2); ctx.fill();
-      if (n.shield) {
-        ctx.globalAlpha = 0.25; ctx.strokeStyle = colors.ok;
-        ctx.beginPath(); ctx.arc(n.x, n.y, n.r + 5, 0, Math.PI * 2); ctx.stroke();
+    g.globalAlpha = 1;
+  }
+
+  function drawArcs(cx, cy, R, yaw, elapsed) {
+    ROUTES.forEach(function (route, ri) {
+      var a = cityVecs[route[0]], b = cityVecs[route[1]];
+      var phase = reduceMotion ? 1.1 : ((elapsed / ARC_PERIOD_MS + ri * 0.37) % 1.6);
+      var head = Math.min(1, phase), tail = Math.max(0, Math.min(1, phase - 0.6));
+      if (head <= tail) return;
+      g.beginPath();
+      for (var s = 0; s <= ARC_SEGMENTS; s++) {
+        var q = rotate(arcPoint(a, b, tail + (head - tail) * (s / ARC_SEGMENTS)), yaw);
+        var x = cx + q[0] * R, y = cy - q[1] * R;
+        if (s === 0) g.moveTo(x, y); else g.lineTo(x, y);
+      }
+      var grad = g.createLinearGradient(cx - R, cy, cx + R, cy);
+      grad.addColorStop(0, colors.accent); grad.addColorStop(1, colors.accent2);
+      g.strokeStyle = grad; g.lineWidth = 1.8; g.stroke();
+      if (head < 1) {
+        var hp = rotate(arcPoint(a, b, head), yaw);
+        g.fillStyle = colors.ink; g.beginPath(); g.arc(cx + hp[0] * R, cy - hp[1] * R, 2.4, 0, Math.PI * 2); g.fill();
       }
     });
-    pulses.forEach(function (p) {
-      ctx.globalAlpha = 1 - Math.abs(0.5 - p.t);
-      ctx.fillStyle = colors.accent;
-      ctx.beginPath(); ctx.arc(p.a.x + (p.b.x - p.a.x) * p.t, p.a.y + (p.b.y - p.a.y) * p.t, 2, 0, Math.PI * 2); ctx.fill();
+  }
+
+  function drawCities(cx, cy, R, yaw, elapsed) {
+    g.font = '600 11px "IBM Plex Mono", ui-monospace, monospace';
+    CITIES.forEach(function (c, i) {
+      var q = rotate(cityVecs[i], yaw);
+      if (q[2] <= 0) return;
+      var x = cx + q[0] * R, y = cy - q[1] * R;
+      var pulse = reduceMotion ? 0.6 : (elapsed / 1100 + i * 0.3) % 1;
+      g.strokeStyle = colors.ok; g.globalAlpha = 1 - pulse; g.lineWidth = 1.2;
+      g.beginPath(); g.arc(x, y, 3 + pulse * 12, 0, Math.PI * 2); g.stroke();
+      g.globalAlpha = 1; g.fillStyle = colors.ok;
+      g.beginPath(); g.arc(x, y, 3, 0, Math.PI * 2); g.fill();
+      if (c.label) { g.fillStyle = colors.ink; g.fillText(c.name.toUpperCase(), x + c.dx, y + c.dy); }
     });
-    ctx.globalAlpha = 1;
   }
 
-  function step() {
-    nodes.forEach(function (n) {
-      n.x += n.vx; n.y += n.vy;
-      if (n.x < 0 || n.x > width) n.vx *= -1;
-      if (n.y < 0 || n.y > height) n.vy *= -1;
-    });
-    pulses = pulses.filter(function (p) { p.t += 0.02; return p.t < 1; });
+  function drawGlobe(now) {
+    var elapsed = now - t0;
+    var yaw = -(BASE_LONGITUDE + SWAY_DEGREES * Math.sin(elapsed * SWAY_SPEED)) * Math.PI / 180;
+    var R = Math.min(gW, gH) * GLOBE_SCALE, cx = gW / 2, cy = gH * 0.47;
+    g.clearRect(0, 0, gW, gH);
+    var halo = g.createRadialGradient(cx, cy, R * 0.85, cx, cy, R * 1.3);
+    halo.addColorStop(0, 'rgba(137,162,255,0)');
+    halo.addColorStop(0.35, 'rgba(137,162,255,0.10)');
+    halo.addColorStop(1, 'rgba(137,162,255,0)');
+    g.fillStyle = halo; g.beginPath(); g.arc(cx, cy, R * 1.3, 0, Math.PI * 2); g.fill();
+    g.strokeStyle = colors.accent; g.globalAlpha = 0.25; g.lineWidth = 1;
+    g.beginPath(); g.arc(cx, cy, R, 0, Math.PI * 2); g.stroke(); g.globalAlpha = 1;
+    drawDots(cx, cy, R, yaw);
+    drawArcs(cx, cy, R, yaw, elapsed);
+    drawCities(cx, cy, R, yaw, elapsed);
   }
 
-  function loop() {
-    if (!running) return;
-    step(); draw();
-    requestAnimationFrame(loop);
+  function globeLoop(now) {
+    if (!globeRunning) return;
+    drawGlobe(now);
+    requestAnimationFrame(globeLoop);
   }
 
-  function start() { if (!running && !reduceMotion) { running = true; loop(); } }
-
-  readColors(); resize(); draw();
-  window.addEventListener('resize', function () { resize(); draw(); });
-  window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', function () { readColors(); draw(); });
+  sizeGlobe(); drawGlobe(performance.now());
+  window.addEventListener('resize', function () { sizeGlobe(); drawGlobe(performance.now()); });
+  window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', function () { colors = themeColors(); drawGlobe(performance.now()); });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { drawGlobe(performance.now()); });
   if (!reduceMotion) {
+    var startGlobe = function () { if (!globeRunning) { globeRunning = true; requestAnimationFrame(globeLoop); } };
     if ('IntersectionObserver' in window) {
-      new IntersectionObserver(function (entries) {
-        if (entries[0].isIntersecting) start(); else running = false;
-      }).observe(canvas);
-    } else { start(); }
+      new IntersectionObserver(function (entries) { if (entries[0].isIntersecting) startGlobe(); else globeRunning = false; }).observe(globe);
+    } else { startGlobe(); }
   }
 
-  /* ---------- Conditional access evaluation ---------- */
-  var STEP_DELAY_MS = 420;
-  var checkItems = Array.prototype.slice.call(document.querySelectorAll('#checks li'));
-  var verdict = document.getElementById('verdict');
-  var timers = [];
-  document.getElementById('run').addEventListener('click', function () {
-    timers.forEach(clearTimeout); timers = [];
-    if (reduceMotion) { verdict.textContent = 'Résultat : accès accordé'; return; }
-    checkItems.forEach(function (li) { li.classList.add('pending'); });
-    verdict.classList.add('wait'); verdict.textContent = 'Évaluation en cours…';
-    checkItems.forEach(function (li, i) {
-      timers.push(setTimeout(function () { li.classList.remove('pending'); }, STEP_DELAY_MS * (i + 1)));
+  /* ---------- Typed specialities ---------- */
+  var SPECIALITIES = ['Microsoft hybride · Entra ID · IAM', 'Durcissement · MFA · GPO', 'Détection · Sigma · MITRE ATT&CK', 'Sauvegardes · PRA / PCA', 'PowerShell · Microsoft Graph · Python'];
+  var TYPE_DELAY_MS = 38, HOLD_MS = 2400;
+  var typed = document.getElementById('typed');
+  if (!reduceMotion) {
+    var specIndex = 0;
+    var typeNext = function () {
+      specIndex = (specIndex + 1) % SPECIALITIES.length;
+      var text = SPECIALITIES[specIndex], n = 0;
+      var tick = function () {
+        typed.textContent = text.slice(0, n);
+        if (n++ < text.length) setTimeout(tick, TYPE_DELAY_MS); else setTimeout(typeNext, HOLD_MS);
+      };
+      tick();
+    };
+    setTimeout(typeNext, HOLD_MS);
+  }
+
+  /* ---------- Ticker: duplicate the track for a seamless loop ---------- */
+  var ticker = document.getElementById('ticker');
+  ticker.insertAdjacentHTML('beforeend', ticker.innerHTML);
+
+  /* ---------- Reveal on scroll (everything is visible without JS) ---------- */
+  if (!reduceMotion && 'IntersectionObserver' in window) {
+    var revealIO = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.remove('pending'); revealIO.unobserve(e.target); } });
+    }, { rootMargin: '0px 0px -8% 0px' });
+    document.querySelectorAll('.reveal').forEach(function (el) {
+      if (el.getBoundingClientRect().top > window.innerHeight) { el.classList.add('pending'); revealIO.observe(el); }
     });
-    timers.push(setTimeout(function () {
-      verdict.classList.remove('wait'); verdict.textContent = 'Résultat : accès accordé';
-    }, STEP_DELAY_MS * (checkItems.length + 1)));
-  });
+  }
 
   /* ---------- PowerShell console ---------- */
   var out = document.getElementById('out');
   var input = document.getElementById('cmd');
   var history = [], historyIndex = 0;
-  var COMMAND_NAMES = ['Get-Help', 'Get-Profil', 'Get-Experience', 'Get-Competences', 'Get-Projets', 'Test-Disponibilite', 'Get-CV', 'Clear-Host'];
+  var COMMAND_NAMES = ['Get-Help', 'Get-Profil', 'Get-Experience', 'Get-Competences', 'Get-Projets', 'Invoke-IdentityGuard', 'Test-Disponibilite', 'Get-CV', 'Clear-Host'];
 
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
   function kv(key, value) { return '<span class="k">' + esc(key.padEnd(12)) + '</span>: <span class="v">' + esc(value) + '</span>'; }
@@ -853,13 +910,14 @@ footer a:hover { color: var(--ink); }
     'get-help': function () {
       return [
         '<span class="m">Commandes disponibles :</span>',
-        '  <span class="k">Get-Profil</span>            Qui je suis, en une fiche',
-        '  <span class="k">Get-Experience</span>        Mon parcours',
-        '  <span class="k">Get-Competences</span>       Mes compétences (-Niveau Production | Notions)',
-        '  <span class="k">Get-Projets</span>           Mes projets',
-        '  <span class="k">Test-Disponibilite</span>    Suis-je disponible ?',
-        '  <span class="k">Get-CV</span>                Lien vers mon CV en PDF',
-        '  <span class="k">Clear-Host</span>            Effacer la console'
+        '  <span class="k">Get-Profil</span>             Qui je suis, en une fiche',
+        '  <span class="k">Get-Experience</span>         Mon parcours',
+        '  <span class="k">Get-Competences</span>        Mes compétences (-Niveau Production | Notions)',
+        '  <span class="k">Get-Projets</span>            Mes projets',
+        '  <span class="k">Invoke-IdentityGuard</span>   Simuler un audit des identités (-DemoMode)',
+        '  <span class="k">Test-Disponibilite</span>     Suis-je disponible ?',
+        '  <span class="k">Get-CV</span>                 Lien vers mon CV en PDF',
+        '  <span class="k">Clear-Host</span>             Effacer la console'
       ].join('\n');
     },
     'get-profil': function () {
@@ -868,7 +926,7 @@ footer a:hover { color: var(--ink); }
         kv('Titre', 'Ingénieur Systèmes et Cybersécurité'),
         kv('Experience', '2 ans · Responsable du SI (Hautier IP)'),
         kv('Diplome', 'Mastère Cybersécurité & Cloud Computing (Bac+5)'),
-        kv('Specialite', 'Microsoft hybride · IAM · Durcissement · PRA/PCA'),
+        kv('Specialite', 'Microsoft hybride · IAM · Durcissement · Détection · PRA/PCA'),
         kv('Recherche', 'CDI ou CDD'),
         kv('Mobilite', 'Paris, Lyon, toute la France')
       ].join('\n');
@@ -889,7 +947,8 @@ footer a:hover { color: var(--ink); }
         kv('Microsoft', 'Entra ID, M365, Exchange Online, Intune, Azure, Power Platform'),
         kv('Systemes', 'Windows Server, AD, GPO, Ubuntu, Debian, VMware, Hyper-V'),
         kv('Reseau', 'TCP/IP, DNS, DHCP, VLAN, VPN, pare-feu'),
-        kv('Scripting', 'PowerShell, Python, C, SQL, PHP, JavaScript')
+        kv('Scripting', 'PowerShell, Python, C, SQL, PHP, JavaScript'),
+        kv('Detection', 'Sigma, auditd, MITRE ATT&CK (labs)')
       ];
       var notions = [kv('Notions', 'AWS, Docker, Kubernetes, Terraform, Jenkins, CI/CD, pentest, OWASP')];
       if (/^notions$/i.test(level)) return notions.join('\n');
@@ -898,20 +957,32 @@ footer a:hover { color: var(--ink); }
     },
     'get-projets': function () {
       return [
-        '<span class="m">Nom         Type                    Stack</span>',
-        '<span class="m">---         ----                    -----</span>',
-        'Hermes      Outil métier (prod)     PHP, MySQL, PDO, DOMPDF',
-        'ProManager  Lab ransomware (TP)     C, OpenSSL, TCP, GTK',
+        '<span class="m">Nom            Type                      Stack</span>',
+        '<span class="m">---            ----                      -----</span>',
+        'ProManager     Red team · ransomware TP  C, OpenSSL, TCP, GTK',
+        'RansomWatch    Blue team · détection     Python, Sigma, auditd, Suricata',
+        'IdentityGuard  Audit AD / Entra ID       PowerShell, Microsoft Graph',
+        'Hermes         Outil métier (prod)       PHP, MySQL, PDO, DOMPDF',
         '',
         '<span class="m">Détails : <a href="#projets">section Projets</a></span>'
       ].join('\n');
     },
-    'test-disponibilite': function () {
-      return '<span class="v">True</span>  <span class="m"># Disponible immédiatement · CDI ou CDD</span>';
+    'invoke-identityguard': function () {
+      return [
+        '<span class="m">[*] Mode démo · tenant fictif contoso.example</span>',
+        '<span class="m">[*] Contrôles Active Directory ...</span> <span class="v">OK</span>',
+        '<span class="m">[*] Contrôles Entra ID ...</span> <span class="v">OK</span>',
+        '<span class="e">[CRITIQUE]</span> AD-006   Comptes avec SPN (Kerberoasting, T1558.003)',
+        '<span class="e">[CRITIQUE]</span> AD-007   Délégation Kerberos non contrainte',
+        '<span class="e">[CRITIQUE]</span> ENT-001  Comptes sans méthode MFA enregistrée',
+        '<span class="k">[ÉLEVÉE]  </span> AD-001   krbtgt non renouvelé depuis plus de 180 jours',
+        '<span class="m">[=] Score : 54 / 100 · niveau D · 14 constats à corriger</span>',
+        '<span class="m">[+] Rapport écrit dans .\\IdentityGuard-report.html</span>',
+        '<span class="m">Code : <a href="https://github.com/MamadouPapa/IdentityGuard" target="_blank" rel="noopener">github.com/MamadouPapa/IdentityGuard</a></span>'
+      ].join('\n');
     },
-    'get-cv': function () {
-      return '<span class="m">CV :</span> <a href="cv/CV_Papa_Mamadou_Gueye.pdf" download>cv/CV_Papa_Mamadou_Gueye.pdf</a>';
-    },
+    'test-disponibilite': function () { return '<span class="v">True</span>  <span class="m"># Disponible immédiatement · CDI ou CDD</span>'; },
+    'get-cv': function () { return '<span class="m">CV :</span> <a href="cv/CV_Papa_Mamadou_Gueye.pdf" download>cv/CV_Papa_Mamadou_Gueye.pdf</a>'; },
     'whoami': function () { return 'pmgueye  <span class="m"># prêt pour un nouveau SI</span>'; }
   };
 

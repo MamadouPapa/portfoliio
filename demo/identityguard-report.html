@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IdentityGuard – AD : corp.contoso.example &#183; Entra ID : Contoso (d&#233;mo)</title>
+<style>
+:root {
+  --bg: #f4f6fa; --surface: #ffffff; --text: #1b2430; --muted: #5b6472; --line: #dde2ea;
+  --accent: #1f3a5f; --critical: #b42318; --high: #c4320a; --medium: #a15c07; --low: #2f6fb0;
+  --info: #5b6472; --pass: #217a4b;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text);
+  font: 14px/1.5 "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", Arial, sans-serif; }
+.page { max-width: 1180px; margin: 0 auto; padding: 32px 24px 48px; }
+h1 { font-size: 26px; margin: 4px 0 8px; letter-spacing: -0.01em; }
+h2 { font-size: 18px; margin: 32px 0 12px; }
+h3 { font-size: 13px; margin: 16px 0 4px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+a { color: var(--accent); }
+.report-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px;
+  padding-bottom: 20px; border-bottom: 3px solid var(--accent); }
+.eyebrow { margin: 0; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: var(--accent); }
+.meta { margin: 0; color: var(--muted); }
+.demo-badge { flex: none; padding: 6px 12px; border-radius: 6px; background: #fff4e5; color: #8a4b00;
+  border: 1px solid #f0c48a; font-weight: 700; font-size: 12px; letter-spacing: .04em; }
+.summary { display: grid; grid-template-columns: 240px 1fr; gap: 16px; margin-top: 24px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; }
+.score { text-align: center; }
+.score-value { font-size: 56px; font-weight: 700; line-height: 1; margin: 8px 0 4px; }
+.score-grade { display: inline-block; margin-top: 6px; padding: 2px 12px; border-radius: 999px;
+  background: var(--accent); color: #fff; font-weight: 700; }
+.score-label { color: var(--muted); font-size: 12px; }
+.counters { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 12px; }
+.counter { border-left: 4px solid var(--info); }
+.counter .value { font-size: 28px; font-weight: 700; }
+.counter .label { color: var(--muted); font-size: 12px; }
+.counter.sev-critical { border-left-color: var(--critical); } .counter.sev-high { border-left-color: var(--high); }
+.counter.sev-medium { border-left-color: var(--medium); } .counter.sev-low { border-left-color: var(--low); }
+.counter.st-pass { border-left-color: var(--pass); }
+table { width: 100%; border-collapse: collapse; background: var(--surface); }
+th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-size: 12px; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); background: #eef1f6; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.table-wrap { border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+.badge { display: inline-block; min-width: 72px; text-align: center; padding: 2px 8px; border-radius: 4px;
+  color: #fff; font-size: 12px; font-weight: 600; background: var(--info); }
+.badge.sev-critical { background: var(--critical); } .badge.sev-high { background: var(--high); }
+.badge.sev-medium { background: var(--medium); } .badge.sev-low { background: var(--low); }
+.status { font-size: 12px; font-weight: 600; }
+.st-pass { color: var(--pass); } .st-fail { color: var(--critical); } .st-notrun { color: var(--muted); }
+details.finding { background: var(--surface); border: 1px solid var(--line); border-left: 5px solid var(--info);
+  border-radius: 8px; margin-bottom: 10px; }
+details.finding.sev-critical { border-left-color: var(--critical); } details.finding.sev-high { border-left-color: var(--high); }
+details.finding.sev-medium { border-left-color: var(--medium); } details.finding.sev-low { border-left-color: var(--low); }
+details.finding.st-pass { border-left-color: var(--pass); }
+summary { display: flex; align-items: center; gap: 12px; padding: 12px 16px; cursor: pointer; list-style: none; }
+summary::-webkit-details-marker { display: none; }
+summary::before { content: "\25B8"; color: var(--muted); }
+details[open] > summary::before { content: "\25BE"; }
+.fid { font-family: Consolas, "SFMono-Regular", Menlo, monospace; font-size: 12px; color: var(--muted); }
+.ftitle { flex: 1; font-weight: 600; }
+.fcount { color: var(--muted); font-size: 12px; white-space: nowrap; }
+.finding-body { padding: 0 16px 16px 40px; }
+.finding-body p { margin: 4px 0; }
+.note { background: #f1f4f9; border-radius: 6px; padding: 8px 10px; }
+.empty { color: var(--muted); font-style: italic; }
+.truncated { color: var(--muted); font-size: 12px; margin-top: 6px; }
+.items td:first-child { font-family: Consolas, "SFMono-Regular", Menlo, monospace; font-size: 13px; word-break: break-all; }
+footer { margin-top: 40px; padding-top: 16px; border-top: 1px solid var(--line); color: var(--muted); font-size: 12px; }
+@media (max-width: 760px) { .summary { grid-template-columns: 1fr; } .report-header { flex-direction: column; } }
+@media print { body { background: #fff; } .page { padding: 0; } details.finding { break-inside: avoid; } }
+</style>
+</head>
+<body>
+<main class="page">
+<header class="report-header">
+<div>
+<p class="eyebrow">IdentityGuard · Audit en lecture seule</p>
+<h1>Rapport de posture de sécurité des identités</h1>
+<p class="meta">Cible : AD : corp.contoso.example &#183; Entra ID : Contoso (d&#233;mo) · Périmètre : Active Directory + Entra ID · Généré le : 2026-11-16 10:21</p>
+</div>
+<div class="demo-badge">MODE DÉMO · DONNÉES FICTIVES</div>
+</header>
+<section class="summary">
+<div class="card score">
+<div class="score-label">Score de posture</div>
+<div class="score-value">54<span class="score-label">/100</span></div>
+<div class="score-grade">Niveau D</div>
+<div class="score-label" style="margin-top:8px">14 contrôle(s) à corriger sur 16</div>
+</div>
+<div class="counters"><div class="card counter sev-critical"><div class="value">3</div><div class="label">Critique</div></div><div class="card counter sev-high"><div class="value">5</div><div class="label">&#201;lev&#233;e</div></div><div class="card counter sev-medium"><div class="value">5</div><div class="label">Moyenne</div></div><div class="card counter sev-low"><div class="value">1</div><div class="label">Faible</div></div><div class="card counter st-pass"><div class="value">1</div><div class="label">Conformes</div></div><div class="card counter sev-info"><div class="value">1</div><div class="label">Non ex&#233;cut&#233;s</div></div></div>
+</section>
+<h2>Synthèse des contrôles</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Id</th><th>Catégorie</th><th>Contrôle</th><th>Sévérité</th><th>Statut</th><th class="num">Nombre</th></tr></thead>
+<tbody><tr><td><a href="#f-ad-006">AD-006</a></td><td>Active Directory</td><td>Comptes utilisateurs avec SPN (Kerberoasting)</td><td><span class="badge sev-critical">Critique</span></td><td><span class="status st-fail">&#192; corriger</span></td><td class="num">2</td></tr>
+<tr><td><a href="#f-ad-007">AD-007</a></td><td>Active Directory</td><td>D&#233;l&#233;gation Kerberos non contrainte sur des ordinateurs hors contr&#244;leurs de domaine</td><td><span class="badge sev-critical">Critique</span></td><td><span class="status st-fail">&#192; corriger</span></td><td class="num">2</td></tr>
+<tr><td><a href="#f-ent-001">ENT-001</a></td><td>Entra ID</td><td>Comptes membres sans m&#233;thode MFA enregistr&#233;e</td><td><span class="badge sev-critical">Critique</span></td><td><span class="status st-fail">&#192; corriger</span></td><td class="num">3</td></tr>
+<tr><td><a href="#f-ad-001">AD-001</a></td><td>Active Directory</td><td>Mot de passe du compte krbtgt non renouvel&#233; depuis plus de 180 jours</td><td><span class="badge sev-high">&#201;lev&#233;e</span></td><td><span class="status st-fail">&#192; corriger</span></td><td class="num">1</td></tr>
+<tr><td><a href="#f-ad-005">AD-005</a></td><td>Active Directory</td><td>Comptes sans pr&#233;-authentification Kerberos (AS-REP roasting)</td><td><span class="badge sev-high">&#201;lev&#233;e</span></td><td><span class="status st-fail">&#192; corriger</span></td><td class="num">2</td></tr>
+<tr><td><a href="#f-ad-009">AD-009</a></td><td>Active Directory</td><td>Comptes actifs autoris&#233;s &#224; avoir un mot de passe vide (PASSWD_NOTREQD)</td><td><span class="badge sev-high">&#201;lev&#233;e</span></td><td><span class="status st-fail">&#192; corriger</span></td><td class="num">1</td></tr>
+<tr><td><a href="#f-ad-010">AD-010</a></td><td>Active Directory</td><td>Solution LAPS absente du sch&#233;ma Active Directory</td><td><span class="badge sev-high">&#201;lev&#233;e</span></td><td><span class="status st-fail">&#192; corriger</span></td><td class="num">7</td></tr>
+<tr><td><a href="#f-ent-002">ENT-002</a></td><td>Entra ID</td><td>Attributions permanentes de r&#244;les &#224; privil&#232;ges Entra ID</td><td><span class="badge sev-high">&#201;lev&#233;e</span></td><td><span class="status st-fail">&#192; corriger</span></td><td class="num">6</td></tr>
+<tr><td><a href="#f-ad-002">AD-002</a></td><td>Active Directory</td><td>Comptes actifs dont le mot de passe n&#39;expire jamais</td><td><span class="badge sev-medium">Moyenne</span></td><td><span class="status st-fail">&#192; corriger</span></td><td class="num">6</td></tr>
+<tr><td><a href="#f-ad-003">AD-003</a></td><td>Active Directory</td><td>Comptes actifs inactifs depuis plus de 90 jours</td><td><span class="badge sev-medium">Moyenne</span></td><td><span class="status st-fail">&#192; corriger</span></td><td class="num">4</td></tr>
+<tr><td><a href="#f-ad-004">AD-004</a></td><td>Active Directory</td><td>Membres des groupes &#224; privil&#232;ges (Domain Admins, Enterprise Admins, Schema Admins, Administrators)</td><td><span class="badge sev-medium">Moyenne</span></td><td><span class="status st-fail">&#192; corriger</span></td><td class="num">7</td></tr>
+<tr><td><a href="#f-ent-003">ENT-003</a></td><td>Entra ID</td><td>Comptes invit&#233;s obsol&#232;tes</td><td><span class="badge sev-medium">Moyenne</span></td><td><span class="status st-fail">&#192; corriger</span></td><td class="num">2</td></tr>
+<tr><td><a href="#f-ent-005">ENT-005</a></td><td>Entra ID</td><td>Secrets et certificats d&#39;applications expir&#233;s ou expirant sous 30 jours</td><td><span class="badge sev-medium">Moyenne</span></td><td><span class="status st-fail">&#192; corriger</span></td><td class="num">4</td></tr>
+<tr><td><a href="#f-ad-008">AD-008</a></td><td>Active Directory</td><td>Comptes AdminCount=1 orphelins (hors groupes prot&#233;g&#233;s)</td><td><span class="badge sev-low">Faible</span></td><td><span class="status st-fail">&#192; corriger</span></td><td class="num">2</td></tr>
+<tr><td><a href="#f-ent-006">ENT-006</a></td><td>Entra ID</td><td>Comptes membres actifs sans connexion depuis plus de 90 jours</td><td><span class="badge sev-info">Info</span></td><td><span class="status st-notrun">Non ex&#233;cut&#233;</span></td><td class="num">0</td></tr>
+<tr><td><a href="#f-ent-004">ENT-004</a></td><td>Entra ID</td><td>Param&#232;tres de s&#233;curit&#233; par d&#233;faut / strat&#233;gies d&#39;Acc&#232;s conditionnel</td><td><span class="badge sev-info">Info</span></td><td><span class="status st-pass">Conforme</span></td><td class="num">1</td></tr></tbody>
+</table></div>
+<h2>Détail des contrôles</h2>
+<details id="f-ad-006" class="finding sev-critical st-fail" open>
+<summary><span class="badge sev-critical">Critique</span><span class="fid">AD-006</span><span class="ftitle">Comptes utilisateurs avec SPN (Kerberoasting)</span><span class="fcount">&#192; corriger · 2 objet(s)</span></summary>
+<div class="finding-body">
+
+<h3>Remédiation</h3><p>Remplacer les comptes de service par des gMSA, sinon imposer des mots de passe al&#233;atoires de plus de 25 caract&#232;res, le chiffrement AES uniquement, et retirer tout privil&#232;ge d&#39;administration &#224; ces comptes.</p>
+<h3>Références</h3><p>MITRE ATT&amp;CK T1558.003 (Kerberoasting) ; ANSSI (CERT-FR) – Points de contr&#244;le Active Directory : <a href="https://www.cert.ssi.gouv.fr/uploads/guide-ad.html" rel="noopener noreferrer">https://www.cert.ssi.gouv.fr/uploads/guide-ad.html</a></p>
+<h3>Objets concernés</h3><table class="items"><thead><tr><th>Objet</th><th>Détail</th></tr></thead><tbody><tr><td>svc_sql01</td><td>SPN : MSSQLSvc/sql01.corp.contoso.example:1433, MSSQLSvc/sql01.corp.contoso.example &#183; Compte standard</td></tr>
+<tr><td>svc_backup01</td><td>SPN : BackupSvc/bkp01.corp.contoso.example &#183; Compte &#224; privil&#232;ges (adminCount=1)</td></tr></tbody></table>
+</div>
+</details>
+<details id="f-ad-007" class="finding sev-critical st-fail" open>
+<summary><span class="badge sev-critical">Critique</span><span class="fid">AD-007</span><span class="ftitle">D&#233;l&#233;gation Kerberos non contrainte sur des ordinateurs hors contr&#244;leurs de domaine</span><span class="fcount">&#192; corriger · 2 objet(s)</span></summary>
+<div class="finding-body">
+
+<h3>Remédiation</h3><p>Remplacer la d&#233;l&#233;gation non contrainte par une d&#233;l&#233;gation contrainte ou bas&#233;e sur les ressources (RBCD). Marquer les comptes &#224; privil&#232;ges &#171; Le compte est sensible et ne peut pas &#234;tre d&#233;l&#233;gu&#233; &#187;.</p>
+<h3>Références</h3><p>MITRE ATT&amp;CK T1558, T1187 ; ANSSI (CERT-FR) – Points de contr&#244;le Active Directory : <a href="https://www.cert.ssi.gouv.fr/uploads/guide-ad.html" rel="noopener noreferrer">https://www.cert.ssi.gouv.fr/uploads/guide-ad.html</a> ; <a href="https://learn.microsoft.com/en-us/windows-server/security/kerberos/kerberos-constrained-delegation-overview" rel="noopener noreferrer">https://learn.microsoft.com/en-us/windows-server/security/kerberos/kerberos-constrained-delegation-overview</a></p>
+<h3>Objets concernés</h3><table class="items"><thead><tr><th>Objet</th><th>Détail</th></tr></thead><tbody><tr><td>SRV-APP01</td><td>Windows Server 2016 Standard &#183; TRUSTED_FOR_DELEGATION</td></tr>
+<tr><td>SRV-PRINT01</td><td>Windows Server 2012 R2 Standard &#183; TRUSTED_FOR_DELEGATION</td></tr></tbody></table>
+</div>
+</details>
+<details id="f-ent-001" class="finding sev-critical st-fail" open>
+<summary><span class="badge sev-critical">Critique</span><span class="fid">ENT-001</span><span class="ftitle">Comptes membres sans m&#233;thode MFA enregistr&#233;e</span><span class="fcount">&#192; corriger · 3 objet(s)</span></summary>
+<div class="finding-body">
+<p class="note">3 compte(s) membre(s) sur 10 sans MFA enregistr&#233;e.</p>
+<h3>Remédiation</h3><p>Imposer l&#39;enregistrement MFA (campagne d&#39;enregistrement, Acc&#232;s conditionnel), en priorit&#233; pour les administrateurs, et privil&#233;gier les m&#233;thodes r&#233;sistantes au phishing (FIDO2, Windows Hello, passkeys).</p>
+<h3>Références</h3><p>MITRE ATT&amp;CK T1078.004, T1110.003 ; <a href="https://learn.microsoft.com/en-us/entra/identity/authentication/howto-authentication-methods-activity" rel="noopener noreferrer">https://learn.microsoft.com/en-us/entra/identity/authentication/howto-authentication-methods-activity</a></p>
+<h3>Objets concernés</h3><table class="items"><thead><tr><th>Objet</th><th>Détail</th></tr></thead><tbody><tr><td>admin02@contoso.example</td><td>Administrateur &#183; aucune m&#233;thode MFA enregistr&#233;e</td></tr>
+<tr><td>user02@contoso.example</td><td>Utilisateur &#183; aucune m&#233;thode MFA enregistr&#233;e</td></tr>
+<tr><td>user04@contoso.example</td><td>Utilisateur &#183; aucune m&#233;thode MFA enregistr&#233;e</td></tr></tbody></table>
+</div>
+</details>
+<details id="f-ad-001" class="finding sev-high st-fail" open>
+<summary><span class="badge sev-high">&#201;lev&#233;e</span><span class="fid">AD-001</span><span class="ftitle">Mot de passe du compte krbtgt non renouvel&#233; depuis plus de 180 jours</span><span class="fcount">&#192; corriger · 1 objet(s)</span></summary>
+<div class="finding-body">
+<p class="note">Seuil : 180 jours.</p>
+<h3>Remédiation</h3><p>R&#233;initialiser le mot de passe krbtgt deux fois, en attendant entre les deux la r&#233;plication compl&#232;te et la dur&#233;e de vie maximale des tickets (10 h par d&#233;faut). Utiliser le script officiel New-KrbtgtKeys.ps1 et planifier une rotation au moins tous les 180 jours.</p>
+<h3>Références</h3><p>MITRE ATT&amp;CK T1558.001 (Golden Ticket) ; ANSSI (CERT-FR) – Points de contr&#244;le Active Directory : <a href="https://www.cert.ssi.gouv.fr/uploads/guide-ad.html" rel="noopener noreferrer">https://www.cert.ssi.gouv.fr/uploads/guide-ad.html</a> ; <a href="https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/manage/forest-recovery-guide/ad-forest-recovery-reset-the-krbtgt-password" rel="noopener noreferrer">https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/manage/forest-recovery-guide/ad-forest-recovery-reset-the-krbtgt-password</a></p>
+<h3>Objets concernés</h3><table class="items"><thead><tr><th>Objet</th><th>Détail</th></tr></thead><tbody><tr><td>krbtgt</td><td>Mot de passe chang&#233; le 2023-01-04 (il y a 1412 jours)</td></tr></tbody></table>
+</div>
+</details>
+<details id="f-ad-005" class="finding sev-high st-fail" open>
+<summary><span class="badge sev-high">&#201;lev&#233;e</span><span class="fid">AD-005</span><span class="ftitle">Comptes sans pr&#233;-authentification Kerberos (AS-REP roasting)</span><span class="fcount">&#192; corriger · 2 objet(s)</span></summary>
+<div class="finding-body">
+
+<h3>Remédiation</h3><p>D&#233;sactiver l&#39;option &#171; Ne pas demander la pr&#233;-authentification Kerberos &#187; (DONT_REQ_PREAUTH) sur tous les comptes, puis renouveler leur mot de passe.</p>
+<h3>Références</h3><p>MITRE ATT&amp;CK T1558.004 (AS-REP Roasting) ; ANSSI (CERT-FR) – Points de contr&#244;le Active Directory : <a href="https://www.cert.ssi.gouv.fr/uploads/guide-ad.html" rel="noopener noreferrer">https://www.cert.ssi.gouv.fr/uploads/guide-ad.html</a></p>
+<h3>Objets concernés</h3><table class="items"><thead><tr><th>Objet</th><th>Détail</th></tr></thead><tbody><tr><td>svc_legacyapp01</td><td>Compte standard</td></tr>
+<tr><td>user05</td><td>Compte standard</td></tr></tbody></table>
+</div>
+</details>
+<details id="f-ad-009" class="finding sev-high st-fail" open>
+<summary><span class="badge sev-high">&#201;lev&#233;e</span><span class="fid">AD-009</span><span class="ftitle">Comptes actifs autoris&#233;s &#224; avoir un mot de passe vide (PASSWD_NOTREQD)</span><span class="fcount">&#192; corriger · 1 objet(s)</span></summary>
+<div class="finding-body">
+
+<h3>Remédiation</h3><p>Retirer le drapeau PASSWD_NOTREQD (Set-ADUser -PasswordNotRequired $false) puis forcer la d&#233;finition d&#39;un mot de passe conforme.</p>
+<h3>Références</h3><p>MITRE ATT&amp;CK T1078.002, T1110.001 ; ANSSI (CERT-FR) – Points de contr&#244;le Active Directory : <a href="https://www.cert.ssi.gouv.fr/uploads/guide-ad.html" rel="noopener noreferrer">https://www.cert.ssi.gouv.fr/uploads/guide-ad.html</a></p>
+<h3>Objets concernés</h3><table class="items"><thead><tr><th>Objet</th><th>Détail</th></tr></thead><tbody><tr><td>user06</td><td>Compte standard</td></tr></tbody></table>
+</div>
+</details>
+<details id="f-ad-010" class="finding sev-high st-fail" open>
+<summary><span class="badge sev-high">&#201;lev&#233;e</span><span class="fid">AD-010</span><span class="ftitle">Solution LAPS absente du sch&#233;ma Active Directory</span><span class="fcount">&#192; corriger · 7 objet(s)</span></summary>
+<div class="finding-body">
+<p class="note">Aucun attribut ms-Mcs-AdmPwd ni msLAPS-Password dans le sch&#233;ma : LAPS n&#39;est pas d&#233;ploy&#233;.</p>
+<h3>Remédiation</h3><p>D&#233;ployer Windows LAPS (int&#233;gr&#233; &#224; Windows depuis avril 2023) pour rendre uniques et renouveler automatiquement les mots de passe administrateur local.</p>
+<h3>Références</h3><p>MITRE ATT&amp;CK T1078.003, T1550.002 ; ANSSI (CERT-FR) – Points de contr&#244;le Active Directory : <a href="https://www.cert.ssi.gouv.fr/uploads/guide-ad.html" rel="noopener noreferrer">https://www.cert.ssi.gouv.fr/uploads/guide-ad.html</a> ; <a href="https://learn.microsoft.com/en-us/windows-server/identity/laps/laps-overview" rel="noopener noreferrer">https://learn.microsoft.com/en-us/windows-server/identity/laps/laps-overview</a></p>
+<h3>Objets concernés</h3><table class="items"><thead><tr><th>Objet</th><th>Détail</th></tr></thead><tbody><tr><td>SRV-APP01</td><td>Windows Server 2016 Standard</td></tr>
+<tr><td>SRV-PRINT01</td><td>Windows Server 2012 R2 Standard</td></tr>
+<tr><td>SRV-FILE01</td><td>Windows Server 2019 Standard</td></tr>
+<tr><td>SRV-SQL01</td><td>Windows Server 2019 Standard</td></tr>
+<tr><td>WKS-0001</td><td>Windows 11 Entreprise</td></tr>
+<tr><td>WKS-0002</td><td>Windows 11 Entreprise</td></tr>
+<tr><td>WKS-0003</td><td>Windows 10 Entreprise</td></tr></tbody></table>
+</div>
+</details>
+<details id="f-ent-002" class="finding sev-high st-fail" open>
+<summary><span class="badge sev-high">&#201;lev&#233;e</span><span class="fid">ENT-002</span><span class="ftitle">Attributions permanentes de r&#244;les &#224; privil&#232;ges Entra ID</span><span class="fcount">&#192; corriger · 6 objet(s)</span></summary>
+<div class="finding-body">
+<p class="note">Global Administrator permanents : 5 (recommand&#233; : moins de 5, dont 2 comptes d&#39;urgence). Source : PIM.</p>
+<h3>Remédiation</h3><p>Convertir les attributions permanentes en attributions &#233;ligibles via Privileged Identity Management (PIM), limiter les Global Administrator &#224; moins de 5 et ne conserver que 2 comptes d&#39;urgence (break-glass) permanents.</p>
+<h3>Références</h3><p>MITRE ATT&amp;CK T1078.004, T1098.003 ; <a href="https://learn.microsoft.com/en-us/entra/identity/role-based-access-control/best-practices" rel="noopener noreferrer">https://learn.microsoft.com/en-us/entra/identity/role-based-access-control/best-practices</a></p>
+<h3>Objets concernés</h3><table class="items"><thead><tr><th>Objet</th><th>Détail</th></tr></thead><tbody><tr><td>admin01@contoso.example</td><td>Global Administrator &#183; permanent</td></tr>
+<tr><td>admin02@contoso.example</td><td>Global Administrator &#183; permanent</td></tr>
+<tr><td>breakglass01@contoso.example</td><td>Global Administrator &#183; permanent</td></tr>
+<tr><td>breakglass02@contoso.example</td><td>Global Administrator &#183; permanent</td></tr>
+<tr><td>user05@contoso.example</td><td>Global Administrator &#183; permanent</td></tr>
+<tr><td>user01@contoso.example</td><td>Security Administrator &#183; permanent</td></tr></tbody></table>
+</div>
+</details>
+<details id="f-ad-002" class="finding sev-medium st-fail">
+<summary><span class="badge sev-medium">Moyenne</span><span class="fid">AD-002</span><span class="ftitle">Comptes actifs dont le mot de passe n&#39;expire jamais</span><span class="fcount">&#192; corriger · 6 objet(s)</span></summary>
+<div class="finding-body">
+
+<h3>Remédiation</h3><p>Retirer l&#39;option PasswordNeverExpires des comptes utilisateurs. Migrer les comptes de service vers des gMSA (rotation automatique) ou appliquer une strat&#233;gie de mot de passe affin&#233;e (FGPP) avec des secrets longs.</p>
+<h3>Références</h3><p>MITRE ATT&amp;CK T1078.002, T1110 ; ANSSI (CERT-FR) – Points de contr&#244;le Active Directory : <a href="https://www.cert.ssi.gouv.fr/uploads/guide-ad.html" rel="noopener noreferrer">https://www.cert.ssi.gouv.fr/uploads/guide-ad.html</a></p>
+<h3>Objets concernés</h3><table class="items"><thead><tr><th>Objet</th><th>Détail</th></tr></thead><tbody><tr><td>Administrator</td><td>Mot de passe d&#233;fini le 2024-08-23 &#183; Compte &#224; privil&#232;ges (adminCount=1)</td></tr>
+<tr><td>adm.user02</td><td>Mot de passe d&#233;fini le 2025-03-16 &#183; Compte &#224; privil&#232;ges (adminCount=1)</td></tr>
+<tr><td>svc_sql01</td><td>Mot de passe d&#233;fini le 2023-04-26 &#183; Compte standard</td></tr>
+<tr><td>svc_backup01</td><td>Mot de passe d&#233;fini le 2024-03-11 &#183; Compte &#224; privil&#232;ges (adminCount=1)</td></tr>
+<tr><td>svc_legacyapp01</td><td>Mot de passe d&#233;fini le 2022-03-22 &#183; Compte standard</td></tr>
+<tr><td>user04</td><td>Mot de passe d&#233;fini le 2024-05-30 &#183; Compte standard</td></tr></tbody></table>
+</div>
+</details>
+<details id="f-ad-003" class="finding sev-medium st-fail">
+<summary><span class="badge sev-medium">Moyenne</span><span class="fid">AD-003</span><span class="ftitle">Comptes actifs inactifs depuis plus de 90 jours</span><span class="fcount">&#192; corriger · 4 objet(s)</span></summary>
+<div class="finding-body">
+<p class="note">Seuil : 90 jours d&#39;inactivit&#233;.</p>
+<h3>Remédiation</h3><p>D&#233;sactiver puis supprimer apr&#232;s validation les comptes inactifs (processus arriv&#233;es/d&#233;parts). Note : lastLogonTimestamp est r&#233;pliqu&#233; avec un d&#233;calage pouvant atteindre 14 jours.</p>
+<h3>Références</h3><p>MITRE ATT&amp;CK T1078.002 ; ANSSI (CERT-FR) – Points de contr&#244;le Active Directory : <a href="https://www.cert.ssi.gouv.fr/uploads/guide-ad.html" rel="noopener noreferrer">https://www.cert.ssi.gouv.fr/uploads/guide-ad.html</a></p>
+<h3>Objets concernés</h3><table class="items"><thead><tr><th>Objet</th><th>Détail</th></tr></thead><tbody><tr><td>adm.user02</td><td>Derni&#232;re connexion : 2026-07-05 (il y a 134 jours)</td></tr>
+<tr><td>user03</td><td>Derni&#232;re connexion : 2026-06-27 (il y a 142 jours)</td></tr>
+<tr><td>user07</td><td>Jamais connect&#233; (cr&#233;&#233; le 2026-04-20)</td></tr>
+<tr><td>user09</td><td>Derni&#232;re connexion : 2026-08-11 (il y a 97 jours)</td></tr></tbody></table>
+</div>
+</details>
+<details id="f-ad-004" class="finding sev-medium st-fail">
+<summary><span class="badge sev-medium">Moyenne</span><span class="fid">AD-004</span><span class="ftitle">Membres des groupes &#224; privil&#232;ges (Domain Admins, Enterprise Admins, Schema Admins, Administrators)</span><span class="fcount">&#192; corriger · 7 objet(s)</span></summary>
+<div class="finding-body">
+<p class="note">7 compte(s) &#224; privil&#232;ges distinct(s). Objectif : 5 au maximum, revue trimestrielle.</p>
+<h3>Remédiation</h3><p>R&#233;duire au strict minimum les membres des groupes &#224; privil&#232;ges, utiliser des comptes d&#39;administration d&#233;di&#233;s (mod&#232;le en tiers), vider Schema Admins et Enterprise Admins hors op&#233;rations ponctuelles et placer les comptes dans Protected Users.</p>
+<h3>Références</h3><p>MITRE ATT&amp;CK T1078.002, T1069.002 ; ANSSI (CERT-FR) – Points de contr&#244;le Active Directory : <a href="https://www.cert.ssi.gouv.fr/uploads/guide-ad.html" rel="noopener noreferrer">https://www.cert.ssi.gouv.fr/uploads/guide-ad.html</a> ; <a href="https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models" rel="noopener noreferrer">https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models</a></p>
+<h3>Objets concernés</h3><table class="items"><thead><tr><th>Objet</th><th>Détail</th></tr></thead><tbody><tr><td>adm.user01</td><td>Membre de : Administrators, Domain Admins, Enterprise Admins</td></tr>
+<tr><td>adm.user02</td><td>Membre de : Domain Admins</td></tr>
+<tr><td>adm.user03</td><td>Membre de : Domain Admins</td></tr>
+<tr><td>adm.user04</td><td>Membre de : Administrators</td></tr>
+<tr><td>Administrator</td><td>Membre de : Administrators, Domain Admins, Enterprise Admins, Schema Admins</td></tr>
+<tr><td>svc_backup01</td><td>Membre de : Domain Admins</td></tr>
+<tr><td>svc_monitor01</td><td>Membre de : Administrators</td></tr></tbody></table>
+</div>
+</details>
+<details id="f-ent-003" class="finding sev-medium st-fail">
+<summary><span class="badge sev-medium">Moyenne</span><span class="fid">ENT-003</span><span class="ftitle">Comptes invit&#233;s obsol&#232;tes</span><span class="fcount">&#192; corriger · 2 objet(s)</span></summary>
+<div class="finding-body">
+<p class="note">4 invit&#233;(s) au total ; crit&#232;re : invitation en attente depuis plus de 30 jours (signInActivity indisponible, licence P1 requise pour la date de connexion).</p>
+<h3>Remédiation</h3><p>Mettre en place des revues d&#39;acc&#232;s p&#233;riodiques sur les invit&#233;s, supprimer les invitations non accept&#233;es et les invit&#233;s sans connexion r&#233;cente.</p>
+<h3>Références</h3><p>MITRE ATT&amp;CK T1078.004 ; <a href="https://learn.microsoft.com/en-us/entra/id-governance/manage-guest-access-with-access-reviews" rel="noopener noreferrer">https://learn.microsoft.com/en-us/entra/id-governance/manage-guest-access-with-access-reviews</a></p>
+<h3>Objets concernés</h3><table class="items"><thead><tr><th>Objet</th><th>Détail</th></tr></thead><tbody><tr><td>partner01_fabrikam.example#EXT#@contoso.example</td><td>Invitation non accept&#233;e depuis le 2026-09-02</td></tr>
+<tr><td>consultant01_tailspin.example#EXT#@contoso.example</td><td>Invitation non accept&#233;e depuis le 2026-05-10</td></tr></tbody></table>
+</div>
+</details>
+<details id="f-ent-005" class="finding sev-medium st-fail">
+<summary><span class="badge sev-medium">Moyenne</span><span class="fid">ENT-005</span><span class="ftitle">Secrets et certificats d&#39;applications expir&#233;s ou expirant sous 30 jours</span><span class="fcount">&#192; corriger · 4 objet(s)</span></summary>
+<div class="finding-body">
+<p class="note">Fen&#234;tre d&#39;alerte : 30 jours.</p>
+<h3>Remédiation</h3><p>Renouveler les secrets/certificats avant expiration, supprimer les identifiants expir&#233;s et pr&#233;f&#233;rer les certificats ou les identit&#233;s manag&#233;es aux secrets clients.</p>
+<h3>Références</h3><p>MITRE ATT&amp;CK T1098.001 ; <a href="https://learn.microsoft.com/en-us/entra/identity-platform/how-to-add-credentials" rel="noopener noreferrer">https://learn.microsoft.com/en-us/entra/identity-platform/how-to-add-credentials</a></p>
+<h3>Objets concernés</h3><table class="items"><thead><tr><th>Objet</th><th>Détail</th></tr></thead><tbody><tr><td>App-Paie-Demo</td><td>Secret &#171; secret-2025 &#187; expir&#233; le 2026-11-04</td></tr>
+<tr><td>App-CRM-Demo</td><td>Certificat &#171; CN=crm-demo &#187; expire le 2026-12-04 (dans 18 jours)</td></tr>
+<tr><td>App-Reporting-Demo</td><td>Secret &#171; secret-old &#187; expir&#233; le 2025-10-12</td></tr>
+<tr><td>App-Reporting-Demo</td><td>Secret &#171; secret-new &#187; expire le 2026-12-11 (dans 25 jours)</td></tr></tbody></table>
+</div>
+</details>
+<details id="f-ad-008" class="finding sev-low st-fail">
+<summary><span class="badge sev-low">Faible</span><span class="fid">AD-008</span><span class="ftitle">Comptes AdminCount=1 orphelins (hors groupes prot&#233;g&#233;s)</span><span class="fcount">&#192; corriger · 2 objet(s)</span></summary>
+<div class="finding-body">
+
+<h3>Remédiation</h3><p>V&#233;rifier que le compte n&#39;a plus de r&#244;le privil&#233;gi&#233;, remettre adminCount &#224; 0 et r&#233;activer l&#39;h&#233;ritage des permissions (ACL fig&#233;es par AdminSDHolder).</p>
+<h3>Références</h3><p>MITRE ATT&amp;CK T1078.002 ; <a href="https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/plan/security-best-practices/appendix-c--protected-accounts-and-groups-in-active-directory" rel="noopener noreferrer">https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/plan/security-best-practices/appendix-c--protected-accounts-and-groups-in-active-directory</a></p>
+<h3>Objets concernés</h3><table class="items"><thead><tr><th>Objet</th><th>Détail</th></tr></thead><tbody><tr><td>old.admin01</td><td>D&#233;sactiv&#233; &#183; adminCount=1 sans appartenance &#224; un groupe prot&#233;g&#233;</td></tr>
+<tr><td>user10</td><td>Actif &#183; adminCount=1 sans appartenance &#224; un groupe prot&#233;g&#233;</td></tr></tbody></table>
+</div>
+</details>
+<details id="f-ent-006" class="finding sev-info st-notrun">
+<summary><span class="badge sev-info">Info</span><span class="fid">ENT-006</span><span class="ftitle">Comptes membres actifs sans connexion depuis plus de 90 jours</span><span class="fcount">Non ex&#233;cut&#233; · 0 objet(s)</span></summary>
+<div class="finding-body">
+<p class="note">Contr&#244;le non ex&#233;cut&#233; : signInActivity indisponible (licence Entra ID P1 et permission AuditLog.Read.All requises) : [simulation d&#233;mo] Neither tenant is B2C or tenant doesn&#39;t have premium license</p>
+<h3>Remédiation</h3><p>D&#233;sactiver puis supprimer les comptes inactifs apr&#232;s validation m&#233;tier. N&#233;cessite Entra ID P1 pour la propri&#233;t&#233; signInActivity.</p>
+<h3>Références</h3><p>MITRE ATT&amp;CK T1078.004 ; <a href="https://learn.microsoft.com/en-us/entra/identity/monitoring-health/howto-manage-inactive-user-accounts" rel="noopener noreferrer">https://learn.microsoft.com/en-us/entra/identity/monitoring-health/howto-manage-inactive-user-accounts</a></p>
+<h3>Objets concernés</h3><p class="empty">Aucun objet concerné.</p>
+</div>
+</details>
+<details id="f-ent-004" class="finding sev-info st-pass">
+<summary><span class="badge sev-info">Info</span><span class="fid">ENT-004</span><span class="ftitle">Param&#232;tres de s&#233;curit&#233; par d&#233;faut / strat&#233;gies d&#39;Acc&#232;s conditionnel</span><span class="fcount">Conforme · 1 objet(s)</span></summary>
+<div class="finding-body">
+<p class="note">Param&#232;tres de s&#233;curit&#233; par d&#233;faut : d&#233;sactiv&#233;s ; strat&#233;gies d&#39;Acc&#232;s conditionnel activ&#233;es : 1 sur 3.</p>
+<h3>Remédiation</h3><p>Activer les param&#232;tres de s&#233;curit&#233; par d&#233;faut ou, avec Entra ID P1, d&#233;ployer des strat&#233;gies d&#39;Acc&#232;s conditionnel (MFA pour tous, blocage de l&#39;authentification h&#233;rit&#233;e, MFA renforc&#233;e pour les administrateurs).</p>
+<h3>Références</h3><p>MITRE ATT&amp;CK T1078.004, T1110 ; <a href="https://learn.microsoft.com/en-us/entra/fundamentals/security-defaults" rel="noopener noreferrer">https://learn.microsoft.com/en-us/entra/fundamentals/security-defaults</a></p>
+<h3>Objets concernés</h3><table class="items"><thead><tr><th>Objet</th><th>Détail</th></tr></thead><tbody><tr><td>CA001 - MFA pour les administrateurs</td><td>Activ&#233;e</td></tr>
+<tr><td>CA002 - Bloquer l&#39;authentification h&#233;rit&#233;e</td><td>Rapport uniquement</td></tr>
+<tr><td>CA003 - MFA pour tous les utilisateurs</td><td>D&#233;sactiv&#233;e</td></tr></tbody></table>
+</div>
+</details>
+<footer>Généré par IdentityGuard v1.0.0 — collecte en lecture seule (cmdlets Get-* uniquement), aucune modification de l'annuaire. Les donn&#233;es de ce rapport sont enti&#232;rement fictives.</footer>
+</main>
+</body>
+</html>
