@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Page introuvable · Page not found · Papa Mamadou Gueye</title>
+<meta name="description" content="Cette page n'existe pas. This page does not exist.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#05080F">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+:root {
+  --bg: #05080F; --surface: #0D1424; --ink: #E9EEF7; --muted: #8994AB; --line: #1A2440;
+  --accent: #89A2FF; --accent-2: #B48CFF; --accent-ink: #05080F; --ok: #45D6B4; --crit: #FF6B7A;
+  --font-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: light) {
+  :root { --bg: #F3F5FA; --surface: #FFFFFF; --ink: #0B1222; --muted: #525E78; --line: #D9DEEA; --accent: #3149D8; --accent-2: #7A3FE0; --accent-ink: #FFFFFF; --ok: #0F7A62; --crit: #C0263A; color-scheme: light; }
+}
+*, *::before, *::after { box-sizing: border-box; }
+body {
+  margin: 0; min-height: 100vh; min-height: 100dvh; display: grid; place-items: center; padding: 32px 20px;
+  background-color: var(--bg); color: var(--ink); font-family: var(--font-body); line-height: 1.6; -webkit-font-smoothing: antialiased;
+  background-image:
+    radial-gradient(40% 50% at 75% 25%, color-mix(in srgb, var(--accent) 18%, transparent), transparent 70%),
+    linear-gradient(color-mix(in srgb, var(--line) 45%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--line) 45%, transparent) 1px, transparent 1px);
+  background-size: auto, 64px 64px, 64px 64px;
+}
+main { width: 100%; max-width: 640px; display: grid; gap: 24px; }
+.brand { display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-display); font-stretch: 122%; font-weight: 780; letter-spacing: .02em; text-decoration: none; color: inherit; }
+.brand svg { width: 22px; height: 22px; }
+h1 { margin: 0; font-family: var(--font-display); font-size: clamp(4.5rem, 3rem + 8vw, 8rem); font-stretch: 125%; font-weight: 800; line-height: .9; letter-spacing: -.03em;
+  background: linear-gradient(92deg, var(--ink) 10%, var(--accent) 60%, var(--accent-2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.term { border: 1px solid var(--line); border-radius: 14px; background: color-mix(in srgb, var(--surface) 92%, transparent); padding: 18px; font: .9rem/1.7 var(--font-mono); overflow-wrap: anywhere; }
+.term .p { color: var(--accent); }
+.term .e { color: var(--crit); }
+.term .m { color: var(--muted); }
+p { margin: 0; }
+.msg { display: grid; gap: 6px; }
+.msg p { font-size: 1.05rem; }
+.msg p[lang="en"] { color: var(--muted); }
+.cta { display: flex; flex-wrap: wrap; gap: 12px; }
+.btn { display: inline-flex; align-items: center; gap: 8px; font: 500 .95rem var(--font-body); text-decoration: none; padding: 12px 18px; border-radius: 10px; border: 1px solid var(--line); background: color-mix(in srgb, var(--surface) 80%, transparent); color: var(--ink); }
+.btn:hover { border-color: var(--accent); }
+.btn.primary { background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: var(--accent-ink); border-color: transparent; font-weight: 600; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+</style>
+</head>
+<body>
+<main>
+  <a class="brand" href="/">
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2.5l7.5 2.8v5.6c0 4.8-3.3 8.8-7.5 10.6-4.2-1.8-7.5-5.8-7.5-10.6V5.3z" stroke="#89A2FF" stroke-width="1.8"/><path d="M8.6 12l2.4 2.4 4.4-4.8" stroke="#45D6B4" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    P.M. GUEYE
+  </a>
+  <h1>404</h1>
+  <div class="term" aria-hidden="true">
+    <span class="p">PS C:\&gt;</span> Get-Page <span id="path">-Path /xyz</span><br>
+    <span class="e">Get-Page : Page introuvable · Page not found</span><br>
+    <span class="m"># Aucune ressource à cette adresse · Nothing at this address</span>
+  </div>
+  <div class="msg">
+    <p>Cette page n'existe pas ou a été déplacée.</p>
+    <p lang="en">This page does not exist or has been moved.</p>
+  </div>
+  <nav class="cta" aria-label="Retour · Back">
+    <a class="btn primary" href="/" hreflang="fr">Retour à l'accueil</a>
+    <a class="btn" href="/en/" hreflang="en" lang="en">Back to the English site</a>
+  </nav>
+</main>
+<script>
+(function () {
+  'use strict';
+  var el = document.getElementById('path');
+  var path = window.location.pathname || '/';
+  el.textContent = '-Path ' + (path.length > 60 ? path.slice(0, 57) + '...' : path);
+})();
+</script>
+</body>
+</html>
