@@ -76,7 +76,9 @@
 <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap"></noscript>
 <style>
 /* Layout: security-operations brief. Zero Trust sign-in flow hero (Entra ID + conditional access), NIST CSF 2.0 coverage band,
    attack-vs-defence project pair, identity audit tool, production app, missions, PowerShell console, background.
@@ -224,7 +226,7 @@ p { margin: 0; }
 .flow-stats span { font: 500 .64rem var(--font-mono); text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
 .flow-stats i { font: 700 1.05rem var(--font-mono); font-style: normal; font-variant-numeric: tabular-nums; }
 .flow-stats .ok i { color: var(--ok); } .flow-stats .mfa i { color: var(--accent); } .flow-stats .blk i { color: var(--crit); }
-.flow-note { padding: 8px 16px 12px; font: 400 .68rem var(--font-mono); color: var(--faint); background: color-mix(in srgb, var(--surface) 92%, transparent); }
+.flow-note { padding: 8px 16px 12px; font: 400 .68rem var(--font-mono); color: var(--muted); background: color-mix(in srgb, var(--surface) 92%, transparent); }
 @media (max-width: 1020px) { .hero { grid-template-columns: 1fr; } .flow-wrap { max-width: 620px; margin-inline: auto; width: 100%; } }
 
 /* Facts */
@@ -288,7 +290,7 @@ section { padding-block: clamp(56px, 7vw, 96px); scroll-margin-top: 64px; }
 .chain tr:last-child td { border-bottom: 0; }
 .chain tbody tr { transition: background .15s; }
 .chain tbody tr:hover { background: color-mix(in srgb, var(--accent) 6%, transparent); }
-.step { font: 600 .72rem var(--font-mono); color: var(--faint); }
+.step { font: 600 .72rem var(--font-mono); color: var(--muted); }
 .tech { font: 600 .74rem var(--font-mono); color: var(--accent); white-space: nowrap; }
 .atk small, .def small { display: block; color: var(--muted); font-size: .8rem; margin-top: 2px; }
 .def b { font: 600 .68rem var(--font-mono); color: var(--ok); background: var(--ok-soft); padding: 2px 6px; border-radius: 4px; margin-right: 6px; }
@@ -427,7 +429,7 @@ section { padding-block: clamp(56px, 7vw, 96px); scroll-margin-top: 64px; }
 .certs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 20px; }
 .cert { display: grid; gap: 10px; align-content: start; text-align: left; background: color-mix(in srgb, var(--surface) 94%, transparent); border: 1px solid var(--line); border-radius: 12px; padding: 10px; cursor: zoom-in; color: inherit; font: inherit; transition: border-color .15s, transform .15s; }
 .cert:hover { border-color: var(--accent); transform: translateY(-2px); }
-.cert img { aspect-ratio: 4 / 3; object-fit: cover; object-position: top; border-radius: 7px; width: 100%; background: #fff; }
+.cert img { aspect-ratio: 4 / 3; height: auto; object-fit: cover; object-position: top; border-radius: 7px; width: 100%; background: #fff; }
 .cert b { font-size: .86rem; font-weight: 500; line-height: 1.35; }
 .cert span { font-family: var(--font-mono); font-size: .68rem; color: var(--muted); }
 @media (max-width: 900px) { .certs { grid-template-columns: repeat(2, 1fr); } }
@@ -491,8 +493,8 @@ footer a:hover { color: var(--ink); }
     </nav>
     <div class="top-right">
       <nav class="lang-switch" aria-label="Language">
-        <a href="../" hreflang="fr" lang="fr" aria-label="Version française"><svg class="flag" viewBox="0 0 3 2" aria-hidden="true"><rect width="1" height="2" fill="#0055A4"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#EF4135"/></svg>FR</a>
-        <a href="./" hreflang="en" lang="en" aria-label="English version" aria-current="page"><svg class="flag" viewBox="0 0 60 30" aria-hidden="true"><clipPath id="fl-uk"><path d="M0,0v30h60V0z"/></clipPath><clipPath id="fl-t"><path d="M30,15h30v15zv15H0zH0V0zV0h30z"/></clipPath><g clip-path="url(#fl-uk)"><path d="M0,0v30h60V0z" fill="#012169"/><path d="M0,0 60,30M60,0 0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 60,30M60,0 0,30" clip-path="url(#fl-t)" stroke="#C8102E" stroke-width="4"/><path d="M30,0v30M0,15h60" stroke="#fff" stroke-width="10"/><path d="M30,0v30M0,15h60" stroke="#C8102E" stroke-width="6"/></g></svg>EN</a>
+        <a href="../" hreflang="fr" lang="fr" aria-label="FR, version française"><svg class="flag" viewBox="0 0 3 2" aria-hidden="true"><rect width="1" height="2" fill="#0055A4"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#EF4135"/></svg>FR</a>
+        <a href="./" hreflang="en" lang="en" aria-label="EN, English version" aria-current="page"><svg class="flag" viewBox="0 0 60 30" aria-hidden="true"><clipPath id="fl-uk"><path d="M0,0v30h60V0z"/></clipPath><clipPath id="fl-t"><path d="M30,15h30v15zv15H0zH0V0zV0h30z"/></clipPath><g clip-path="url(#fl-uk)"><path d="M0,0v30h60V0z" fill="#012169"/><path d="M0,0 60,30M60,0 0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 60,30M60,0 0,30" clip-path="url(#fl-t)" stroke="#C8102E" stroke-width="4"/><path d="M30,0v30M0,15h60" stroke="#fff" stroke-width="10"/><path d="M30,0v30M0,15h60" stroke="#C8102E" stroke-width="6"/></g></svg>EN</a>
       </nav>
       <span class="status"><span class="dot" aria-hidden="true"></span>Available · Permanent / Fixed-term</span>
       <a class="btn-sm mail" href="mailto:papa@pmgueye.fr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><span class="txt">Contact me</span></a>
@@ -823,14 +825,14 @@ footer a:hover { color: var(--ink); }
     <div class="sub">
       <p class="label">Certifications · click to enlarge</p>
       <div class="certs" id="certs">
-        <button class="cert" type="button" data-src="../assets/certifications/cyber1.png"><img src="../assets/certifications/cyber1.png" alt="" loading="lazy"><b>Foundations of IT security and cybersecurity</b><span>LinkedIn Learning</span></button>
-        <button class="cert" type="button" data-src="../assets/certifications/cyber2.png"><img src="../assets/certifications/cyber2.png" alt="" loading="lazy"><b>IT security and cybersecurity: advanced level</b><span>LinkedIn Learning</span></button>
-        <button class="cert" type="button" data-src="../assets/certifications/cyber3.png"><img src="../assets/certifications/cyber3.png" alt="" loading="lazy"><b>Cybersecurity and governance for leaders</b><span>LinkedIn Learning</span></button>
-        <button class="cert" type="button" data-src="../assets/certifications/cyber8.png"><img src="../assets/certifications/cyber8.png" alt="" loading="lazy"><b>Scrum Fundamentals Certified</b><span>SCRUMstudy</span></button>
-        <button class="cert" type="button" data-src="../assets/certifications/cyber4.png"><img src="../assets/certifications/cyber4.png" alt="" loading="lazy"><b>GDPR and its key concepts</b><span>CNIL</span></button>
-        <button class="cert" type="button" data-src="../assets/certifications/cyber5.png"><img src="../assets/certifications/cyber5.png" alt="" loading="lazy"><b>The responsibilities of each party</b><span>CNIL</span></button>
-        <button class="cert" type="button" data-src="../assets/certifications/cyber7.png"><img src="../assets/certifications/cyber7.png" alt="" loading="lazy"><b>The DPO and compliance tools</b><span>CNIL</span></button>
-        <button class="cert" type="button" data-src="../assets/certifications/cyber6.png"><img src="../assets/certifications/cyber6.png" alt="" loading="lazy"><b>GDPR and local authorities</b><span>CNIL</span></button>
+        <button class="cert" type="button" data-src="../assets/certifications/cyber1.png"><img src="../assets/certifications/thumbs/cyber1.jpg" width="640" height="496" alt="" loading="lazy" decoding="async"><b>Foundations of IT security and cybersecurity</b><span>LinkedIn Learning</span></button>
+        <button class="cert" type="button" data-src="../assets/certifications/cyber2.png"><img src="../assets/certifications/thumbs/cyber2.jpg" width="640" height="493" alt="" loading="lazy" decoding="async"><b>IT security and cybersecurity: advanced level</b><span>LinkedIn Learning</span></button>
+        <button class="cert" type="button" data-src="../assets/certifications/cyber3.png"><img src="../assets/certifications/thumbs/cyber3.jpg" width="640" height="412" alt="" loading="lazy" decoding="async"><b>Cybersecurity and governance for leaders</b><span>LinkedIn Learning</span></button>
+        <button class="cert" type="button" data-src="../assets/certifications/cyber8.png"><img src="../assets/certifications/thumbs/cyber8.jpg" width="640" height="494" alt="" loading="lazy" decoding="async"><b>Scrum Fundamentals Certified</b><span>SCRUMstudy</span></button>
+        <button class="cert" type="button" data-src="../assets/certifications/cyber4.png"><img src="../assets/certifications/thumbs/cyber4.jpg" width="640" height="418" alt="" loading="lazy" decoding="async"><b>GDPR and its key concepts</b><span>CNIL</span></button>
+        <button class="cert" type="button" data-src="../assets/certifications/cyber5.png"><img src="../assets/certifications/thumbs/cyber5.jpg" width="640" height="422" alt="" loading="lazy" decoding="async"><b>The responsibilities of each party</b><span>CNIL</span></button>
+        <button class="cert" type="button" data-src="../assets/certifications/cyber7.png"><img src="../assets/certifications/thumbs/cyber7.jpg" width="640" height="427" alt="" loading="lazy" decoding="async"><b>The DPO and compliance tools</b><span>CNIL</span></button>
+        <button class="cert" type="button" data-src="../assets/certifications/cyber6.png"><img src="../assets/certifications/thumbs/cyber6.jpg" width="640" height="399" alt="" loading="lazy" decoding="async"><b>GDPR and local authorities</b><span>CNIL</span></button>
       </div>
     </div>
 
@@ -1096,9 +1098,9 @@ footer a:hover { color: var(--ink); }
     var revealIO = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.remove('pending'); revealIO.unobserve(e.target); } });
     }, { rootMargin: '0px 0px -8% 0px' });
-    document.querySelectorAll('.reveal').forEach(function (el) {
-      if (el.getBoundingClientRect().top > window.innerHeight) { el.classList.add('pending'); revealIO.observe(el); }
-    });
+    var viewportH = window.innerHeight;
+    var belowFold = Array.prototype.filter.call(document.querySelectorAll('.reveal'), function (el) { return el.getBoundingClientRect().top > viewportH; });
+    belowFold.forEach(function (el) { el.classList.add('pending'); revealIO.observe(el); });
   }
 
   /* ---------- PowerShell console ---------- */
