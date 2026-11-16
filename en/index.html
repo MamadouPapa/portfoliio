@@ -418,7 +418,7 @@ footer a:hover { color: var(--ink); }
         <a href="./" hreflang="en" lang="en" aria-label="English version" aria-current="page">EN</a>
       </nav>
       <span class="status"><span class="dot" aria-hidden="true"></span>Available · Permanent / Fixed-term</span>
-      <a class="btn-sm" href="../cv/CV_Papa_Mamadou_Gueye.pdf" download aria-label="Download my CV (French, PDF)">CV</a>
+      <a class="btn-sm" href="../cv/CV_Papa_Mamadou_Gueye_EN.pdf" download aria-label="Download my CV (PDF)">CV</a>
     </div>
   </div>
 </header>
@@ -437,9 +437,9 @@ footer a:hover { color: var(--ink); }
           I can also <strong>write an attack, then detect it</strong>.
         </p>
         <div class="cta rise d3">
-          <a class="btn primary" href="../cv/CV_Papa_Mamadou_Gueye.pdf" download>
+          <a class="btn primary" href="../cv/CV_Papa_Mamadou_Gueye_EN.pdf" download>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0l-5-5m5 5l5-5M5 21h14"/></svg>
-            Download my CV (French)
+            Download my CV
           </a>
           <a class="btn" href="#projects">See the projects</a>
           <a class="btn" href="https://www.linkedin.com/in/papa-mamadou-gueye-developpeur-cybersecurite" target="_blank" rel="noopener">
@@ -765,7 +765,7 @@ footer a:hover { color: var(--ink); }
     <p class="label accent">Next step</p>
     <h2>Your IT deserves <em>someone who has already run it alone.</em></h2>
     <div class="cta">
-      <a class="btn primary" href="../cv/CV_Papa_Mamadou_Gueye.pdf" download>Download my CV (French)</a>
+      <a class="btn primary" href="../cv/CV_Papa_Mamadou_Gueye_EN.pdf" download>Download my CV</a>
       <a class="btn" href="https://www.linkedin.com/in/papa-mamadou-gueye-developpeur-cybersecurite" target="_blank" rel="noopener">See my LinkedIn</a>
     </div>
   </div>
@@ -773,7 +773,8 @@ footer a:hover { color: var(--ink); }
   <footer>
     <span>© <span id="year">2026</span> Papa Mamadou Gueye · Systems &amp; Cybersecurity Engineer</span>
     <nav aria-label="Links">
-      <a href="../cv/CV_Papa_Mamadou_Gueye.pdf" download aria-label="Download my CV (French, PDF)">CV</a>
+      <a href="../cv/CV_Papa_Mamadou_Gueye_EN.pdf" download aria-label="Download my CV (PDF)">CV</a>
+      <a href="../cv/CV_Papa_Mamadou_Gueye.pdf" download hreflang="fr" aria-label="Download my CV, French version (PDF)">French version</a>
       <a href="https://www.linkedin.com/in/papa-mamadou-gueye-developpeur-cybersecurite" target="_blank" rel="noopener">LinkedIn</a>
       <a href="https://github.com/MamadouPapa" target="_blank" rel="noopener">GitHub</a>
     </nav>
@@ -1034,7 +1035,7 @@ footer a:hover { color: var(--ink); }
         '  <span class="k">Invoke-IdentityGuard</span>   Run a simulated identity audit (-DemoMode)',
         '  <span class="k">Invoke-EntraLifecycle</span>  Run a simulated joiner / mover / leaver plan (-DemoMode)',
         '  <span class="k">Test-Availability</span>      Am I available?',
-        '  <span class="k">Get-CV</span>                 Link to my CV (PDF, French)',
+        '  <span class="k">Get-CV</span>                 Link to my CV (PDF)',
         '  <span class="k">Clear-Host</span>             Clear the console'
       ].join('\n');
     },
@@ -1114,7 +1115,7 @@ footer a:hover { color: var(--ink); }
       ].join('\n');
     },
     'test-availability': function () { return '<span class="v">True</span>  <span class="m"># Available immediately · permanent or fixed-term</span>'; },
-    'get-cv': function () { return '<span class="m">CV (French):</span> <a href="../cv/CV_Papa_Mamadou_Gueye.pdf" download>cv/CV_Papa_Mamadou_Gueye.pdf</a>'; },
+    'get-cv': function () { return '<span class="m">CV:</span> <a href="../cv/CV_Papa_Mamadou_Gueye_EN.pdf" download>cv/CV_Papa_Mamadou_Gueye_EN.pdf</a> · <a href="../cv/CV_Papa_Mamadou_Gueye.pdf" download hreflang="fr">French version</a>'; },
     'whoami': function () { return 'pmgueye  <span class="m"># ready for a new IT estate</span>'; }
   };
 
