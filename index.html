@@ -9,6 +9,9 @@
 <meta property="og:description" content="2 ans comme responsable du SI en environnement Microsoft hybride. IAM, MFA, durcissement, détection, PRA/PCA. Disponible en CDI ou CDD.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://mamadoupapa.github.io/portfoliio/">
+<link rel="alternate" hreflang="fr" href="https://mamadoupapa.github.io/portfoliio/">
+<link rel="alternate" hreflang="en" href="https://mamadoupapa.github.io/portfoliio/en/">
+<link rel="alternate" hreflang="x-default" href="https://mamadoupapa.github.io/portfoliio/">
 <meta name="theme-color" content="#05080F">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2305080F'/%3E%3Cpath d='M32 12l16 6v12c0 10-7 18-16 22-9-4-16-12-16-22V18z' fill='none' stroke='%2389A2FF' stroke-width='4'/%3E%3Cpath d='M25 32l5 5 9-10' fill='none' stroke='%2345D6B4' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -377,6 +380,10 @@ footer a:hover { color: var(--ink); }
   .reveal.pending { transform: translateY(24px); }
 }
 @media (prefers-reduced-motion: reduce) { .dot, .d-flow, .role .cursor, .ticker-track { animation: none; } }
+.lang-switch { display: flex; gap: 10px; font-size: .88rem; }
+.lang-switch a { text-decoration: none; color: var(--muted); transition: color .15s; }
+.lang-switch a:hover, .lang-switch a[aria-current="page"] { color: var(--ink); }
+.lang-switch a[aria-current="page"] { font-weight: 600; }
 </style>
 </head>
 <body>
@@ -396,6 +403,10 @@ footer a:hover { color: var(--ink); }
       <a href="#parcours">Parcours</a>
     </nav>
     <div class="top-right">
+      <nav class="lang-switch" aria-label="Langue">
+        <a href="./" hreflang="fr" lang="fr" aria-label="Version française" aria-current="page">FR</a>
+        <a href="en/" hreflang="en" lang="en" aria-label="English version">EN</a>
+      </nav>
       <span class="status"><span class="dot" aria-hidden="true"></span>Disponible · CDI / CDD</span>
       <a class="btn-sm" href="cv/CV_Papa_Mamadou_Gueye.pdf" download>CV</a>
     </div>
