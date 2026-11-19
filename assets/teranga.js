@@ -1,11 +1,10 @@
-/* Teranga layer: telemetry strip, ⌘K palette, traceroute map, wax motif from SHA-256, Wolof proverb.
+/* Teranga layer: telemetry strip, ⌘K palette, traceroute map, live GitHub stats, Wolof proverb.
    Everything degrades gracefully: static HTML stays readable without JS. */
 (function () {
   'use strict';
   var FR = document.documentElement.lang === 'fr';
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var T = FR ? {
-    newWax: 'Nouveau motif', waxCap: 'Motif wax généré pour vous : SHA-256(graine) =',
     placeholder: 'Tapez une commande… (cv, projets, contact)', hint: '↑ ↓ pour naviguer · Entrée pour lancer · Échap pour fermer',
     cmds: [
       ['Aller à : Couverture', '#couverture'], ['Aller à : Projets', '#projets'], ['Aller à : Missions', '#missions'],
@@ -14,14 +13,13 @@
       ['Télécharger mon CV', 'cv/CV_Papa_Mamadou_Gueye.pdf'], ['Copier mon e-mail', 'copy:papa@pmgueye.fr'],
       ['Ouvrir GitHub', 'https://github.com/MamadouPapa'], ['Ouvrir le lab webstack-lab', 'https://github.com/MamadouPapa/webstack-lab'],
       ['Ouvrir LinkedIn', 'https://www.linkedin.com/in/papa-mamadou-gueye-developpeur-cybersecurite'],
-      ['Nouveau motif wax', 'wax'], ['English version', 'en/'], ['whoami', '#top']
+      ['Jouer : tenir le pare-feu', '#jeu'], ['English version', 'en/'], ['whoami', '#top']
     ],
     proverbs: [
       ['Ndank ndank mooy japp golo ci naay.', '« Doucement, doucement, on attrape le singe dans la forêt. »', 'En sécurité aussi, <em>la méthode et la patience</em> battent la précipitation.'],
       ['Nit nitay garabam.', '« L’homme est le remède de l’homme. »', 'Aucun SI ne se protège seul : <em>la sécurité, ce sont d’abord des gens</em> qui s’entraident.']
     ]
   } : {
-    newWax: 'New pattern', waxCap: 'Wax pattern generated for you: SHA-256(seed) =',
     placeholder: 'Type a command… (cv, projects, contact)', hint: '↑ ↓ to move · Enter to run · Esc to close',
     cmds: [
       ['Go to: Coverage', '#coverage'], ['Go to: Projects', '#projects'], ['Go to: Experience', '#missions'],
@@ -30,7 +28,7 @@
       ['Download my CV', '../cv/CV_Papa_Mamadou_Gueye_EN.pdf'], ['Copy my e-mail', 'copy:papa@pmgueye.fr'],
       ['Open GitHub', 'https://github.com/MamadouPapa'], ['Open the webstack-lab repo', 'https://github.com/MamadouPapa/webstack-lab'],
       ['Open LinkedIn', 'https://www.linkedin.com/in/papa-mamadou-gueye-developpeur-cybersecurite'],
-      ['New wax pattern', 'wax'], ['Version française', '../'], ['whoami', '#top']
+      ['Play: hold the firewall', '#jeu'], ['Version française', '../'], ['whoami', '#top']
     ],
     proverbs: [
       ['Ndank ndank mooy japp golo ci naay.', '“Slowly, slowly, you catch the monkey in the forest.”', 'In security too, <em>method and patience</em> beat haste.'],
@@ -38,15 +36,15 @@
     ]
   };
 
-  /* ---------- Telemetry strip: two home clocks, TLS, measured LCP ---------- */
+  /* ---------- Telemetry strip: Paris clock, TLS, measured LCP ---------- */
   var tele = document.getElementById('telemetry');
   if (tele) {
     var clock = function (tz) {
       try { return new Intl.DateTimeFormat('fr-FR', { hour: '2-digit', minute: '2-digit', timeZone: tz }).format(new Date()); }
       catch (e) { return '--:--'; }
     };
-    var dkr = tele.querySelector('[data-t="dkr"] b'), par = tele.querySelector('[data-t="par"] b');
-    var tick = function () { dkr.textContent = clock('Africa/Dakar'); par.textContent = clock('Europe/Paris'); };
+    var par = tele.querySelector('[data-t="par"] b');
+    var tick = function () { par.textContent = clock('Europe/Paris'); };
     tick(); setInterval(tick, 30000);
     tele.querySelector('[data-t="tls"] b').textContent = location.protocol === 'https:' ? 'OK' : 'LOCAL';
     var lcpEl = tele.querySelector('[data-t="lcp"] b');
@@ -83,7 +81,6 @@
     var run = function (c) {
       var target = c[1];
       pal.close();
-      if (target === 'wax') { regenerateWax(); scrollTo(document.getElementById('wax')); return; }
       if (target.indexOf('copy:') === 0) { if (navigator.clipboard) navigator.clipboard.writeText(target.slice(5)); return; }
       if (target.charAt(0) === '#') { scrollTo(document.querySelector(target)); return; }
       if (/^https?:/.test(target)) { window.open(target, '_blank', 'noopener'); return; }
@@ -191,63 +188,63 @@
     } else { light(); }
   }
 
-  /* ---------- Wax motif: tiles chosen from the bytes of SHA-256(seed), mirrored like a textile ---------- */
-  var WAX_COLS = 20, WAX_ROWS = 2, WAX_TILE = 60, WAX_BG = '#0A0F1C';
-  var PALETTE = ['#F2B33D', '#E2553E', '#3A86D9', '#2FA77A', '#F4EFE6', '#89A2FF', '#B48CFF'];
-  var waxEl = document.getElementById('waxBand');
-  function toHex(bytes) { return Array.prototype.map.call(bytes, function (x) { return ('0' + x.toString(16)).slice(-2); }).join(''); }
-  function seedHex() { var b = new Uint8Array(16); crypto.getRandomValues(b); return toHex(b); }
-  function tile(kind, x, y, s, c1, c2) {
-    var h = s / 2, q = s / 4, out = '<rect x="' + x + '" y="' + y + '" width="' + s + '" height="' + s + '" fill="' + WAX_BG + '"/>';
-    switch (kind) {
-      case 0: return out + '<path d="M' + (x + h) + ' ' + (y + 4) + 'L' + (x + s - 4) + ' ' + (y + h) + 'L' + (x + h) + ' ' + (y + s - 4) + 'L' + (x + 4) + ' ' + (y + h) + 'Z" fill="' + c1 + '"/>'
-        + '<path d="M' + (x + h) + ' ' + (y + q + 4) + 'L' + (x + s - q - 4) + ' ' + (y + h) + 'L' + (x + h) + ' ' + (y + s - q - 4) + 'L' + (x + q + 4) + ' ' + (y + h) + 'Z" fill="' + c2 + '"/>';
-      case 1: return out + '<path d="M' + x + ' ' + (y + s) + 'L' + (x + h) + ' ' + y + 'L' + (x + s) + ' ' + (y + s) + 'Z" fill="' + c1 + '"/>'
-        + '<path d="M' + (x + q) + ' ' + (y + s) + 'L' + (x + h) + ' ' + (y + h) + 'L' + (x + s - q) + ' ' + (y + s) + 'Z" fill="' + c2 + '"/>';
-      case 2: return out + '<polyline points="' + x + ',' + (y + q) + ' ' + (x + q) + ',' + (y + 4) + ' ' + (x + h) + ',' + (y + q) + ' ' + (x + 3 * q) + ',' + (y + 4) + ' ' + (x + s) + ',' + (y + q) + '" fill="none" stroke="' + c1 + '" stroke-width="5"/>'
-        + '<polyline points="' + x + ',' + (y + 3 * q) + ' ' + (x + q) + ',' + (y + h) + ' ' + (x + h) + ',' + (y + 3 * q) + ' ' + (x + 3 * q) + ',' + (y + h) + ' ' + (x + s) + ',' + (y + 3 * q) + '" fill="none" stroke="' + c2 + '" stroke-width="5"/>';
-      case 3: return out + '<circle cx="' + (x + h) + '" cy="' + (y + h) + '" r="' + (h - 5) + '" fill="' + c1 + '"/><circle cx="' + (x + h) + '" cy="' + (y + h) + '" r="' + (h - 13) + '" fill="' + WAX_BG + '"/>'
-        + '<circle cx="' + (x + h) + '" cy="' + (y + h) + '" r="' + (q - 4) + '" fill="' + c2 + '"/>';
-      case 4: return out + '<rect x="' + (x + h - 5) + '" y="' + (y + 5) + '" width="10" height="' + (s - 10) + '" fill="' + c1 + '"/><rect x="' + (x + 5) + '" y="' + (y + h - 5) + '" width="' + (s - 10) + '" height="10" fill="' + c1 + '"/>'
-        + '<rect x="' + (x + h - 5) + '" y="' + (y + h - 5) + '" width="10" height="10" fill="' + c2 + '"/>';
-      default: return out + '<rect x="' + x + '" y="' + (y + 6) + '" width="' + s + '" height="8" fill="' + c1 + '"/><rect x="' + x + '" y="' + (y + 26) + '" width="' + s + '" height="8" fill="' + c2 + '"/>'
-        + '<rect x="' + x + '" y="' + (y + 46) + '" width="' + s + '" height="8" fill="' + c1 + '"/>';
-    }
+  /* ---------- Live GitHub stats (public API, cached 10 min per tab to respect the 60 req/h limit) ---------- */
+  var GH_USER = 'MamadouPapa', GH_CACHE_KEY = 'gh-live-v2', GH_CACHE_MS = 600000, GH_RECENT = 5;
+  var gh = document.getElementById('ghLive');
+  var GHT = FR
+    ? { repos: 'dépôts publics', days: 'jours actifs (30 derniers jours)', pushes: 'commits poussés (30 derniers jours)', last: 'dernier push', recent: 'Derniers dépôts mis à jour', langs: 'Langages', fail: 'Données GitHub indisponibles pour le moment.', open: 'Voir le profil GitHub', ago: ['à l’instant', 'il y a %d min', 'il y a %d h', 'il y a %d j'] }
+    : { repos: 'public repositories', days: 'active days (last 30 days)', pushes: 'commits pushed (last 30 days)', last: 'last push', recent: 'Recently updated repositories', langs: 'Languages', fail: 'GitHub data unavailable right now.', open: 'Open GitHub profile', ago: ['just now', '%d min ago', '%d h ago', '%d d ago'] };
+  function ago(iso) {
+    var m = Math.max(0, Math.round((Date.now() - new Date(iso).getTime()) / 60000));
+    if (m < 1) return GHT.ago[0];
+    if (m < 60) return GHT.ago[1].replace('%d', m);
+    if (m < 1440) return GHT.ago[2].replace('%d', Math.round(m / 60));
+    return GHT.ago[3].replace('%d', Math.round(m / 1440));
   }
-  function drawWax(seed) {
-    if (!waxEl || !window.crypto || !crypto.subtle) return;
-    crypto.subtle.digest('SHA-256', new TextEncoder().encode('teranga:' + seed)).then(function (buf) {
-      var bytes = new Uint8Array(buf), half = WAX_COLS / 2, out = '';
-      for (var r = 0; r < WAX_ROWS; r++) {
-        for (var c = 0; c < half; c++) {
-          var b = bytes[(r * half + c) % bytes.length], b2 = bytes[(r * half + c + 7) % bytes.length];
-          var kind = b % 6, c1 = PALETTE[b2 % PALETTE.length], c2 = PALETTE[(b2 >> 3) % PALETTE.length];
-          if (c2 === c1) c2 = PALETTE[(PALETTE.indexOf(c1) + 2) % PALETTE.length];
-          out += tile(kind, c * WAX_TILE, r * WAX_TILE, WAX_TILE, c1, c2);
-          out += tile(kind, (WAX_COLS - 1 - c) * WAX_TILE, r * WAX_TILE, WAX_TILE, c1, c2);
-        }
-      }
-      var hex = toHex(bytes);
-      waxEl.innerHTML = '<svg viewBox="0 0 ' + (WAX_COLS * WAX_TILE) + ' ' + (WAX_ROWS * WAX_TILE) + '" role="img" aria-label="'
-        + (FR ? 'Motif géométrique façon wax, généré à partir d’une empreinte SHA-256' : 'Wax-style geometric pattern generated from a SHA-256 digest') + '">' + out + '</svg>';
-      var cap = document.getElementById('waxHash');
-      if (cap) cap.textContent = hex.slice(0, 16) + '…' + hex.slice(-8);
+  function esc(v) { var d = document.createElement('div'); d.textContent = String(v); return d.innerHTML; }
+  function summarise(repos, events) {
+    var since = Date.now() - 30 * 86400000, pushes = 0, days = {}, langs = {};
+    events.forEach(function (e) {
+      if (e.type !== 'PushEvent' || new Date(e.created_at).getTime() < since) return;
+      pushes += (e.payload && e.payload.size) || 1;
+      days[e.created_at.slice(0, 10)] = true;
     });
+    repos.forEach(function (r) { if (r.language) langs[r.language] = (langs[r.language] || 0) + 1; });
+    return {
+      repos: repos.length,
+      days: Object.keys(days).length,
+      pushes: pushes,
+      last: repos.length ? repos[0].pushed_at : null,
+      recent: repos.slice(0, GH_RECENT).map(function (r) { return { name: r.name, url: r.html_url, lang: r.language, pushed: r.pushed_at }; }),
+      langs: Object.keys(langs).sort(function (x, y) { return langs[y] - langs[x]; })
+    };
   }
-  function regenerateWax() {
-    var s = seedHex();
-    try { localStorage.setItem('teranga-seed', s); } catch (e) { /* private mode: the pattern just changes per visit */ }
-    drawWax(s);
+  function renderGh(d) {
+    var stat = function (v, l) { return '<div class="gh-stat"><b>' + esc(v) + '</b><span>' + l + '</span></div>'; };
+    var rows = d.recent.map(function (r) {
+      return '<li><a href="' + esc(r.url) + '" target="_blank" rel="noopener">' + esc(r.name) + '</a><span>' + esc(r.lang || '—') + '</span><time>' + ago(r.pushed) + '</time></li>';
+    }).join('');
+    gh.querySelector('.gh-body').innerHTML = '<div class="gh-stats">' + stat(d.repos, GHT.repos) + stat(d.pushes, GHT.pushes) + stat(d.days, GHT.days) + stat(d.last ? ago(d.last) : '—', GHT.last) + '</div>'
+      + '<div class="gh-cols"><div><p class="label">' + GHT.recent + '</p><ul class="gh-recent">' + rows + '</ul></div>'
+      + '<div><p class="label">' + GHT.langs + '</p><div class="gh-langs">' + d.langs.map(function (l) { return '<span>' + esc(l) + '</span>'; }).join('') + '</div></div></div>';
   }
-  if (waxEl) {
-    var seed = null;
-    try { seed = localStorage.getItem('teranga-seed'); } catch (e) { seed = null; }
-    if (!/^[0-9a-f]{32}$/.test(seed || '')) { seed = seedHex(); try { localStorage.setItem('teranga-seed', seed); } catch (e) { /* ignore */ } }
-    drawWax(seed);
-    var wb = document.getElementById('waxNew');
-    if (wb) { wb.textContent = T.newWax; wb.addEventListener('click', regenerateWax); }
-    var wl = document.getElementById('waxLabel');
-    if (wl) wl.textContent = T.waxCap;
+  function ghFail() {
+    gh.querySelector('.gh-body').innerHTML = '<p class="gh-loading">' + GHT.fail + ' <a href="https://github.com/' + GH_USER + '" target="_blank" rel="noopener">' + GHT.open + '</a></p>';
+  }
+  if (gh && window.fetch) {
+    var cached = null;
+    try { cached = JSON.parse(sessionStorage.getItem(GH_CACHE_KEY) || 'null'); } catch (e) { cached = null; }
+    if (cached && Date.now() - cached.at < GH_CACHE_MS) { renderGh(cached.data); }
+    else {
+      var get = function (u) { return fetch('https://api.github.com' + u, { headers: { Accept: 'application/vnd.github+json' } }).then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); }); };
+      Promise.all([get('/users/' + GH_USER + '/repos?per_page=100&sort=pushed'), get('/users/' + GH_USER + '/events/public?per_page=100')])
+        .then(function (res) {
+          var data = summarise(res[0].filter(function (r) { return !r.fork && r.name !== GH_USER; }), res[1]);
+          try { sessionStorage.setItem(GH_CACHE_KEY, JSON.stringify({ at: Date.now(), data: data })); } catch (e) { /* storage blocked: just refetch next time */ }
+          renderGh(data);
+        })
+        .catch(ghFail);
+    }
   }
 
   /* ---------- Wolof proverb of the day ---------- */

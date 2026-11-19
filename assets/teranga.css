@@ -62,14 +62,31 @@
   .route.on .city, .route.on .trace li { opacity: 1; }
 }
 
-/* ---------- Wax motif generated from a hash ---------- */
-.wax { margin-top: 56px; }
-.wax-band { border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; line-height: 0; background: #0A0F1C; }
-.wax-band svg { width: 100%; height: auto; display: block; }
-.wax-cap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 20px; margin-top: 10px; font: 400 .74rem var(--font-mono); color: var(--muted); }
-.wax-cap code { color: var(--accent); overflow-wrap: anywhere; }
-.wax-cap button { border: 1px solid var(--line); border-radius: 6px; background: transparent; color: var(--muted); font: inherit; padding: 3px 9px; cursor: pointer; }
-.wax-cap button:hover { color: var(--ink); border-color: var(--accent); }
+/* ---------- Live GitHub panel ---------- */
+.gh-live { margin-top: 40px; padding: 24px 26px; border: 1px solid var(--line); border-radius: var(--radius); background: color-mix(in srgb, var(--surface) 88%, transparent); }
+.gh-head h3 { margin-top: 6px; font-size: 1.15rem; font-stretch: 106%; font-weight: 720; }
+.gh-loading { margin-top: 14px; color: var(--muted); font: 400 .84rem var(--font-mono); }
+.gh-loading a { color: var(--accent); }
+.gh-stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1px; margin-top: 18px; background: var(--line); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+.gh-stat { padding: 14px 16px; background: var(--surface); display: grid; gap: 2px; }
+.gh-stat b { font-family: var(--font-display); font-stretch: 112%; font-size: 1.5rem; font-weight: 760; }
+.gh-stat span { color: var(--muted); font-size: .78rem; }
+.gh-cols { display: grid; grid-template-columns: 1.4fr 1fr; gap: 24px; margin-top: 20px; }
+.gh-recent { list-style: none; margin: 10px 0 0; padding: 0; display: grid; gap: 6px; font: 400 .82rem var(--font-mono); }
+.gh-recent li { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; gap: 12px; padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px; }
+.gh-recent a { color: var(--ink); text-decoration: none; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.gh-recent a:hover { color: var(--accent); }
+.gh-recent span { color: var(--accent); } .gh-recent time { color: var(--muted); }
+.gh-langs { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.gh-langs span { padding: 4px 9px; border: 1px solid var(--line); border-radius: 999px; font: 500 .74rem var(--font-mono); color: var(--muted); }
+@media (max-width: 760px) { .gh-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); } .gh-cols { grid-template-columns: 1fr; } }
+@media (max-width: 480px) { .gh-recent li { grid-template-columns: minmax(0, 1fr) auto; } .gh-recent span { display: none; } }
+
+/* ---------- Game block ---------- */
+.game-block { margin-top: 56px; }
+.game-block h3 { margin-top: 6px; font-size: clamp(1.3rem, 1rem + 1vw, 1.8rem); font-stretch: 108%; font-weight: 760; }
+.game-block > p:not(.label) { margin-top: 6px; color: var(--muted); }
+#fwGame { margin-top: 18px; }
 
 /* ---------- Wolof proverb ---------- */
 .proverb { margin-top: 40px; padding: 24px 26px; border-left: 3px solid var(--pirogue-sun); border-radius: 0 var(--radius) var(--radius) 0; background: color-mix(in srgb, var(--pirogue-sun) 6%, var(--surface)); }
