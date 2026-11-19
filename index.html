@@ -80,7 +80,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap"></noscript>
 <style>
-/* Layout: security-operations brief. Zero Trust sign-in flow hero (Entra ID + conditional access), NIST CSF 2.0 coverage band,
+/* Layout: security-operations brief. identity-engineer hero (value statement + profile sheet), NIST CSF 2.0 coverage band,
    attack-vs-defence project pair, identity audit tool, production app, missions, PowerShell console, background.
    Dark-first; light theme mirrors the tokens. */
 :root {
@@ -203,15 +203,14 @@ p { margin: 0; }
 }
 .hero { padding-block: clamp(48px, 7vw, 96px) 40px; display: grid; grid-template-columns: 1.08fr .92fr; gap: clamp(24px, 4vw, 56px); align-items: center; }
 .hero > * { min-width: 0; }
-.kicker { display: inline-flex; align-items: center; gap: 10px; padding: 6px 12px 6px 6px; border: 1px solid var(--line); border-radius: 999px; background: color-mix(in srgb, var(--surface) 70%, transparent); font-size: .82rem; color: var(--muted); max-width: 100%; }
-.kicker b { font: 600 .68rem var(--font-mono); letter-spacing: .08em; padding: 3px 8px; border-radius: 999px; background: var(--accent); color: var(--accent-ink); white-space: nowrap; }
-.name { margin-top: 26px; font-size: var(--step-4); font-stretch: 125%; font-weight: 800; letter-spacing: -.03em; text-transform: uppercase; line-height: .88; }
-.name span { display: block; }
-.name .outline { -webkit-text-stroke: 1.4px color-mix(in srgb, var(--ink) 75%, transparent); color: transparent; }
-.name .grad { background: linear-gradient(92deg, var(--ink) 10%, var(--accent) 60%, var(--accent-2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
-.role { margin-top: 22px; min-height: 1.6em; font: 500 clamp(.95rem, .85rem + .5vw, 1.2rem) var(--font-mono); color: var(--accent); }
-.role .cursor { display: inline-block; width: .55em; height: 1.1em; vertical-align: -.18em; background: var(--accent); margin-left: 4px; animation: blink 1.1s steps(1) infinite; }
-@keyframes blink { 50% { opacity: 0; } }
+.eyebrow { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; font: 500 .74rem var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.eyebrow b { display: inline-flex; align-items: center; gap: 8px; color: var(--ok); font-weight: 500; }
+.eyebrow i { width: 28px; height: 1px; background: var(--line); }
+.headline { margin-top: 22px; font-family: var(--font-display); font-stretch: 104%; font-weight: 760; font-size: clamp(2.2rem, 1.1rem + 3.1vw, 3.75rem); line-height: 1.06; letter-spacing: -.018em; text-wrap: balance; }
+.headline em { font-style: normal; color: var(--accent); }
+.who { margin-top: 24px; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px; }
+.who b { font-weight: 600; }
+.who span { font: 400 .78rem var(--font-mono); color: var(--muted); }
 .thesis { margin-top: 18px; font-size: var(--step-1); max-width: 34em; color: color-mix(in srgb, var(--ink) 84%, var(--muted)); }
 .thesis strong { color: var(--ink); font-weight: 600; }
 .cta { margin-top: 30px; display: flex; flex-wrap: wrap; gap: 12px; }
@@ -220,19 +219,25 @@ p { margin: 0; }
 .btn.primary { background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: var(--accent-ink); border-color: transparent; box-shadow: var(--glow); font-weight: 600; }
 .btn svg { width: 16px; height: 16px; flex: none; }
 
-.flow-wrap { position: relative; border: 1px solid var(--line); border-radius: 20px; background: color-mix(in srgb, var(--surface) 72%, transparent); backdrop-filter: blur(6px); overflow: hidden; box-shadow: 0 40px 80px -50px rgba(0,0,0,.7); }
-.flow-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 12px 16px; border-bottom: 1px solid var(--line); }
-.flow-head b { font: 600 .78rem var(--font-mono); letter-spacing: .04em; }
-.flow-head .live { display: inline-flex; align-items: center; gap: 6px; font: 500 .68rem var(--font-mono); color: var(--ok); text-transform: uppercase; letter-spacing: .08em; }
-.flow-canvas { position: relative; aspect-ratio: 5 / 4; width: 100%; }
-#flow { position: absolute; inset: 0; width: 100%; height: 100%; }
-.flow-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border-top: 1px solid var(--line); }
-.flow-stats div { background: color-mix(in srgb, var(--surface) 92%, transparent); padding: 10px 14px; display: grid; gap: 2px; }
-.flow-stats span { font: 500 .64rem var(--font-mono); text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
-.flow-stats i { font: 700 1.05rem var(--font-mono); font-style: normal; font-variant-numeric: tabular-nums; }
-.flow-stats .ok i { color: var(--ok); } .flow-stats .mfa i { color: var(--accent); } .flow-stats .blk i { color: var(--crit); }
-.flow-note { padding: 8px 16px 12px; font: 400 .68rem var(--font-mono); color: var(--muted); background: color-mix(in srgb, var(--surface) 92%, transparent); }
-@media (max-width: 1020px) { .hero { grid-template-columns: 1fr; } .flow-wrap { max-width: 620px; margin-inline: auto; width: 100%; } }
+.dossier { border: 1px solid var(--line); border-radius: var(--radius); background: color-mix(in srgb, var(--surface) 88%, transparent); backdrop-filter: blur(6px); overflow: hidden; font: 400 .8rem var(--font-mono); box-shadow: 0 40px 80px -50px rgba(0,0,0,.7); }
+.dossier-head, .dossier-foot { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 13px 18px; }
+.dossier-head { border-bottom: 1px solid var(--line); font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.dossier-head b { display: inline-flex; align-items: center; gap: 7px; color: var(--ok); font-weight: 500; }
+.dossier dl { margin: 0; }
+.dossier dl > div { display: grid; grid-template-columns: 118px minmax(0, 1fr); gap: 14px; padding: 12px 18px; border-bottom: 1px dashed var(--line); }
+.dossier dt { padding-top: 2px; font-size: .68rem; letter-spacing: .07em; text-transform: uppercase; color: var(--faint); }
+.dossier dd { margin: 0; line-height: 1.55; color: var(--ink); }
+.dossier .tags { display: flex; flex-wrap: wrap; gap: 5px; }
+.dossier .tags span { padding: 2px 7px; border: 1px solid var(--line); border-radius: 5px; font-size: .72rem; color: var(--muted); }
+.dossier .tags .ok { color: var(--ok); border-color: color-mix(in srgb, var(--ok) 35%, transparent); }
+.dossier .csf { display: grid; grid-template-columns: repeat(6, 1fr); gap: 4px; }
+.dossier .csf a { padding: 5px 0; border-radius: 5px; text-align: center; text-decoration: none; font-size: .7rem; color: var(--ok); background: var(--ok-soft); }
+.dossier .csf a:hover { outline: 1px solid var(--ok); }
+.dossier-foot { font-size: .72rem; color: var(--muted); }
+.dossier-foot a { color: var(--accent); text-decoration: none; }
+.dossier-foot a:hover { text-decoration: underline; }
+@media (max-width: 1020px) { .hero { grid-template-columns: 1fr; } .dossier { max-width: 620px; width: 100%; } }
+@media (max-width: 480px) { .dossier dl > div { grid-template-columns: 1fr; gap: 4px; } .eyebrow i { display: none; } }
 
 /* Facts */
 .facts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; margin-top: 40px; }
@@ -471,7 +476,7 @@ footer a:hover { color: var(--ink); }
   .reveal { transition: transform .8s cubic-bezier(.2,.7,.2,1); }
   .reveal.pending { transform: translateY(24px); }
 }
-@media (prefers-reduced-motion: reduce) { .dot, .d-flow, .role .cursor, .ticker-track { animation: none; } }
+@media (prefers-reduced-motion: reduce) { .dot, .d-flow, .ticker-track { animation: none; } }
 .lang-switch { display: flex; gap: 10px; font-size: .88rem; }
 .lang-switch a { text-decoration: none; color: var(--muted); transition: color .15s; }
 .lang-switch a:hover, .lang-switch a[aria-current="page"] { color: var(--ink); }
@@ -514,14 +519,13 @@ footer a:hover { color: var(--ink); }
   <div class="hero-zone" id="top">
     <div class="hero">
       <div>
-        <span class="kicker rise"><b>OPEN TO WORK</b>Ingénieur Systèmes &amp; Cybersécurité</span>
-        <h1 class="name rise d1"><span>Papa</span><span class="outline">Mamadou</span><span class="grad">Gueye</span></h1>
-        <p class="role rise d2">&gt; <span id="typed">Microsoft hybride · Entra ID · IAM</span><span class="cursor" aria-hidden="true"></span></p>
+        <p class="eyebrow rise"><b><span class="dot" aria-hidden="true"></span>Open to work</b><i aria-hidden="true"></i>Ingénieur Systèmes &amp; Cybersécurité</p>
+        <h1 class="headline rise d1">Je sécurise les identités Microsoft, de l'<em>Active&nbsp;Directory</em> à <em>Entra&nbsp;ID</em>.</h1>
         <p class="thesis rise d2">
-          Deux ans comme <strong>responsable du système d'information</strong>, seul aux commandes, en environnement Microsoft hybride.
-          Je sécurise les identités, je durcis les postes et les serveurs, et je prépare la reprise après incident.
-          Je sais aussi <strong>écrire une attaque, puis la détecter</strong>.
+          Deux ans <strong>seul responsable du SI</strong> en environnement Microsoft hybride : IAM, MFA, durcissement Windows / Linux, sauvegardes et PRA.
+          En lab, j'<strong>écris une attaque, puis la règle qui la détecte</strong>.
         </p>
+        <p class="who rise d2"><b>Papa Mamadou Gueye</b><span>Paris · Bac+5 Mastère Cybersécurité &amp; Cloud</span></p>
         <div class="cta rise d3">
           <a class="btn primary" href="cv/CV_Papa_Mamadou_Gueye.pdf" download>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0l-5-5m5 5l5-5M5 21h14"/></svg>
@@ -538,16 +542,18 @@ footer a:hover { color: var(--ink); }
           </a>
         </div>
       </div>
-      <div class="flow-wrap rise d2">
-        <div class="flow-head"><b>Accès conditionnel · flux de connexion</b><span class="live"><span class="dot" aria-hidden="true"></span>simulation</span></div>
-        <div class="flow-canvas"><canvas id="flow" role="img" aria-label="Animation : des connexions d'utilisateurs, de postes Intune, d'invités et d'administrateurs passent par Entra ID, synchronisé avec Active Directory, puis par l'accès conditionnel qui accorde l'accès, exige le MFA ou bloque."></canvas></div>
-        <div class="flow-stats" aria-hidden="true">
-          <div class="ok"><span>Accordées</span><i id="stGrant">0</i></div>
-          <div class="mfa"><span>MFA exigé</span><i id="stMfa">0</i></div>
-          <div class="blk"><span>Bloquées</span><i id="stBlock">0</i></div>
-        </div>
-        <p class="flow-note">Le modèle Zero Trust que j'ai appliqué : vérifier chaque connexion, jamais de confiance implicite.</p>
-      </div>
+      <aside class="dossier rise d2" aria-label="Fiche profil">
+        <div class="dossier-head"><span>Fiche profil</span><b><span class="dot" aria-hidden="true"></span>Preuves publiques</b></div>
+        <dl>
+          <div><dt>Rôle</dt><dd>Ingénieur systèmes &amp; sécurité<br>IAM · Microsoft&nbsp;365</dd></div>
+          <div><dt>Périmètre</dt><dd>AD DS on-prem + Entra ID, Intune, Exchange Online, VMware / Hyper-V</dd></div>
+          <div><dt>Contrôles</dt><dd class="tags"><span class="ok">MFA</span><span class="ok">Accès conditionnel</span><span class="ok">GPO</span><span class="ok">Revue des droits</span><span class="ok">Durcissement</span><span class="ok">PRA / PCA</span></dd></div>
+          <div><dt>Détection</dt><dd class="tags"><span>Sigma</span><span>auditd</span><span>Suricata</span><span>MITRE ATT&amp;CK</span></dd></div>
+          <div><dt>NIST CSF 2.0</dt><dd class="csf"><a href="#couverture" title="Voir la couverture NIST CSF 2.0">GV</a><a href="#couverture" title="Voir la couverture NIST CSF 2.0">ID</a><a href="#couverture" title="Voir la couverture NIST CSF 2.0">PR</a><a href="#couverture" title="Voir la couverture NIST CSF 2.0">DE</a><a href="#couverture" title="Voir la couverture NIST CSF 2.0">RS</a><a href="#couverture" title="Voir la couverture NIST CSF 2.0">RC</a></dd></div>
+          <div><dt>Automatisation</dt><dd>PowerShell · Microsoft&nbsp;Graph · Python · Power&nbsp;Platform</dd></div>
+        </dl>
+        <div class="dossier-foot"><span>4 dépôts publics</span><a href="https://github.com/MamadouPapa" target="_blank" rel="noopener">github.com/MamadouPapa →</a></div>
+      </aside>
     </div>
 
     <div class="facts">
@@ -885,214 +891,6 @@ footer a:hover { color: var(--ink); }
   'use strict';
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   document.getElementById('year').textContent = String(new Date().getFullYear());
-
-  function themeColors() {
-    var s = getComputedStyle(document.documentElement);
-    function v(name) { return s.getPropertyValue(name).trim(); }
-    return { accent: v('--accent'), accent2: v('--accent-2'), ok: v('--ok'), ink: v('--ink'), faint: v('--faint'), muted: v('--muted'), line: v('--line'), surface: v('--surface'), crit: v('--crit') };
-  }
-
-  /* ---------- Zero Trust sign-in flow (hero) ---------- */
-  var FLOW_SPEED = 2.1;
-  var SPAWN_EVERY_MS = 520;
-  var MAX_PACKETS = 26;
-  var MFA_HOLD_FRAMES = 26;
-  var SOURCES = [
-    { id: 'user', label: 'Utilisateur', y: 0.16 },
-    { id: 'device', label: 'Poste Intune', y: 0.38 },
-    { id: 'guest', label: 'Invité', y: 0.60 },
-    { id: 'admin', label: 'Admin', y: 0.82 }
-  ];
-  var TARGETS = [
-    { label: 'Exchange', y: 0.13 },
-    { label: 'SharePoint', y: 0.33 },
-    { label: 'Teams', y: 0.53 },
-    { label: 'App métier', y: 0.73 }
-  ];
-  /* Outcome odds per source: [grant, mfa, block] */
-  var POLICY = { user: [0.62, 0.28, 0.10], device: [0.92, 0.04, 0.04], guest: [0.30, 0.35, 0.35], admin: [0, 0.96, 0.04] };
-  var flow = document.getElementById('flow');
-  var f = flow.getContext('2d');
-  var fW = 0, fH = 0, flowRunning = false, lastSpawn = 0, packets = [];
-  var stats = { grant: 0, mfa: 0, block: 0 };
-  var statEls = { grant: document.getElementById('stGrant'), mfa: document.getElementById('stMfa'), block: document.getElementById('stBlock') };
-  var colors = themeColors();
-
-  function layout() {
-    var col = function (x) { return x * fW; }, row = function (y) { return y * fH; };
-    return {
-      sources: SOURCES.map(function (s) { return { id: s.id, label: s.label, x: col(0.12), y: row(s.y) }; }),
-      entra: { label: 'Entra ID', sub: 'identité', x: col(0.36), y: row(0.42) },
-      ad: { label: 'AD DS', sub: 'on-prem', x: col(0.36), y: row(0.86) },
-      ca: { label: 'Accès cond.', sub: 'MFA · conformité', x: col(0.64), y: row(0.42) },
-      targets: TARGETS.map(function (t) { return { label: t.label, x: col(0.88), y: row(t.y) }; }),
-      blocked: { label: 'Bloqué', x: col(0.88), y: row(0.92) }
-    };
-  }
-
-  function sizeFlow() {
-    var rect = flow.getBoundingClientRect();
-    var ratio = Math.min(window.devicePixelRatio || 1, 2);
-    fW = rect.width; fH = rect.height;
-    flow.width = Math.round(fW * ratio); flow.height = Math.round(fH * ratio);
-    f.setTransform(ratio, 0, 0, ratio, 0, 0);
-  }
-
-  function pick(odds) {
-    var r = Math.random();
-    if (r < odds[0]) return 'grant';
-    if (r < odds[0] + odds[1]) return 'mfa';
-    return 'block';
-  }
-
-  function spawn(L) {
-    var src = L.sources[Math.floor(Math.random() * L.sources.length)];
-    var outcome = pick(POLICY[src.id]);
-    var end = outcome === 'block' ? L.blocked : L.targets[Math.floor(Math.random() * L.targets.length)];
-    packets.push({ pts: [src, L.entra, L.ca, end], seg: 0, t: 0, outcome: outcome, hold: 0, counted: false });
-  }
-
-  function roundRect(x, y, w, h, r) {
-    f.beginPath();
-    f.moveTo(x + r, y); f.arcTo(x + w, y, x + w, y + h, r); f.arcTo(x + w, y + h, x, y + h, r);
-    f.arcTo(x, y + h, x, y, r); f.arcTo(x, y, x + w, y, r); f.closePath();
-  }
-
-  function node(n, tone, big) {
-    var w = big ? Math.min(118, fW * 0.21) : Math.min(100, fW * 0.19), h = big ? 46 : 30;
-    roundRect(n.x - w / 2, n.y - h / 2, w, h, 8);
-    f.fillStyle = colors.surface; f.fill();
-    f.lineWidth = 1.2; f.strokeStyle = tone; f.stroke();
-    f.fillStyle = colors.ink; f.textAlign = 'center'; f.textBaseline = 'middle';
-    f.font = '600 ' + (big ? 12 : 11) + 'px "IBM Plex Mono", ui-monospace, monospace';
-    f.fillText(n.label, n.x, big && n.sub ? n.y - 7 : n.y);
-    if (big && n.sub) {
-      f.fillStyle = colors.muted; f.font = '400 9.5px "IBM Plex Mono", ui-monospace, monospace';
-      f.fillText(n.sub, n.x, n.y + 9);
-    }
-  }
-
-  function link(a, b, dashed, tone) {
-    f.beginPath(); f.moveTo(a.x, a.y);
-    var mx = (a.x + b.x) / 2;
-    f.bezierCurveTo(mx, a.y, mx, b.y, b.x, b.y);
-    f.setLineDash(dashed ? [4, 5] : []);
-    f.strokeStyle = tone; f.lineWidth = 1; f.globalAlpha = 0.55; f.stroke();
-    f.globalAlpha = 1; f.setLineDash([]);
-  }
-
-  function bez(a, b, t) {
-    var mx = (a.x + b.x) / 2, u = 1 - t;
-    var x = u * u * u * a.x + 3 * u * u * t * mx + 3 * u * t * t * mx + t * t * t * b.x;
-    var y = u * u * u * a.y + 3 * u * u * t * a.y + 3 * u * t * t * b.y + t * t * t * b.y;
-    return { x: x, y: y };
-  }
-
-  function outcomeColor(o) { return o === 'block' ? colors.crit : o === 'mfa' ? colors.accent : colors.ok; }
-
-  function count(o) { stats[o] += 1; statEls[o].textContent = String(stats[o]); }
-
-  function stepPackets() {
-    packets = packets.filter(function (p) {
-      if (p.hold > 0) { p.hold -= 1; return true; }
-      var a = p.pts[p.seg], b = p.pts[p.seg + 1];
-      var len = Math.max(1, Math.hypot(b.x - a.x, b.y - a.y));
-      p.t += FLOW_SPEED / len;
-      if (p.t >= 1) {
-        p.seg += 1; p.t = 0;
-        if (p.seg === 2 && !p.counted) { p.counted = true; count(p.outcome); if (p.outcome === 'mfa') p.hold = MFA_HOLD_FRAMES; }
-        if (p.seg >= p.pts.length - 1) return false;
-      }
-      return true;
-    });
-  }
-
-  function drawFlow() {
-    var L = layout();
-    f.clearRect(0, 0, fW, fH);
-    L.sources.forEach(function (s) { link(s, L.entra, false, colors.faint); });
-    link(L.ad, L.entra, true, colors.accent);
-    link(L.entra, L.ca, false, colors.accent);
-    L.targets.forEach(function (t) { link(L.ca, t, false, colors.faint); });
-    link(L.ca, L.blocked, true, colors.crit);
-
-    f.fillStyle = colors.muted; f.font = '500 9.5px "IBM Plex Mono", ui-monospace, monospace'; f.textAlign = 'left'; f.textBaseline = 'middle';
-    f.fillText('Entra Connect', L.entra.x + 8, (L.entra.y + L.ad.y) / 2);
-
-    packets.forEach(function (p) {
-      var a = p.pts[p.seg], b = p.pts[p.seg + 1];
-      var pos = bez(a, b, p.t);
-      var tone = p.seg >= 2 ? outcomeColor(p.outcome) : colors.ink;
-      f.globalAlpha = 0.22; f.fillStyle = tone;
-      f.beginPath(); f.arc(pos.x, pos.y, 6, 0, Math.PI * 2); f.fill();
-      f.globalAlpha = 1;
-      f.beginPath(); f.arc(pos.x, pos.y, 2.6, 0, Math.PI * 2); f.fill();
-      if (p.hold > 0) {
-        var k = 1 - p.hold / MFA_HOLD_FRAMES;
-        f.strokeStyle = colors.accent; f.globalAlpha = 1 - k; f.lineWidth = 1.4;
-        f.beginPath(); f.arc(pos.x, pos.y, 8 + k * 16, 0, Math.PI * 2); f.stroke();
-        f.globalAlpha = 1; f.fillStyle = colors.accent; f.font = '700 9px "IBM Plex Mono", ui-monospace, monospace'; f.textAlign = 'center';
-        f.fillText('MFA', pos.x, pos.y - 16);
-      }
-    });
-
-    L.sources.forEach(function (s) { node(s, colors.line, false); });
-    node(L.ad, colors.accent, true);
-    node(L.entra, colors.accent, true);
-    node(L.ca, colors.ok, true);
-    L.targets.forEach(function (t) { node(t, colors.line, false); });
-    node(L.blocked, colors.crit, false);
-  }
-
-  function flowLoop(now) {
-    if (!flowRunning) return;
-    if (now - lastSpawn > SPAWN_EVERY_MS && packets.length < MAX_PACKETS) { spawn(layout()); lastSpawn = now; }
-    stepPackets(); drawFlow();
-    requestAnimationFrame(flowLoop);
-  }
-
-  function seedStatic() {
-    /* First frame (and reduced motion): a representative state instead of an empty diagram. */
-    var L = layout();
-    [[0, 'grant', 2, 0.55], [1, 'grant', 2, 0.25], [3, 'mfa', 1, 0.6], [2, 'block', 2, 0.6], [0, 'mfa', 0, 0.7], [1, 'grant', 0, 0.3]].forEach(function (c) {
-      var src = L.sources[c[0]];
-      var end = c[1] === 'block' ? L.blocked : L.targets[c[0] % L.targets.length];
-      packets.push({ pts: [src, L.entra, L.ca, end], seg: c[2], t: c[3], outcome: c[1], hold: 0, counted: true });
-    });
-    stats = { grant: 128, mfa: 41, block: 9 };
-    Object.keys(stats).forEach(function (k) { statEls[k].textContent = String(stats[k]); });
-  }
-
-  sizeFlow();
-  seedStatic();
-  drawFlow();
-  window.addEventListener('resize', function () { sizeFlow(); drawFlow(); });
-  window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', function () { colors = themeColors(); drawFlow(); });
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(drawFlow);
-  if (!reduceMotion) {
-    var startFlow = function () { if (!flowRunning) { flowRunning = true; requestAnimationFrame(flowLoop); } };
-    if ('IntersectionObserver' in window) {
-      new IntersectionObserver(function (entries) { if (entries[0].isIntersecting) startFlow(); else flowRunning = false; }).observe(flow);
-    } else { startFlow(); }
-  }
-
-  /* ---------- Typed specialities ---------- */
-  var SPECIALITIES = ['Microsoft hybride · Entra ID · IAM', 'Durcissement · MFA · GPO', 'Détection · Sigma · MITRE ATT&CK', 'Sauvegardes · PRA / PCA', 'PowerShell · Microsoft Graph · Python'];
-  var TYPE_DELAY_MS = 38, HOLD_MS = 2400;
-  var typed = document.getElementById('typed');
-  if (!reduceMotion) {
-    var specIndex = 0;
-    var typeNext = function () {
-      specIndex = (specIndex + 1) % SPECIALITIES.length;
-      var text = SPECIALITIES[specIndex], n = 0;
-      var tick = function () {
-        typed.textContent = text.slice(0, n);
-        if (n++ < text.length) setTimeout(tick, TYPE_DELAY_MS); else setTimeout(typeNext, HOLD_MS);
-      };
-      tick();
-    };
-    setTimeout(typeNext, HOLD_MS);
-  }
 
   /* ---------- Ticker: duplicate the track for a seamless loop ---------- */
   var ticker = document.getElementById('ticker');
