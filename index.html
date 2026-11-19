@@ -538,6 +538,9 @@ footer a:hover { color: var(--ink); }
 .lang-switch .flag { width: 18px; height: 12px; border-radius: 2px; box-shadow: 0 0 0 1px color-mix(in srgb, var(--ink) 15%, transparent); flex: none; }
 </style>
 <link rel="stylesheet" href="assets/teranga.css">
+<link rel="stylesheet" href="assets/fx.css">
+<link rel="stylesheet" href="assets/globe.css">
+<script src="assets/fx.js" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Aller au contenu</a>
@@ -574,6 +577,7 @@ footer a:hover { color: var(--ink); }
 <div class="wrap">
   <div class="hero-zone" id="top">
     <canvas class="graph" id="graph" aria-hidden="true"></canvas>
+    <div class="globe" id="globe" aria-hidden="true"></div>
     <div class="hero">
       <div>
         <p class="eyebrow rise"><b><span class="dot" aria-hidden="true"></span>Open to work</b><i aria-hidden="true"></i>Ingénieur Systèmes &amp; Cybersécurité</p>
@@ -1324,5 +1328,6 @@ footer a:hover { color: var(--ink); }
 <link rel="stylesheet" href="assets/firewall-game.css">
 <script src="assets/teranga.js" defer></script>
 <script src="assets/firewall-game.js" defer></script>
+<script type="module" src="assets/globe.js"></script>
 </body>
 </html>
