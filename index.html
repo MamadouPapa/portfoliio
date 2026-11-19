@@ -542,7 +542,7 @@ footer a:hover { color: var(--ink); }
 <body>
 <a class="skip" href="#main">Aller au contenu</a>
 
-<div class="telemetry" id="telemetry" aria-hidden="true"><span data-t="dkr">DKR::<b>--:--</b></span><span data-t="par">PAR::<b>--:--</b></span><span class="ok">STATUS::<b>OPEN TO WORK</b></span><span class="opt" data-t="tls">TLS::<b>…</b></span><span class="opt" data-t="lcp">LCP::<b>…</b></span><span class="wo">Dalal ak jàmm · Bienvenue</span></div>
+<div class="telemetry" id="telemetry" aria-hidden="true"><span data-t="par">PAR::<b>--:--</b></span><span class="ok">STATUS::<b>OPEN TO WORK</b></span><span class="opt" data-t="tls">TLS::<b>…</b></span><span class="opt" data-t="lcp">LCP::<b>…</b></span><span class="wo">Dalal ak jàmm · Bienvenue</span></div>
 <header class="top">
   <div class="wrap">
     <a class="brand" href="#top">
@@ -814,6 +814,7 @@ footer a:hover { color: var(--ink); }
         </div>
       </article>
     </div>
+    <div class="gh-live" id="ghLive" aria-live="polite"><div class="gh-head"><p class="label accent">GitHub · en direct</p><h3>Mon activité, lue en temps réel sur l'API GitHub</h3></div><div class="gh-body"><p class="gh-loading">Chargement des données GitHub…</p></div></div>
   </section>
 
   <section id="missions">
@@ -892,13 +893,12 @@ footer a:hover { color: var(--ink); }
       <div class="trace">
         <div class="bar">$ traceroute pmgueye.fr</div>
         <ol>
-        <li><span class="n">1</span><span class="host">dakar.sn</span><span class="what">Origine<small>Sénégal · famille, la teranga</small></span></li>
-        <li><span class="n">2</span><span class="host">kenitra.ma</span><span class="what">Licence Développement Web &amp; Mobile<small>Université Ibn Tofail · 2020 – 2023</small></span></li>
-        <li><span class="n">3</span><span class="host">rabat.ma</span><span class="what">Développeur web · stage<small>Lycom · 2022</small></span></li>
-        <li><span class="n">4</span><span class="host">nice.fr</span><span class="what">Responsable du Système d'Information<small>Hautier IP · 2024 – 2026</small></span></li>
-        <li class="here"><span class="n">5</span><span class="host">paris.fr</span><span class="what">Mastère Cybersécurité &amp; Cloud<small>IPSSI · aujourd'hui</small></span></li>
+        <li><span class="n">1</span><span class="host">kenitra.ma</span><span class="what">Licence Développement Web &amp; Mobile<small>Université Ibn Tofail · 2020 – 2023</small></span></li>
+        <li><span class="n">2</span><span class="host">rabat.ma</span><span class="what">Développeur web · stage<small>Lycom · 2022</small></span></li>
+        <li><span class="n">3</span><span class="host">nice.fr</span><span class="what">Responsable du Système d'Information<small>Hautier IP · 2024 – 2026</small></span></li>
+        <li class="here"><span class="n">4</span><span class="host">paris.fr</span><span class="what">Mastère Cybersécurité &amp; Cloud<small>IPSSI · aujourd'hui</small></span></li>
         </ol>
-        <p class="end">trace complète · 5 sauts · prochain saut : votre équipe ?</p>
+        <p class="end">trace complète · 4 sauts · prochain saut : votre équipe ?</p>
       </div>
     </div>
   </section>
@@ -972,7 +972,7 @@ footer a:hover { color: var(--ink); }
       <article class="life-card"><p class="label accent">romancier</p><h3>L'écriture</h3><p>J'écris aussi des romans. Écrire une histoire et documenter un SI demandent la même chose : de la clarté, de la structure et du respect pour le lecteur.</p><p class="small">Titres et extraits à venir.</p></article>
     </div>
     <div class="proverb" id="proverb"><p class="label">Proverbe wolof du jour</p><blockquote>Ndank ndank mooy japp golo ci naay.</blockquote><p data-p="tr"></p><p data-p="sense"></p></div>
-    <div class="wax" id="wax"><div class="wax-band" id="waxBand"></div><div class="wax-cap"><span><span id="waxLabel"></span> <code id="waxHash">…</code></span><button type="button" id="waxNew">Nouveau motif</button></div></div>
+    <div class="game-block" id="jeu"><p class="label accent">Jeu · pare-feu</p><h3>À vous de jouer : tenez le pare-feu</h3><p>Laissez passer le trafic légitime, coupez les attaques. Une minute, trois vies.</p><div id="fwGame"></div></div>
   </section>
 
   <div class="closing reveal">
@@ -1322,6 +1322,8 @@ footer a:hover { color: var(--ink); }
 </script>
 <script data-goatcounter="https://pmgueye.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 <dialog class="palette" id="palette" aria-label="Palette de commandes"><input type="text" autocomplete="off" spellcheck="false" aria-label="Palette de commandes"><ul role="listbox"></ul><p class="hint"></p></dialog>
+<link rel="stylesheet" href="assets/firewall-game.css">
 <script src="assets/teranga.js" defer></script>
+<script src="assets/firewall-game.js" defer></script>
 </body>
 </html>

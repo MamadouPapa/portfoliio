@@ -542,7 +542,7 @@ footer a:hover { color: var(--ink); }
 <body>
 <a class="skip" href="#main">Skip to content</a>
 
-<div class="telemetry" id="telemetry" aria-hidden="true"><span data-t="dkr">DKR::<b>--:--</b></span><span data-t="par">PAR::<b>--:--</b></span><span class="ok">STATUS::<b>OPEN TO WORK</b></span><span class="opt" data-t="tls">TLS::<b>…</b></span><span class="opt" data-t="lcp">LCP::<b>…</b></span><span class="wo">Dalal ak jàmm · Welcome</span></div>
+<div class="telemetry" id="telemetry" aria-hidden="true"><span data-t="par">PAR::<b>--:--</b></span><span class="ok">STATUS::<b>OPEN TO WORK</b></span><span class="opt" data-t="tls">TLS::<b>…</b></span><span class="opt" data-t="lcp">LCP::<b>…</b></span><span class="wo">Dalal ak jàmm · Welcome</span></div>
 <header class="top">
   <div class="wrap">
     <a class="brand" href="#top">
@@ -814,6 +814,7 @@ footer a:hover { color: var(--ink); }
         </div>
       </article>
     </div>
+    <div class="gh-live" id="ghLive" aria-live="polite"><div class="gh-head"><p class="label accent">GitHub · live</p><h3>My activity, read live from the GitHub API</h3></div><div class="gh-body"><p class="gh-loading">Loading GitHub data…</p></div></div>
   </section>
 
   <section id="missions">
@@ -892,13 +893,12 @@ footer a:hover { color: var(--ink); }
       <div class="trace">
         <div class="bar">$ traceroute pmgueye.fr</div>
         <ol>
-        <li><span class="n">1</span><span class="host">dakar.sn</span><span class="what">Origin<small>Senegal · family, teranga</small></span></li>
-        <li><span class="n">2</span><span class="host">kenitra.ma</span><span class="what">Bachelor's in Web &amp; Mobile Development<small>Ibn Tofail University · 2020 – 2023</small></span></li>
-        <li><span class="n">3</span><span class="host">rabat.ma</span><span class="what">Web developer · internship<small>Lycom · 2022</small></span></li>
-        <li><span class="n">4</span><span class="host">nice.fr</span><span class="what">Head of IT<small>Hautier IP · 2024 – 2026</small></span></li>
-        <li class="here"><span class="n">5</span><span class="host">paris.fr</span><span class="what">Master's in Cybersecurity &amp; Cloud<small>IPSSI · today</small></span></li>
+        <li><span class="n">1</span><span class="host">kenitra.ma</span><span class="what">Bachelor's in Web &amp; Mobile Development<small>Ibn Tofail University · 2020 – 2023</small></span></li>
+        <li><span class="n">2</span><span class="host">rabat.ma</span><span class="what">Web developer · internship<small>Lycom · 2022</small></span></li>
+        <li><span class="n">3</span><span class="host">nice.fr</span><span class="what">Head of IT<small>Hautier IP · 2024 – 2026</small></span></li>
+        <li class="here"><span class="n">4</span><span class="host">paris.fr</span><span class="what">Master's in Cybersecurity &amp; Cloud<small>IPSSI · today</small></span></li>
         </ol>
-        <p class="end">trace complete · 5 hops · next hop: your team?</p>
+        <p class="end">trace complete · 4 hops · next hop: your team?</p>
       </div>
     </div>
   </section>
@@ -972,7 +972,7 @@ footer a:hover { color: var(--ink); }
       <article class="life-card"><p class="label accent">novelist</p><h3>Writing</h3><p>I also write novels. Telling a story and documenting a system need the same things: clarity, structure and respect for the reader.</p><p class="small">Titles and excerpts coming soon.</p></article>
     </div>
     <div class="proverb" id="proverb"><p class="label">Wolof proverb of the day</p><blockquote>Ndank ndank mooy japp golo ci naay.</blockquote><p data-p="tr"></p><p data-p="sense"></p></div>
-    <div class="wax" id="wax"><div class="wax-band" id="waxBand"></div><div class="wax-cap"><span><span id="waxLabel"></span> <code id="waxHash">…</code></span><button type="button" id="waxNew">New pattern</button></div></div>
+    <div class="game-block" id="jeu"><p class="label accent">Game · firewall</p><h3>Your turn: hold the firewall</h3><p>Let legitimate traffic through, drop the attacks. One minute, three lives.</p><div id="fwGame"></div></div>
   </section>
 
   <div class="closing reveal">
@@ -1323,6 +1323,8 @@ footer a:hover { color: var(--ink); }
 </script>
 <script data-goatcounter="https://pmgueye.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 <dialog class="palette" id="palette" aria-label="Command palette"><input type="text" autocomplete="off" spellcheck="false" aria-label="Command palette"><ul role="listbox"></ul><p class="hint"></p></dialog>
+<link rel="stylesheet" href="../assets/firewall-game.css">
 <script src="../assets/teranga.js" defer></script>
+<script src="../assets/firewall-game.js" defer></script>
 </body>
 </html>
