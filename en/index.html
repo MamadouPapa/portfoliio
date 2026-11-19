@@ -479,10 +479,10 @@ footer a:hover { color: var(--ink); }
   .rise { animation: rise .9s cubic-bezier(.2,.7,.2,1) both; }
   .d1 { animation-delay: .08s; } .d2 { animation-delay: .18s; } .d3 { animation-delay: .28s; }
   @keyframes rise { from { transform: translateY(18px); } to { transform: none; } }
-  .reveal { transition: opacity .7s ease, transform .8s cubic-bezier(.2,.7,.2,1), filter .7s ease; }
-  .reveal.pending { opacity: 0; transform: translateY(28px); filter: blur(6px); }
-  .timeline li.reveal.pending { transform: translateX(24px); }
-  .case.reveal, .cert.reveal, .timeline li.reveal { transition: opacity .7s ease, transform .8s cubic-bezier(.2,.7,.2,1), filter .7s ease, background .2s, border-color .3s ease; }
+  .reveal { transition: opacity 1.1s ease, transform 1.2s cubic-bezier(.16,.84,.3,1); }
+  .reveal.pending { opacity: 0; transform: translateY(16px); }
+  .timeline li.reveal.pending { transform: translateX(14px); }
+  .case.reveal, .cert.reveal, .timeline li.reveal { transition: opacity 1.1s ease, transform 1.2s cubic-bezier(.16,.84,.3,1), background .2s, border-color .3s ease; }
 }
 @media (prefers-reduced-motion: reduce) { .dot, .d-flow, .ticker-track { animation: none; } }
 /* Motion layer: identity graph, scrollspy, scroll progress, profile-sheet scan, contact terminal */
@@ -1066,7 +1066,7 @@ footer a:hover { color: var(--ink); }
 
   /* ---------- Reveal on scroll (everything is visible without JS) ---------- */
   var REVEAL_TARGETS = '.reveal, .sec-head, .case, .skill-group, .cert, .langs > div, .fact, .now-card, .track > .label, .timeline li';
-  var REVEAL_STAGGER_MS = 90, REVEAL_MAX_STAGGER = 6;
+  var REVEAL_STAGGER_MS = 140, REVEAL_MAX_STAGGER = 4;
   if (!reduceMotion && 'IntersectionObserver' in window) {
     var revealIO = new IntersectionObserver(function (entries) {
       var shown = entries.filter(function (e) { return e.isIntersecting; });
@@ -1081,7 +1081,6 @@ footer a:hover { color: var(--ink); }
           el.removeEventListener('transitionend', clear);
         });
         revealIO.unobserve(el);
-        if (el.matches('.sec-head')) scramble(el.querySelector('h2'));
       });
     }, { rootMargin: '0px 0px -8% 0px' });
     var viewportH = window.innerHeight;
@@ -1091,26 +1090,6 @@ footer a:hover { color: var(--ink); }
       el.classList.add('reveal', 'pending');
       revealIO.observe(el);
     });
-  }
-
-  /* ---------- Section titles decode like a terminal when they appear ---------- */
-  var SCRAMBLE_GLYPHS = 'ABCDEF0123456789#$%&*+<>/[]{}=';
-  var SCRAMBLE_MS = 700;
-  function scramble(h) {
-    if (!h || h.children.length) return;
-    var text = h.textContent, start = null;
-    h.setAttribute('aria-label', text);
-    function frame(now) {
-      if (start === null) start = now;
-      var p = Math.min((now - start) / SCRAMBLE_MS, 1), solved = Math.floor(p * text.length), out = '';
-      for (var i = 0; i < text.length; i++) {
-        var ch = text[i];
-        out += (i < solved || ch === ' ') ? ch : SCRAMBLE_GLYPHS[Math.floor(Math.random() * SCRAMBLE_GLYPHS.length)];
-      }
-      h.textContent = out;
-      if (p < 1) requestAnimationFrame(frame); else { h.textContent = text; h.removeAttribute('aria-label'); }
-    }
-    requestAnimationFrame(frame);
   }
 
   /* ---------- Timelines: the rail fills and each step lights up as you scroll ---------- */
