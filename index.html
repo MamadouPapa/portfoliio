@@ -477,6 +477,51 @@ footer a:hover { color: var(--ink); }
   .reveal.pending { transform: translateY(24px); }
 }
 @media (prefers-reduced-motion: reduce) { .dot, .d-flow, .ticker-track { animation: none; } }
+/* Motion layer: identity graph, scrollspy, scroll progress, profile-sheet scan, contact terminal */
+.hero-zone > .graph { position: absolute; inset: -80px 0 0; width: 100%; height: calc(100% + 80px); z-index: -1; pointer-events: none;
+  -webkit-mask-image: radial-gradient(70% 80% at 78% 42%, #000 30%, transparent 75%); mask-image: radial-gradient(70% 80% at 78% 42%, #000 30%, transparent 75%); }
+.nav a { position: relative; }
+.nav a[aria-current] { color: var(--ink); }
+.nav a[aria-current]::after { content: ""; position: absolute; left: 0; right: 0; bottom: -7px; height: 2px; border-radius: 2px; background: var(--accent); }
+@supports (animation-timeline: scroll()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .top::after { content: ""; position: absolute; left: 0; bottom: -1px; width: 100%; height: 2px; transform-origin: 0 50%; transform: scaleX(0); background: linear-gradient(90deg, var(--accent), var(--ok)); animation: read-progress linear both; animation-timeline: scroll(root); }
+    @keyframes read-progress { to { transform: scaleX(1); } }
+  }
+}
+.closing-main { display: grid; gap: 24px; align-content: center; min-width: 0; }
+.contact-card { align-self: center; min-width: 0; }
+.cc { margin: 0; padding: 16px 18px 4px; font: 400 .84rem/1.7 var(--font-mono); }
+.cc > div { display: grid; grid-template-columns: 92px minmax(0, 1fr); gap: 10px; }
+.cc dt { display: flex; justify-content: space-between; color: #5FD4B0; }
+.cc dt::after { content: ":"; color: #5B6787; }
+.cc dd { margin: 0; color: #DCE3F2; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.cc a { color: #89A2FF; text-decoration: none; }
+.cc a:hover { text-decoration: underline; }
+.cc .ok { color: #45D6B4; }
+.cc-prompt { margin: 0; padding: 4px 18px 16px; font: 400 .84rem var(--font-mono); color: #8B97B5; }
+.cc-prompt .cursor { display: inline-block; width: .55em; height: 1.05em; vertical-align: -.2em; background: #89A2FF; }
+@media (min-width: 1021px) { .closing { grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 48px; } .closing h2 { font-size: clamp(2rem, 1rem + 3vw, 3.9rem); } }
+@media (max-width: 480px) { .cc { font-size: .78rem; padding-inline: 14px; } .cc > div { grid-template-columns: minmax(0, 1fr); gap: 0; margin-bottom: 6px; } .cc dt { font-size: .7rem; } .cc dt::after { content: none; } }
+@media (prefers-reduced-motion: no-preference) {
+  .dossier dl > div { animation: row-in .55s cubic-bezier(.2,.7,.2,1) both; }
+  .dossier dl > div:nth-child(1) { animation-delay: .30s; } .dossier dl > div:nth-child(2) { animation-delay: .38s; }
+  .dossier dl > div:nth-child(3) { animation-delay: .46s; } .dossier dl > div:nth-child(4) { animation-delay: .54s; }
+  .dossier dl > div:nth-child(5) { animation-delay: .62s; } .dossier dl > div:nth-child(6) { animation-delay: .70s; }
+  .dossier .csf a { animation: csf-on .45s ease both; }
+  .dossier .csf a:nth-child(1) { animation-delay: 1.0s; } .dossier .csf a:nth-child(2) { animation-delay: 1.12s; }
+  .dossier .csf a:nth-child(3) { animation-delay: 1.24s; } .dossier .csf a:nth-child(4) { animation-delay: 1.36s; }
+  .dossier .csf a:nth-child(5) { animation-delay: 1.48s; } .dossier .csf a:nth-child(6) { animation-delay: 1.60s; }
+  @keyframes row-in { from { opacity: .2; transform: translateX(10px); } }
+  @keyframes csf-on { from { background: transparent; color: var(--faint); box-shadow: inset 0 0 0 1px var(--line); } }
+  .closing:not(.pending) .cc > div { animation: cc-line .01s steps(1) both; }
+  .closing:not(.pending) .cc > div:nth-child(1) { animation-delay: .25s; } .closing:not(.pending) .cc > div:nth-child(2) { animation-delay: .45s; }
+  .closing:not(.pending) .cc > div:nth-child(3) { animation-delay: .65s; } .closing:not(.pending) .cc > div:nth-child(4) { animation-delay: .85s; }
+  .closing:not(.pending) .cc > div:nth-child(5) { animation-delay: 1.05s; } .closing:not(.pending) .cc > div:nth-child(6) { animation-delay: 1.25s; }
+  @keyframes cc-line { from { visibility: hidden; } }
+  .cc-prompt .cursor { animation: cc-blink 1.1s steps(1) infinite; }
+  @keyframes cc-blink { 50% { opacity: 0; } }
+}
 .lang-switch { display: flex; gap: 10px; font-size: .88rem; }
 .lang-switch a { text-decoration: none; color: var(--muted); transition: color .15s; }
 .lang-switch a:hover, .lang-switch a[aria-current="page"] { color: var(--ink); }
@@ -517,6 +562,7 @@ footer a:hover { color: var(--ink); }
 <main id="main">
 <div class="wrap">
   <div class="hero-zone" id="top">
+    <canvas class="graph" id="graph" aria-hidden="true"></canvas>
     <div class="hero">
       <div>
         <p class="eyebrow rise"><b><span class="dot" aria-hidden="true"></span>Open to work</b><i aria-hidden="true"></i>Ingénieur Systèmes &amp; Cybersécurité</p>
@@ -860,12 +906,26 @@ footer a:hover { color: var(--ink); }
   </section>
 
   <div class="closing reveal">
-    <p class="label accent">Prochaine étape</p>
-    <h2>Votre SI mérite <em>quelqu'un qui l'a déjà tenu seul.</em></h2>
-    <div class="cta">
-      <a class="btn primary" href="cv/CV_Papa_Mamadou_Gueye.pdf" download>Télécharger mon CV</a>
-      <a class="btn" href="mailto:papa@pmgueye.fr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>Me contacter</a>
-      <a class="btn" href="https://www.linkedin.com/in/papa-mamadou-gueye-developpeur-cybersecurite" target="_blank" rel="noopener">Voir mon LinkedIn</a>
+    <div class="closing-main">
+      <p class="label accent">Prochaine étape</p>
+      <h2>Votre SI mérite <em>quelqu'un qui l'a déjà tenu seul.</em></h2>
+      <div class="cta">
+        <a class="btn primary" href="cv/CV_Papa_Mamadou_Gueye.pdf" download>Télécharger mon CV</a>
+        <a class="btn" href="mailto:papa@pmgueye.fr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>Me contacter</a>
+        <a class="btn" href="https://www.linkedin.com/in/papa-mamadou-gueye-developpeur-cybersecurite" target="_blank" rel="noopener">Voir mon LinkedIn</a>
+      </div>
+    </div>
+    <div class="console contact-card" role="group" aria-label="Coordonnées">
+      <div class="console-bar"><span class="lights" aria-hidden="true"><i></i><i></i><i></i></span><span class="title">PS C:\Users\pmgueye&gt; Get-Contact</span></div>
+      <dl class="cc">
+        <div><dt>Email</dt><dd><a href="mailto:papa@pmgueye.fr">papa@pmgueye.fr</a></dd></div>
+        <div><dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/papa-mamadou-gueye-developpeur-cybersecurite" target="_blank" rel="noopener">linkedin.com/in/papa-mamadou-gueye-developpeur-cybersecurite</a></dd></div>
+        <div><dt>GitHub</dt><dd><a href="https://github.com/MamadouPapa" target="_blank" rel="noopener">github.com/MamadouPapa</a></dd></div>
+        <div><dt>Site</dt><dd><a href="https://www.pmgueye.fr/">https://www.pmgueye.fr/</a></dd></div>
+        <div><dt>Lieu</dt><dd>Paris · mobile partout en France</dd></div>
+        <div><dt>Statut</dt><dd><span class="ok">Open to work</span></dd></div>
+      </dl>
+      <p class="cc-prompt" aria-hidden="true">PS C:\Users\pmgueye&gt; <span class="cursor"></span></p>
     </div>
   </div>
 
@@ -891,6 +951,91 @@ footer a:hover { color: var(--ink); }
   'use strict';
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   document.getElementById('year').textContent = String(new Date().getFullYear());
+
+  /* ---------- Identity graph behind the hero ---------- */
+  var GRAPH_MAX_NODES = 48, GRAPH_AREA_PER_NODE = 22000, GRAPH_LINK = 140, GRAPH_SPEED = 0.18, GRAPH_POINTER = 170, GRAPH_KEY_EVERY = 8;
+  var graph = document.getElementById('graph');
+  if (graph && graph.getContext) {
+    var g = graph.getContext('2d'), gW = 0, gH = 0, gNodes = [], gPointer = null, graphOn = false, gColors = {};
+    var readGraphColors = function () {
+      var cs = getComputedStyle(document.documentElement);
+      gColors = { link: cs.getPropertyValue('--accent').trim(), node: cs.getPropertyValue('--muted').trim(), key: cs.getPropertyValue('--ok').trim() };
+    };
+    var sizeGraph = function () {
+      var r = graph.getBoundingClientRect(), ratio = Math.min(window.devicePixelRatio || 1, 2);
+      var widthChanged = Math.round(r.width) !== Math.round(gW);
+      gW = r.width; gH = r.height;
+      graph.width = Math.round(gW * ratio); graph.height = Math.round(gH * ratio);
+      g.setTransform(ratio, 0, 0, ratio, 0, 0);
+      return widthChanged;
+    };
+    var seedGraph = function () {
+      var count = Math.min(GRAPH_MAX_NODES, Math.round(gW * gH / GRAPH_AREA_PER_NODE));
+      gNodes = [];
+      for (var i = 0; i < count; i++) {
+        gNodes.push({ x: Math.random() * gW, y: Math.random() * gH, vx: (Math.random() - .5) * GRAPH_SPEED, vy: (Math.random() - .5) * GRAPH_SPEED, key: i % GRAPH_KEY_EVERY === 0 });
+      }
+    };
+    var line = function (a, b, alpha, color) {
+      g.globalAlpha = alpha; g.strokeStyle = color; g.beginPath(); g.moveTo(a.x, a.y); g.lineTo(b.x, b.y); g.stroke();
+    };
+    var drawGraph = function () {
+      g.clearRect(0, 0, gW, gH); g.lineWidth = 1;
+      for (var i = 0; i < gNodes.length; i++) {
+        var a = gNodes[i];
+        for (var j = i + 1; j < gNodes.length; j++) {
+          var d = Math.hypot(a.x - gNodes[j].x, a.y - gNodes[j].y);
+          if (d < GRAPH_LINK) line(a, gNodes[j], (1 - d / GRAPH_LINK) * .32, gColors.link);
+        }
+        if (gPointer) {
+          var dp = Math.hypot(a.x - gPointer.x, a.y - gPointer.y);
+          if (dp < GRAPH_POINTER) line(a, gPointer, (1 - dp / GRAPH_POINTER) * .55, gColors.key);
+        }
+      }
+      gNodes.forEach(function (n) {
+        g.globalAlpha = n.key ? .95 : .5; g.fillStyle = n.key ? gColors.key : gColors.node;
+        g.beginPath(); g.arc(n.x, n.y, n.key ? 2.4 : 1.5, 0, Math.PI * 2); g.fill();
+      });
+      g.globalAlpha = 1;
+    };
+    var stepGraph = function () {
+      if (!graphOn) return;
+      gNodes.forEach(function (n) {
+        n.x += n.vx; n.y += n.vy;
+        if (n.x < 0 || n.x > gW) n.vx *= -1;
+        if (n.y < 0 || n.y > gH) n.vy *= -1;
+      });
+      drawGraph();
+      requestAnimationFrame(stepGraph);
+    };
+    readGraphColors(); sizeGraph(); seedGraph(); drawGraph();
+    window.addEventListener('resize', function () { if (sizeGraph()) seedGraph(); drawGraph(); });
+    window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', function () { readGraphColors(); drawGraph(); });
+    if (!reduceMotion) {
+      var zone = graph.parentElement;
+      zone.addEventListener('pointermove', function (e) { var r = graph.getBoundingClientRect(); gPointer = { x: e.clientX - r.left, y: e.clientY - r.top }; });
+      zone.addEventListener('pointerleave', function () { gPointer = null; });
+      var startGraph = function () { if (!graphOn) { graphOn = true; requestAnimationFrame(stepGraph); } };
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver(function (entries) { if (entries[0].isIntersecting) startGraph(); else graphOn = false; }).observe(graph);
+      } else { startGraph(); }
+    }
+  }
+
+  /* ---------- Scrollspy: highlight the section in view ---------- */
+  var navLinks = document.querySelectorAll('.nav a[href^="#"]');
+  if (navLinks.length && 'IntersectionObserver' in window) {
+    var linkFor = {};
+    Array.prototype.forEach.call(navLinks, function (a) { linkFor[a.getAttribute('href').slice(1)] = a; });
+    var spy = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        Array.prototype.forEach.call(navLinks, function (a) { a.removeAttribute('aria-current'); });
+        if (linkFor[e.target.id]) linkFor[e.target.id].setAttribute('aria-current', 'location');
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    ['top'].concat(Object.keys(linkFor)).forEach(function (id) { var el = document.getElementById(id); if (el) spy.observe(el); });
+  }
 
   /* ---------- Ticker: duplicate the track for a seamless loop ---------- */
   var ticker = document.getElementById('ticker');
