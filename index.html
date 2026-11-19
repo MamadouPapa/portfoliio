@@ -515,7 +515,7 @@ footer a:hover { color: var(--ink); }
   .dossier dl > div { animation: row-in .55s cubic-bezier(.2,.7,.2,1) both; }
   .dossier dl > div:nth-child(1) { animation-delay: .30s; } .dossier dl > div:nth-child(2) { animation-delay: .38s; }
   .dossier dl > div:nth-child(3) { animation-delay: .46s; } .dossier dl > div:nth-child(4) { animation-delay: .54s; }
-  .dossier dl > div:nth-child(5) { animation-delay: .62s; } .dossier dl > div:nth-child(6) { animation-delay: .70s; }
+  .dossier dl > div:nth-child(5) { animation-delay: .62s; } .dossier dl > div:nth-child(6) { animation-delay: .70s; } .dossier dl > div:nth-child(7) { animation-delay: .78s; }
   .dossier .csf a { animation: csf-on .45s ease both; }
   .dossier .csf a:nth-child(1) { animation-delay: 1.0s; } .dossier .csf a:nth-child(2) { animation-delay: 1.12s; }
   .dossier .csf a:nth-child(3) { animation-delay: 1.24s; } .dossier .csf a:nth-child(4) { animation-delay: 1.36s; }
@@ -576,7 +576,7 @@ footer a:hover { color: var(--ink); }
         <p class="eyebrow rise"><b><span class="dot" aria-hidden="true"></span>Open to work</b><i aria-hidden="true"></i>Ingénieur Systèmes &amp; Cybersécurité</p>
         <h1 class="headline rise d1">Je sécurise les identités Microsoft, de l'<em>Active&nbsp;Directory</em> à <em>Entra&nbsp;ID</em>.</h1>
         <p class="thesis rise d2">
-          Deux ans <strong>seul responsable du SI</strong> en environnement Microsoft hybride : IAM, MFA, durcissement Windows / Linux, sauvegardes et PRA.
+          Deux ans <strong>seul responsable du SI</strong> en environnement hybride Windows / Linux : IAM, MFA, durcissement, serveurs Linux (NGINX, Apache, MariaDB, Docker), sauvegardes et PRA.
           En lab, j'<strong>écris une attaque, puis la règle qui la détecte</strong>.
         </p>
         <p class="who rise d2"><b>Papa Mamadou Gueye</b><span>Paris · Bac+5 Mastère Cybersécurité &amp; Cloud</span></p>
@@ -601,6 +601,7 @@ footer a:hover { color: var(--ink); }
         <dl>
           <div><dt>Rôle</dt><dd>Ingénieur systèmes &amp; sécurité<br>IAM · Microsoft&nbsp;365</dd></div>
           <div><dt>Périmètre</dt><dd>AD DS on-prem + Entra ID, Intune, Exchange Online, VMware / Hyper-V</dd></div>
+          <div><dt>Linux</dt><dd>Ubuntu · Debian · NGINX · Apache / PHP-FPM · MariaDB · Docker</dd></div>
           <div><dt>Contrôles</dt><dd class="tags"><span class="ok">MFA</span><span class="ok">Accès conditionnel</span><span class="ok">GPO</span><span class="ok">Revue des droits</span><span class="ok">Durcissement</span><span class="ok">PRA / PCA</span></dd></div>
           <div><dt>Détection</dt><dd class="tags"><span>Sigma</span><span>auditd</span><span>Suricata</span><span>MITRE ATT&amp;CK</span></dd></div>
           <div><dt>NIST CSF 2.0</dt><dd class="csf"><a href="#couverture" title="Voir la couverture NIST CSF 2.0">GV</a><a href="#couverture" title="Voir la couverture NIST CSF 2.0">ID</a><a href="#couverture" title="Voir la couverture NIST CSF 2.0">PR</a><a href="#couverture" title="Voir la couverture NIST CSF 2.0">DE</a><a href="#couverture" title="Voir la couverture NIST CSF 2.0">RS</a><a href="#couverture" title="Voir la couverture NIST CSF 2.0">RC</a></dd></div>
@@ -621,7 +622,7 @@ footer a:hover { color: var(--ink); }
 
 <div class="ticker" aria-hidden="true">
   <div class="ticker-track" id="ticker">
-    <span>Active Directory</span><span>Entra ID</span><span>Microsoft 365</span><span>Intune</span><span>Exchange Online</span><span>GPO</span><span>MFA</span><span>IAM</span><span>Hardening</span><span>PRA / PCA</span><span>RGPD</span><span>MITRE ATT&amp;CK</span><span>Sigma</span><span>auditd</span><span>PowerShell</span><span>Microsoft Graph</span><span>Python</span><span>VMware</span><span>Hyper-V</span><span>VLAN</span><span>VPN</span><span>OpenSSL</span>
+    <span>Active Directory</span><span>Entra ID</span><span>Microsoft 365</span><span>Intune</span><span>Exchange Online</span><span>GPO</span><span>MFA</span><span>IAM</span><span>Hardening</span><span>PRA / PCA</span><span>RGPD</span><span>MITRE ATT&amp;CK</span><span>Sigma</span><span>auditd</span><span>PowerShell</span><span>Microsoft Graph</span><span>Python</span><span>Linux</span><span>NGINX</span><span>MariaDB</span><span>Docker</span><span>VMware</span><span>Hyper-V</span><span>VLAN</span><span>VPN</span><span>OpenSSL</span>
   </div>
 </div>
 
@@ -822,7 +823,7 @@ footer a:hover { color: var(--ink); }
     </div>
     <div class="cases">
       <article class="case"><div class="case-id"><span class="label accent">Identités &amp; accès</span><span class="label">PR.AA</span></div><h3>Un annuaire hybride propre et protégé par le MFA</h3><ul><li>Comptes, groupes et GPO en Active Directory / Entra ID</li><li>Déploiement du MFA pour les utilisateurs</li><li>Politiques de sécurité et revue des droits d'accès</li></ul><div class="tags"><span class="tag">Active Directory</span><span class="tag">Entra ID</span><span class="tag">GPO</span><span class="tag">MFA</span></div></article>
-      <article class="case"><div class="case-id"><span class="label accent">Durcissement &amp; conformité</span><span class="label">PR.PS</span></div><h3>Des postes et des serveurs durcis, un SI conforme au RGPD</h3><ul><li>Durcissement des postes et serveurs Windows / Linux</li><li>Audits de sécurité et plans de correction</li><li>Mise en conformité RGPD du système d'information</li></ul><div class="tags"><span class="tag">Windows Server</span><span class="tag">Ubuntu</span><span class="tag">Debian</span><span class="tag">Intune</span><span class="tag">RGPD</span></div></article>
+      <article class="case"><div class="case-id"><span class="label accent">Durcissement &amp; conformité</span><span class="label">PR.PS</span></div><h3>Des postes et des serveurs durcis, un SI conforme au RGPD</h3><ul><li>Durcissement des postes et serveurs Windows / Linux</li><li>Administration des serveurs Linux : NGINX, Apache / PHP-FPM, MySQL / MariaDB, Docker</li><li>Audits de sécurité et plans de correction</li><li>Mise en conformité RGPD du système d'information</li></ul><div class="tags"><span class="tag">Windows Server</span><span class="tag">Ubuntu</span><span class="tag">Debian</span><span class="tag">NGINX</span><span class="tag">MariaDB</span><span class="tag">Docker</span><span class="tag">Intune</span><span class="tag">RGPD</span></div></article>
       <article class="case"><div class="case-id"><span class="label accent">Continuité</span><span class="label">RC.RP</span></div><h3>Des sauvegardes pilotées et un plan de reprise prêt</h3><ul><li>Mise en place et suivi des sauvegardes</li><li>Rédaction et pilotage du PRA / PCA</li><li>MCO de l'infrastructure VMware / Hyper-V et du réseau</li></ul><div class="tags"><span class="tag">VMware</span><span class="tag">Hyper-V</span><span class="tag">Pare-feu</span><span class="tag">VPN</span><span class="tag">VLAN</span></div></article>
       <article class="case"><div class="case-id"><span class="label accent">Automatisation</span><span class="label">Scripting</span></div><h3>Moins de tâches manuelles, des outils métier sur mesure</h3><ul><li>Scripts d'administration en PowerShell et Python</li><li>Applications métier avec Power Apps, Power Automate et Dataverse</li><li>Outils internes en PHP / SQL, dont une application en production</li></ul><div class="tags"><span class="tag">PowerShell</span><span class="tag">Python</span><span class="tag">Power Platform</span><span class="tag">Microsoft 365</span></div></article>
     </div>
@@ -868,10 +869,10 @@ footer a:hover { color: var(--ink); }
     <div class="skills">
       <div class="skill-group core"><h3>Sécurité</h3><div class="chips"><span class="chip">IAM</span><span class="chip">MFA</span><span class="chip">Hardening</span><span class="chip">Audits de sécurité</span><span class="chip">Gestion des accès</span><span class="chip">Sauvegardes</span><span class="chip">PRA / PCA</span><span class="chip">RGPD</span><span class="chip">Gouvernance</span></div></div>
       <div class="skill-group core"><h3>Microsoft 365 &amp; Cloud</h3><div class="chips"><span class="chip">Entra ID</span><span class="chip">Microsoft 365</span><span class="chip">Exchange Online</span><span class="chip">Intune</span><span class="chip">Azure</span><span class="chip">Power Apps</span><span class="chip">Power Automate</span><span class="chip">Dataverse</span></div></div>
-      <div class="skill-group core"><h3>Systèmes &amp; virtualisation</h3><div class="chips"><span class="chip">Windows Server</span><span class="chip">Active Directory</span><span class="chip">GPO</span><span class="chip">Ubuntu</span><span class="chip">Debian</span><span class="chip">VMware</span><span class="chip">Hyper-V</span></div></div>
+      <div class="skill-group core"><h3>Systèmes &amp; virtualisation</h3><div class="chips"><span class="chip">Windows Server</span><span class="chip">Active Directory</span><span class="chip">GPO</span><span class="chip">Ubuntu</span><span class="chip">Debian</span><span class="chip">NGINX</span><span class="chip">Apache</span><span class="chip">PHP-FPM</span><span class="chip">MySQL / MariaDB</span><span class="chip">Docker</span><span class="chip">VMware</span><span class="chip">Hyper-V</span></div></div>
       <div class="skill-group"><h3>Réseau</h3><div class="chips"><span class="chip">TCP/IP</span><span class="chip">DNS</span><span class="chip">DHCP</span><span class="chip">VLAN</span><span class="chip">VPN</span><span class="chip">Pare-feu</span><span class="chip">Supervision</span></div></div>
       <div class="skill-group"><h3>Scripting &amp; détection</h3><div class="chips"><span class="chip">PowerShell</span><span class="chip">Python</span><span class="chip">C</span><span class="chip">SQL</span><span class="chip">PHP</span><span class="chip">JavaScript</span><span class="chip">Git</span><span class="chip">Sigma</span><span class="chip">MITRE ATT&amp;CK</span></div></div>
-      <div class="skill-group extra"><h3>Notions complémentaires</h3><div class="chips"><span class="chip">AWS</span><span class="chip">Docker</span><span class="chip">Kubernetes</span><span class="chip">Terraform</span><span class="chip">Jenkins</span><span class="chip">CI/CD</span><span class="chip">DevSecOps</span><span class="chip">Pentest</span><span class="chip">OWASP Top 10</span></div></div>
+      <div class="skill-group extra"><h3>Notions complémentaires</h3><div class="chips"><span class="chip">AWS</span><span class="chip">Kubernetes</span><span class="chip">Terraform</span><span class="chip">Jenkins</span><span class="chip">CI/CD</span><span class="chip">DevSecOps</span><span class="chip">Pentest</span><span class="chip">OWASP Top 10</span></div></div>
     </div>
   </section>
 
@@ -1162,12 +1163,12 @@ footer a:hover { color: var(--ink); }
       var prod = [
         kv('Securite', 'IAM, MFA, hardening, audits, PRA/PCA, RGPD'),
         kv('Microsoft', 'Entra ID, M365, Exchange Online, Intune, Azure, Power Platform'),
-        kv('Systemes', 'Windows Server, AD, GPO, Ubuntu, Debian, VMware, Hyper-V'),
+        kv('Systemes', 'Windows Server, AD, GPO, Ubuntu, Debian, NGINX, Apache, MariaDB, Docker, VMware, Hyper-V'),
         kv('Reseau', 'TCP/IP, DNS, DHCP, VLAN, VPN, pare-feu'),
         kv('Scripting', 'PowerShell, Python, C, SQL, PHP, JavaScript'),
         kv('Detection', 'Sigma, auditd, MITRE ATT&CK (labs)')
       ];
-      var notions = [kv('Notions', 'AWS, Docker, Kubernetes, Terraform, Jenkins, CI/CD, pentest, OWASP')];
+      var notions = [kv('Notions', 'AWS, Kubernetes, Terraform, Jenkins, CI/CD, pentest, OWASP')];
       if (/^notions$/i.test(level)) return notions.join('\n');
       if (/^production$/i.test(level)) return prod.join('\n');
       return prod.concat(notions).join('\n');
