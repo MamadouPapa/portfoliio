@@ -415,25 +415,31 @@ section { padding-block: clamp(56px, 7vw, 96px); scroll-margin-top: 64px; }
 @media (max-width: 560px) { .skills { grid-template-columns: 1fr; } }
 
 /* Timeline */
-.timeline { list-style: none; margin: 0; padding: 0; display: grid; }
-.timeline li { display: grid; grid-template-columns: 150px 28px 1fr; gap: 16px; }
-.timeline time { font-family: var(--font-mono); font-size: .8rem; color: var(--muted); padding-top: 3px; font-variant-numeric: tabular-nums; }
-.rail { position: relative; display: flex; justify-content: center; }
-.rail::before { content: ""; position: absolute; top: 0; bottom: 0; width: 1px; background: var(--line); }
-.timeline li:first-child .rail::before { top: 10px; }
-.timeline li:last-child .rail::before { bottom: auto; height: 10px; }
-.rail i { position: relative; width: 11px; height: 11px; margin-top: 6px; border-radius: 50%; background: var(--bg); border: 2px solid var(--accent); }
-.timeline li.now .rail i { background: var(--ok); border-color: var(--ok); box-shadow: 0 0 0 4px var(--ok-soft); }
-.tl-body { padding-bottom: 32px; min-width: 0; }
-.tl-body h3 { font-size: 1.15rem; font-stretch: 106%; font-weight: 700; }
-.tl-body .where { color: var(--accent); font-size: .9rem; margin-top: 2px; }
-.tl-body p { color: var(--muted); margin-top: 8px; max-width: 46em; }
-@media (max-width: 600px) {
-  .timeline li { grid-template-columns: 20px 1fr; gap: 12px; }
-  .timeline time { grid-column: 2; grid-row: 1; }
-  .rail { grid-row: 1 / span 2; }
-  .tl-body { grid-column: 2; }
-}
+.now-card { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 18px 24px; padding: 22px 26px; border: 1px solid color-mix(in srgb, var(--ok) 35%, var(--line)); border-radius: var(--radius); background: linear-gradient(100deg, color-mix(in srgb, var(--ok) 9%, var(--surface)), var(--surface) 60%); }
+.now-dot { width: 12px; height: 12px; border-radius: 50%; background: var(--ok); box-shadow: 0 0 0 5px var(--ok-soft); }
+.now-card .label { color: var(--ok); }
+.now-card h3 { margin-top: 4px; font-size: 1.25rem; font-stretch: 106%; font-weight: 720; }
+.now-card .where { color: var(--muted); font-size: .92rem; margin-top: 2px; }
+.now-roles { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px; }
+.now-roles span { padding: 6px 11px; border: 1px solid var(--line); border-radius: 999px; font-size: .82rem; color: var(--ink); background: color-mix(in srgb, var(--surface) 70%, transparent); }
+.tracks { display: grid; grid-template-columns: 1.25fr 1fr; gap: 28px 48px; margin-top: 40px; }
+.track > .label { display: flex; align-items: center; gap: 10px; margin-bottom: 18px; }
+.track > .label::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+.timeline { --fill: 1; position: relative; list-style: none; margin: 0; padding: 0 0 0 30px; display: grid; gap: 14px; }
+.timeline::before, .timeline::after { content: ""; position: absolute; left: 5px; top: 12px; bottom: 12px; width: 2px; border-radius: 2px; }
+.timeline::before { background: var(--line); }
+.timeline::after { background: linear-gradient(var(--ok), var(--accent)); transform-origin: top; transform: scaleY(var(--fill)); }
+.timeline li { position: relative; padding: 16px 18px; border: 1px solid var(--line); border-radius: 12px; background: color-mix(in srgb, var(--surface) 86%, transparent); transition: border-color .3s ease; }
+.timeline li::before { content: ""; position: absolute; left: -30px; top: 20px; width: 12px; height: 12px; border-radius: 50%; background: var(--bg); border: 2px solid var(--faint); transition: border-color .3s ease, background-color .3s ease, box-shadow .3s ease; }
+.timeline li.lit { border-color: color-mix(in srgb, var(--accent) 35%, var(--line)); }
+.timeline li.lit::before { border-color: var(--accent); background: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft), 0 0 14px color-mix(in srgb, var(--accent) 60%, transparent); }
+.timeline time { display: inline-block; font: 500 .74rem var(--font-mono); color: var(--accent); padding: 2px 8px; border-radius: 6px; background: var(--accent-soft); font-variant-numeric: tabular-nums; }
+.tl-body h3 { margin-top: 10px; font-size: 1.08rem; font-stretch: 106%; font-weight: 700; }
+.tl-body .where { color: var(--muted); font-size: .88rem; margin-top: 2px; }
+.tl-body p:not(.where) { color: var(--muted); margin-top: 8px; font-size: .94rem; }
+.tl-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+.tl-tags span { font: 500 .72rem var(--font-mono); padding: 3px 8px; border: 1px solid var(--line); border-radius: 6px; color: var(--muted); }
+@media (max-width: 900px) { .tracks { grid-template-columns: 1fr; } .now-card { grid-template-columns: auto minmax(0, 1fr); } .now-roles { grid-column: 1 / -1; justify-content: flex-start; } }
 
 /* Certificates */
 .certs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 20px; }
@@ -473,8 +479,10 @@ footer a:hover { color: var(--ink); }
   .rise { animation: rise .9s cubic-bezier(.2,.7,.2,1) both; }
   .d1 { animation-delay: .08s; } .d2 { animation-delay: .18s; } .d3 { animation-delay: .28s; }
   @keyframes rise { from { transform: translateY(18px); } to { transform: none; } }
-  .reveal { transition: transform .8s cubic-bezier(.2,.7,.2,1); }
-  .reveal.pending { transform: translateY(24px); }
+  .reveal { transition: opacity .7s ease, transform .8s cubic-bezier(.2,.7,.2,1), filter .7s ease; }
+  .reveal.pending { opacity: 0; transform: translateY(28px); filter: blur(6px); }
+  .timeline li.reveal.pending { transform: translateX(24px); }
+  .case.reveal, .cert.reveal, .timeline li.reveal { transition: opacity .7s ease, transform .8s cubic-bezier(.2,.7,.2,1), filter .7s ease, background .2s, border-color .3s ease; }
 }
 @media (prefers-reduced-motion: reduce) { .dot, .d-flow, .ticker-track { animation: none; } }
 /* Motion layer: identity graph, scrollspy, scroll progress, profile-sheet scan, contact terminal */
@@ -872,13 +880,27 @@ footer a:hover { color: var(--ink); }
       <p class="idx">06 · Background</p>
       <div><h2>From web development to IT security</h2></div>
     </div>
-    <ol class="timeline">
-      <li class="now"><time>Today</time><span class="rail"><i></i></span><div class="tl-body"><h3>Available for a permanent or fixed-term role</h3><p class="where">Paris, Lyon or anywhere in France</p><p>Target roles: systems and security engineer, Microsoft 365 engineer, IAM / Entra ID consultant.</p></div></li>
-      <li><time>09/2024 – 09/2026</time><span class="rail"><i></i></span><div class="tl-body"><h3>Head of IT</h3><p class="where">Hautier IP · Nice</p><p>Hybrid AD / Entra ID IAM, MFA, hardening, audits, GDPR, Microsoft 365 and Intune, backups and DRP/BCP, virtualisation, networking, L1/L2 support, automation and business applications.</p></div></li>
-      <li><time>02/2024 – 02/2026</time><span class="rail"><i></i></span><div class="tl-body"><h3>Master's in Cybersecurity &amp; Cloud Computing (5-year degree)</h3><p class="where">IPSSI · Paris · work-study programme</p></div></li>
-      <li><time>09/2020 – 07/2023</time><span class="rail"><i></i></span><div class="tl-body"><h3>Bachelor's in Web &amp; Mobile Development</h3><p class="where">Ibn Tofail University · Kenitra, Morocco</p></div></li>
-      <li><time>05/2022 – 10/2022</time><span class="rail"><i></i></span><div class="tl-body"><h3>Web developer · internship</h3><p class="where">Lycom · Rabat, Morocco</p><p>Front-end and back-end web applications (PHP, JavaScript, MySQL), database design, testing and documentation in an Agile team.</p></div></li>
-    </ol>
+    <div class="now-card">
+      <span class="now-dot" aria-hidden="true"></span>
+      <div><p class="label">Today</p><h3>Available for a permanent or fixed-term role</h3><p class="where">Paris, Lyon or anywhere in France</p></div>
+      <div class="now-roles"><span>Systems and security engineer</span><span>Microsoft 365 engineer</span><span>IAM / Entra ID consultant</span></div>
+    </div>
+    <div class="tracks">
+      <div class="track">
+        <p class="label accent">Experience</p>
+        <ol class="timeline">
+          <li><div class="tl-body"><time>09/2024 – 09/2026</time><h3>Head of IT</h3><p class="where">Hautier IP · Nice</p><p>Hybrid AD / Entra ID IAM, MFA, hardening, audits, GDPR, Microsoft 365 and Intune, backups and DRP/BCP, virtualisation, networking, L1/L2 support, automation and business applications.</p><div class="tl-tags"><span>IAM</span><span>Entra ID</span><span>MFA</span><span>Intune</span><span>Hardening</span><span>DRP / BCP</span></div></div></li>
+          <li><div class="tl-body"><time>05/2022 – 10/2022</time><h3>Web developer · internship</h3><p class="where">Lycom · Rabat, Morocco</p><p>Front-end and back-end web applications (PHP, JavaScript, MySQL), database design, testing and documentation in an Agile team.</p></div></li>
+        </ol>
+      </div>
+      <div class="track">
+        <p class="label accent">Education</p>
+        <ol class="timeline">
+          <li><div class="tl-body"><time>02/2024 – 02/2026</time><h3>Master's in Cybersecurity &amp; Cloud Computing (5-year degree)</h3><p class="where">IPSSI · Paris · work-study programme</p></div></li>
+          <li><div class="tl-body"><time>09/2020 – 07/2023</time><h3>Bachelor's in Web &amp; Mobile Development</h3><p class="where">Ibn Tofail University · Kenitra, Morocco</p></div></li>
+        </ol>
+      </div>
+    </div>
 
     <div class="sub">
       <p class="label">Certifications · click to enlarge</p>
@@ -1043,13 +1065,74 @@ footer a:hover { color: var(--ink); }
   ticker.insertAdjacentHTML('beforeend', ticker.innerHTML);
 
   /* ---------- Reveal on scroll (everything is visible without JS) ---------- */
+  var REVEAL_TARGETS = '.reveal, .sec-head, .case, .skill-group, .cert, .langs > div, .fact, .now-card, .track > .label, .timeline li';
+  var REVEAL_STAGGER_MS = 90, REVEAL_MAX_STAGGER = 6;
   if (!reduceMotion && 'IntersectionObserver' in window) {
     var revealIO = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.remove('pending'); revealIO.unobserve(e.target); } });
+      var shown = entries.filter(function (e) { return e.isIntersecting; });
+      shown.forEach(function (e, i) {
+        var el = e.target;
+        el.style.transitionDelay = (Math.min(i, REVEAL_MAX_STAGGER) * REVEAL_STAGGER_MS) + 'ms';
+        el.classList.remove('pending');
+        el.addEventListener('transitionend', function clear(ev) {
+          if (ev.target !== el || ev.propertyName !== 'opacity') return;
+          el.style.transitionDelay = '';
+          if (el.hasAttribute('data-auto-reveal')) el.classList.remove('reveal');
+          el.removeEventListener('transitionend', clear);
+        });
+        revealIO.unobserve(el);
+        if (el.matches('.sec-head')) scramble(el.querySelector('h2'));
+      });
     }, { rootMargin: '0px 0px -8% 0px' });
     var viewportH = window.innerHeight;
-    var belowFold = Array.prototype.filter.call(document.querySelectorAll('.reveal'), function (el) { return el.getBoundingClientRect().top > viewportH; });
-    belowFold.forEach(function (el) { el.classList.add('pending'); revealIO.observe(el); });
+    var belowFold = Array.prototype.filter.call(document.querySelectorAll(REVEAL_TARGETS), function (el) { return el.getBoundingClientRect().top > viewportH; });
+    belowFold.forEach(function (el) {
+      if (!el.classList.contains('reveal')) el.setAttribute('data-auto-reveal', '');
+      el.classList.add('reveal', 'pending');
+      revealIO.observe(el);
+    });
+  }
+
+  /* ---------- Section titles decode like a terminal when they appear ---------- */
+  var SCRAMBLE_GLYPHS = 'ABCDEF0123456789#$%&*+<>/[]{}=';
+  var SCRAMBLE_MS = 700;
+  function scramble(h) {
+    if (!h || h.children.length) return;
+    var text = h.textContent, start = null;
+    h.setAttribute('aria-label', text);
+    function frame(now) {
+      if (start === null) start = now;
+      var p = Math.min((now - start) / SCRAMBLE_MS, 1), solved = Math.floor(p * text.length), out = '';
+      for (var i = 0; i < text.length; i++) {
+        var ch = text[i];
+        out += (i < solved || ch === ' ') ? ch : SCRAMBLE_GLYPHS[Math.floor(Math.random() * SCRAMBLE_GLYPHS.length)];
+      }
+      h.textContent = out;
+      if (p < 1) requestAnimationFrame(frame); else { h.textContent = text; h.removeAttribute('aria-label'); }
+    }
+    requestAnimationFrame(frame);
+  }
+
+  /* ---------- Timelines: the rail fills and each step lights up as you scroll ---------- */
+  var TIMELINE_TRIGGER = 0.65;
+  var timelines = document.querySelectorAll('.timeline');
+  function updateTimelines() {
+    var trigger = window.innerHeight * TIMELINE_TRIGGER;
+    Array.prototype.forEach.call(timelines, function (tl) {
+      var r = tl.getBoundingClientRect();
+      var fill = reduceMotion ? 1 : Math.max(0, Math.min(1, (trigger - r.top) / r.height));
+      tl.style.setProperty('--fill', fill.toFixed(3));
+      Array.prototype.forEach.call(tl.children, function (li) {
+        li.classList.toggle('lit', li.offsetTop + 20 <= fill * r.height);
+      });
+    });
+  }
+  if (timelines.length) {
+    var tlTicking = false;
+    var onTimelineScroll = function () { if (!tlTicking) { tlTicking = true; requestAnimationFrame(function () { tlTicking = false; updateTimelines(); }); } };
+    window.addEventListener('scroll', onTimelineScroll, { passive: true });
+    window.addEventListener('resize', onTimelineScroll);
+    updateTimelines();
   }
 
   /* ---------- PowerShell console ---------- */
