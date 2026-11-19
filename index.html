@@ -169,6 +169,12 @@ p { margin: 0; }
 .nav a { text-decoration: none; color: var(--muted); transition: color .15s; }
 .nav a:hover { color: var(--ink); }
 .top-right { display: flex; align-items: center; gap: 12px; }
+.pill { display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; font-family: var(--font-mono); font-size: .72rem; padding: 5px 10px; border-radius: 999px; background: var(--ok-soft); color: var(--ok); }
+.pill svg { width: 12px; height: 12px; flex: none; }
+.pill.focus { background: var(--accent-soft); color: var(--accent); }
+.btn-sm.gh { display: inline-flex; align-items: center; padding: 6px 8px; background: transparent; color: var(--ink); border: 1px solid var(--line); }
+.btn-sm.gh:hover { border-color: var(--accent); color: var(--accent); }
+.btn-sm.gh svg { width: 16px; height: 16px; display: block; }
 .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--ok); animation: pulse 2.4s infinite; }
 @keyframes pulse { 0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--ok) 60%, transparent); } 70% { box-shadow: 0 0 0 8px transparent; } 100% { box-shadow: 0 0 0 0 transparent; } }
 .btn-sm { font: 600 .82rem var(--font-body); text-decoration: none; padding: 7px 13px; border-radius: 8px; background: var(--ink); color: var(--bg); white-space: nowrap; }
@@ -183,6 +189,12 @@ p { margin: 0; }
 }
 @media (max-width: 400px) { .lang-switch .flag { display: none; } }
 @media (max-width: 1020px) { .nav { display: none; } }
+/* Header pills give way first: focus, then location */
+@media (min-width: 1021px) and (max-width: 1379px) { .pill.focus { display: none; } }
+@media (min-width: 1021px) and (max-width: 1239px) { .pill { display: none; } }
+@media (max-width: 860px) { .pill.focus { display: none; } }
+@media (max-width: 720px) { .pill { display: none; } }
+@media (max-width: 560px) { .btn-sm.gh { display: none; } }
 
 /* Hero */
 .hero-zone { position: relative; isolation: isolate; }
@@ -492,6 +504,9 @@ footer a:hover { color: var(--ink); }
         <a href="./" hreflang="fr" lang="fr" aria-label="FR, version française" aria-current="page"><svg class="flag" viewBox="0 0 3 2" aria-hidden="true"><rect width="1" height="2" fill="#0055A4"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#EF4135"/></svg>FR</a>
         <a href="en/" hreflang="en" lang="en" aria-label="EN, English version"><svg class="flag" viewBox="0 0 60 30" aria-hidden="true"><clipPath id="fl-uk"><path d="M0,0v30h60V0z"/></clipPath><clipPath id="fl-t"><path d="M30,15h30v15zv15H0zH0V0zV0h30z"/></clipPath><g clip-path="url(#fl-uk)"><path d="M0,0v30h60V0z" fill="#012169"/><path d="M0,0 60,30M60,0 0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 60,30M60,0 0,30" clip-path="url(#fl-t)" stroke="#C8102E" stroke-width="4"/><path d="M30,0v30M0,15h60" stroke="#fff" stroke-width="10"/><path d="M30,0v30M0,15h60" stroke="#C8102E" stroke-width="6"/></g></svg>EN</a>
       </nav>
+      <span class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Paris · France</span>
+      <span class="pill focus">IAM · Entra ID</span>
+      <a class="btn-sm gh" href="https://github.com/MamadouPapa" target="_blank" rel="noopener" aria-label="GitHub (nouvel onglet)"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.6 22.4c.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.9 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A11.5 11.5 0 0 0 12 .5z"/></svg></a>
       <a class="btn-sm mail" href="mailto:papa@pmgueye.fr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><span class="txt">Me contacter</span></a>
       <a class="btn-sm" href="cv/CV_Papa_Mamadou_Gueye.pdf" download>CV</a>
     </div>
