@@ -169,16 +169,13 @@ p { margin: 0; }
 .nav a { text-decoration: none; color: var(--muted); transition: color .15s; }
 .nav a:hover { color: var(--ink); }
 .top-right { display: flex; align-items: center; gap: 12px; }
-.status { display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; font-family: var(--font-mono); font-size: .72rem; padding: 5px 10px; border-radius: 999px; background: var(--ok-soft); color: var(--ok); }
 .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--ok); animation: pulse 2.4s infinite; }
 @keyframes pulse { 0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--ok) 60%, transparent); } 70% { box-shadow: 0 0 0 8px transparent; } 100% { box-shadow: 0 0 0 0 transparent; } }
 .btn-sm { font: 600 .82rem var(--font-body); text-decoration: none; padding: 7px 13px; border-radius: 8px; background: var(--ink); color: var(--bg); white-space: nowrap; }
 .btn-sm.mail { display: inline-flex; align-items: center; gap: 6px; }
 .btn-sm.mail svg { width: 14px; height: 14px; flex: none; }
-/* Header room: the contact label and the status pill give way before anything wraps */
+/* Header room: the contact label gives way before anything wraps */
 @media (max-width: 1239px) { .btn-sm.mail .txt { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; } }
-@media (min-width: 1021px) and (max-width: 1239px) { .status { display: none; } }
-@media (max-width: 720px) { .status { display: none; } }
 @media (max-width: 480px) {
   .top .wrap { gap: 12px; }
   .top-right { gap: 8px; }
@@ -186,7 +183,6 @@ p { margin: 0; }
 }
 @media (max-width: 400px) { .lang-switch .flag { display: none; } }
 @media (max-width: 1020px) { .nav { display: none; } }
-@media (max-width: 560px) { .status { display: none; } }
 
 /* Hero */
 .hero-zone { position: relative; isolation: isolate; }
@@ -496,7 +492,6 @@ footer a:hover { color: var(--ink); }
         <a href="../" hreflang="fr" lang="fr" aria-label="FR, version française"><svg class="flag" viewBox="0 0 3 2" aria-hidden="true"><rect width="1" height="2" fill="#0055A4"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#EF4135"/></svg>FR</a>
         <a href="./" hreflang="en" lang="en" aria-label="EN, English version" aria-current="page"><svg class="flag" viewBox="0 0 60 30" aria-hidden="true"><clipPath id="fl-uk"><path d="M0,0v30h60V0z"/></clipPath><clipPath id="fl-t"><path d="M30,15h30v15zv15H0zH0V0zV0h30z"/></clipPath><g clip-path="url(#fl-uk)"><path d="M0,0v30h60V0z" fill="#012169"/><path d="M0,0 60,30M60,0 0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 60,30M60,0 0,30" clip-path="url(#fl-t)" stroke="#C8102E" stroke-width="4"/><path d="M30,0v30M0,15h60" stroke="#fff" stroke-width="10"/><path d="M30,0v30M0,15h60" stroke="#C8102E" stroke-width="6"/></g></svg>EN</a>
       </nav>
-      <span class="status"><span class="dot" aria-hidden="true"></span>Available · Permanent / Fixed-term</span>
       <a class="btn-sm mail" href="mailto:papa@pmgueye.fr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><span class="txt">Contact me</span></a>
       <a class="btn-sm" href="../cv/CV_Papa_Mamadou_Gueye_EN.pdf" download aria-label="Download my CV (PDF)">CV</a>
     </div>
