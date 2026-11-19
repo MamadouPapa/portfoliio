@@ -117,10 +117,10 @@
     [[-5.6, 36.0], [-4.4, 36.7], [-2.1, 36.7], [-0.4, 38.3], [0.2, 39.6], [0.9, 41], [3.2, 42.0], [3.1, 43.1], [4.8, 43.4], [6.0, 43.1], [7.3, 43.7], [8.5, 44.3], [9.9, 44.1], [10.5, 43.4]]
   ];
   var CITIES = [
-    { id: 'dakar', lon: -17.44, lat: 14.69, label: 'Dakar', sub: FR ? 'origine' : 'origin', color: 'var(--pirogue-sun)' },
+    { id: 'dakar', lon: -17.44, lat: 14.69, label: 'Dakar', sub: FR ? 'bac · Sénégal' : 'high school · Senegal', color: 'var(--pirogue-sun)' },
     { id: 'maroc', lon: -6.6, lat: 34.2, label: 'Kénitra · Rabat', sub: FR ? 'licence · stage' : "bachelor's · internship", color: 'var(--pirogue-red)' },
     { id: 'nice', lon: 7.26, lat: 43.7, label: 'Nice', sub: FR ? 'responsable SI' : 'head of IT', color: 'var(--pirogue-sea)' },
-    { id: 'paris', lon: 2.35, lat: 48.86, label: 'Paris', sub: FR ? 'mastère · aujourd’hui' : "master's · today", color: 'var(--accent)' }
+    { id: 'paris', lon: 2.35, lat: 48.86, label: 'Paris', sub: FR ? 'mastère' : "master's", color: 'var(--accent)' }
   ];
   var routeEl = document.getElementById('route');
   var mapEl = document.getElementById('routeMap');
