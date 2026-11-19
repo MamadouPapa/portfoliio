@@ -105,3 +105,11 @@
 .cron { margin: 4px 0 0; padding: 12px 14px; border-radius: 10px; background: #070B16; color: #DCE3F2; font: 400 .76rem/1.7 var(--font-mono); overflow-x: auto; }
 .cron .c { color: #5B6787; }
 @media (max-width: 900px) { .life { grid-template-columns: 1fr; } }
+
+/* ---------- 3D globe behind the profile sheet (desktop only; the identity graph stays as fallback) ---------- */
+#main { overflow-x: clip; margin-inline: -20px; padding-inline: 20px; }
+.hero-zone > .globe { position: absolute; z-index: -1; top: -60px; right: -22%; width: min(62%, 780px); aspect-ratio: 1; }
+.hero-zone > .globe.globe-off { display: none; }
+.hero-zone:has(> .globe.globe-ready) > .graph { opacity: .35; }
+.hero-zone:has(> .globe.globe-ready) .dossier { background: color-mix(in srgb, var(--surface) 72%, transparent); backdrop-filter: blur(3px); }
+@media (max-width: 1020px) { .hero-zone > .globe { display: none; } }
