@@ -95,8 +95,8 @@
 .proverb p { margin-top: 8px; color: var(--muted); }
 .proverb p em { color: var(--ink); font-style: normal; }
 
-/* ---------- Off screen: gym, nutrition, writing ---------- */
-.life { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+/* ---------- Off screen: gym and nutrition ---------- */
+.life { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
 .life-card { padding: 22px; border: 1px solid var(--line); border-radius: var(--radius); background: color-mix(in srgb, var(--surface) 88%, transparent); display: grid; gap: 10px; align-content: start; }
 .life-card h3 { font-size: 1.2rem; font-stretch: 106%; font-weight: 720; }
 .life-card p { color: var(--muted); }
