@@ -273,6 +273,9 @@ section { padding-block: clamp(56px, 7vw, 96px); scroll-margin-top: 64px; }
 .csf-col li.lab { color: var(--ink); }
 .csf-col li.lab::after { content: "lab"; margin-left: 6px; font: 600 .62rem var(--font-mono); color: var(--accent-2); border: 1px solid color-mix(in srgb, var(--accent-2) 50%, transparent); padding: 0 5px; border-radius: 3px; vertical-align: 1px; }
 .csf-note { margin-top: 18px; color: var(--muted); font-size: .84rem; }
+.itgc-head { margin: 56px 0 18px; display: grid; gap: 8px; max-width: 760px; }
+.itgc-head h3 { font-size: 1.35rem; font-stretch: 110%; font-weight: 720; }
+.itgc-head p { color: var(--muted); font-size: .95rem; }
 @media (max-width: 1100px) { .csf { grid-template-columns: repeat(3, 1fr); } }
 @media (max-width: 640px) { .csf { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 420px) { .csf { grid-template-columns: 1fr; } }
@@ -651,6 +654,18 @@ footer a:hover { color: var(--ink); }
       <article class="csf-col reveal"><span class="code">RC · Recover</span><h3>Bounce back fast</h3><ul><li>Managed backups</li><li>DRP / BCP written and maintained</li><li>VMware / Hyper-V operations</li></ul></article>
     </div>
     <p class="csf-note">Items tagged <code>lab</code> come from my personal and Master's projects, not from production.</p>
+    <div class="itgc-head" id="audit-it">
+      <h3>Through an auditor's eyes: IT general controls (ITGC)</h3>
+      <p>The same work, sorted by ITGC domain: the controls tested in IT audits and ISAE&nbsp;3402 / SOC&nbsp;1 / SOC&nbsp;2 engagements. I built and ran them; now I want to assess them.</p>
+    </div>
+    <div class="csf" aria-label="IT general controls">
+      <article class="csf-col reveal"><span class="code">ITGC · Access</span><h3>Who can access what</h3><ul><li>AD / Entra ID access reviews</li><li>MFA rolled out to users</li><li class="lab">Joiners, movers, leavers logged</li><li class="lab">16 identity controls rated by severity</li></ul></article>
+      <article class="csf-col reveal"><span class="code">ITGC · Change</span><h3>Nothing reaches prod unchecked</h3><ul><li>Documented production releases</li><li class="lab">Plan reviewed before apply</li><li class="lab">Automated tests in CI</li></ul></article>
+      <article class="csf-col reveal"><span class="code">ITGC · Operations</span><h3>Keeping IT running</h3><ul><li>Managed backups</li><li>Network monitoring</li><li>Run and L1 / L2 support</li></ul></article>
+      <article class="csf-col reveal"><span class="code">ITGC · Continuity</span><h3>Getting IT back</h3><ul><li>DRP / BCP written and maintained</li><li>VMware / Hyper-V recovery</li><li>Operations documentation</li></ul></article>
+      <article class="csf-col reveal"><span class="code">ITGC · Projects</span><h3>From need to production</h3><ul><li>IT projects delivered to production</li><li>Power Platform business apps</li><li>Security built in by design</li></ul></article>
+      <article class="csf-col reveal"><span class="code">Report</span><h3>Find, rate, advise</h3><ul><li>Security audits and remediation plans</li><li>GDPR compliance</li><li class="lab">Finding, severity, remediation</li><li class="lab">ISO 27001 / ANSSI mapping</li></ul></article>
+    </div>
   </section>
 
   <section id="projects">
