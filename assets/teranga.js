@@ -10,7 +10,7 @@
       ['Aller à : Couverture', '#couverture'], ['Aller à : Projets', '#projets'], ['Aller à : Missions', '#missions'],
       ['Aller à : Console PowerShell', '#console'], ['Aller à : Itinéraire (traceroute)', '#itineraire'], ['Aller à : Parcours', '#parcours'],
       ['Aller à : Hors écran', '#hors-ecran'],
-      ['Télécharger mon CV', 'cv/CV_Papa_Mamadou_Gueye.pdf'], ['Copier mon e-mail', 'copy:papa@pmgueye.fr'],
+      ['Demander mon CV', 'mailto:papa@pmgueye.fr?subject=Demande%20de%20CV'], ['Copier mon e-mail', 'copy:papa@pmgueye.fr'],
       ['Ouvrir GitHub', 'https://github.com/MamadouPapa'], ['Ouvrir le lab webstack-lab', 'https://github.com/MamadouPapa/webstack-lab'],
       ['Ouvrir LinkedIn', 'https://www.linkedin.com/in/papa-mamadou-gueye-developpeur-cybersecurite'],
       ['Jouer : tenir le pare-feu', '#jeu'], ['English version', 'en/'], ['whoami', '#top']
@@ -25,7 +25,7 @@
       ['Go to: Coverage', '#coverage'], ['Go to: Projects', '#projects'], ['Go to: Experience', '#missions'],
       ['Go to: PowerShell console', '#console'], ['Go to: Journey (traceroute)', '#journey'], ['Go to: Background', '#background'],
       ['Go to: Off screen', '#off-screen'],
-      ['Download my CV', '../cv/CV_Papa_Mamadou_Gueye_EN.pdf'], ['Copy my e-mail', 'copy:papa@pmgueye.fr'],
+      ['Request my CV', 'mailto:papa@pmgueye.fr?subject=CV%20request'], ['Copy my e-mail', 'copy:papa@pmgueye.fr'],
       ['Open GitHub', 'https://github.com/MamadouPapa'], ['Open the webstack-lab repo', 'https://github.com/MamadouPapa/webstack-lab'],
       ['Open LinkedIn', 'https://www.linkedin.com/in/papa-mamadou-gueye-developpeur-cybersecurite'],
       ['Play: hold the firewall', '#jeu'], ['Version française', '../'], ['whoami', '#top']
